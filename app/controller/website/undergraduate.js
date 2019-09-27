@@ -1,4 +1,4 @@
-const BaseController = require('BaseController');
+const BaseController = require('../BaseController');
 
 class UndergraduateController extends BaseController{
 
@@ -31,50 +31,6 @@ class UndergraduateController extends BaseController{
     }
   }
 
-  async create() {
-    const ctx = this.ctx;
-    try{
-      let data = ctx.request.body;
-
-        const user = await ctx.service.undergraduate.createUndergraduate(data);
-        super.success('创建成功!');
-
-    }
-    catch(e){
-      console.log(e);
-      ctx.logger.error(e.message);
-      super.failure(e.message);
-    }
-  }
-
-  async update() {
-    const ctx = this.ctx;
-    const id = ctx.params.id;
-    const updates = ctx.request.body;
-
-    try{
-      await ctx.service.undergraduate.updateUndergraduate({ id, updates });
-      super.success('更新成功!');
-    }
-    catch(e){
-      ctx.logger.error(e.message);
-      super.failure(e.message);
-    }
-  }
-
-  async destroy() {
-    const ctx = this.ctx;
-    const id = ctx.helper.parseInt(ctx.params.id);
-
-    try{
-      await ctx.service.undergraduate.delUndergraduateById(id);
-      super.success('删除成功!');
-    }
-    catch(e){
-      ctx.logger.error(e.message);
-      super.failure(e.message);
-    }
-  }
 
   async listPostgraduateByCondition() {
     const ctx = this.ctx;

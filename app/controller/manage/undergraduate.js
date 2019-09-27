@@ -1,6 +1,6 @@
-const BaseController = require('BaseController');
+const BaseController = require('../BaseController');
 
-class PostgraduateController extends BaseController{
+class UndergraduateController extends BaseController{
 
   async index() {
     const ctx = this.ctx;
@@ -10,7 +10,7 @@ class PostgraduateController extends BaseController{
     };
 
     try{
-      const result = await ctx.service.postgraduate.listPostgraduate(query);
+      const result = await ctx.service.undergraduate.listUndergraduate(query);
       super.success(result);
     }
     catch(e){
@@ -22,7 +22,7 @@ class PostgraduateController extends BaseController{
   async show() {
     const ctx = this.ctx;
     try{
-      const result = await ctx.service.postgraduate.getDetailById(ctx.helper.parseInt(ctx.params.id));
+      const result = await ctx.service.undergraduate.getDetailById(ctx.helper.parseInt(ctx.params.id));
       super.success(result);
     }
     catch(e){
@@ -36,7 +36,7 @@ class PostgraduateController extends BaseController{
     try{
       let data = ctx.request.body;
 
-        const user = await ctx.service.postgraduate.createPostgraduate(data);
+        const user = await ctx.service.undergraduate.createUndergraduate(data);
         super.success('创建成功!');
 
     }
@@ -53,7 +53,7 @@ class PostgraduateController extends BaseController{
     const updates = ctx.request.body;
 
     try{
-      await ctx.service.postgraduate.updatePostgraduate({ id, updates });
+      await ctx.service.undergraduate.updateUndergraduate({ id, updates });
       super.success('更新成功!');
     }
     catch(e){
@@ -67,7 +67,7 @@ class PostgraduateController extends BaseController{
     const id = ctx.helper.parseInt(ctx.params.id);
 
     try{
-      await ctx.service.postgraduate.delPostgraduateById(id);
+      await ctx.service.undergraduate.delUndergraduateById(id);
       super.success('删除成功!');
     }
     catch(e){
@@ -86,7 +86,7 @@ class PostgraduateController extends BaseController{
     };
 
     try{
-      const result = await ctx.service.postgraduate.listPostgraduateByCondition(query);
+      const result = await ctx.service.undergraduate.listUndergraduateByCondition(query);
       super.success(result);
     }
     catch(e){
@@ -96,4 +96,4 @@ class PostgraduateController extends BaseController{
   }
 }
 
-module.exports = PostgraduateController;
+module.exports = UndergraduateController;
