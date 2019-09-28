@@ -12,7 +12,7 @@ module.exports = app => {
       primaryKey: true
     },
     xm:{
-      type: INTEGER,
+      type: STRING,
       allowNull: false,
     },
     byzh: {
@@ -40,11 +40,11 @@ module.exports = app => {
       allowNull: false,
     },
     bz: {
-      type: INTEGER, ////1.已提交、2.审核未通过、3.审核已通过、4.初选入围、5.初选未入围、6.复选入围、7复选未入围
+      type: STRING,
       allowNull: true,
     },
     xxxs: {
-      type: INTEGER,
+      type: STRING,
       allowNull: false,
     },
     dh: {
@@ -68,7 +68,7 @@ module.exports = app => {
   Undergraduate.updateUndergraduate = async function ({ id, updates }) {
     const production = await this.findById(id);
     if (!production) {
-      throw new Error('production not found');
+      throw new Error('undergraduate not found');
     }
     return production.update(updates);
   }
@@ -76,7 +76,7 @@ module.exports = app => {
   Undergraduate.delUndergraduateById = async function (id) {
     const production = await this.findById(id);
     if (!production) {
-      throw new Error('production not found');
+      throw new Error('undergraduate not found');
     }
     return production.destroy();
   }
@@ -85,7 +85,7 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      order: [[ 'Id', 'asc' ]],
       where:{
 
       }
@@ -95,12 +95,13 @@ module.exports = app => {
   }
 
   Undergraduate.listUndergraduateByCondition = async function ({offset = 0, limit = 10, type = 0, searchData = ''}){
+
     let condition = {
       offset,
       limit,
-      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      order: [ [ 'Id', 'asc' ]],
       where:{
-        userId:userId
+
       }
     };
 
@@ -114,11 +115,11 @@ module.exports = app => {
         [app.Sequelize.Op.like]: '%'+searchData+'%',
       };
     }
-    
+
     return this.findAndCountAll(condition);
   }
 
-  Production.getDetailById = async function(id){
+  Undergraduate.getDetailById = async function(id){
     return await this.findByPk(id);
   }
 

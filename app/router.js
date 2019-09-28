@@ -11,7 +11,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
 
   router.get('/website/postgraduate/listPostgraduateByCondition', controller.website.postgraduate.listPostgraduateByCondition);
-  router.get('/website/undergraduate/listPostgraduateByCondition', controller.website.undergraduate.listPostgraduateByCondition);
+  router.get('/website/undergraduate/listUndergraduateByCondition', controller.website.undergraduate.listUndergraduateByCondition);
 
   router.post('/manage/file/uploadFile/:fileType', adminAuthCheck, controller.manage.file.uploadFile);
 

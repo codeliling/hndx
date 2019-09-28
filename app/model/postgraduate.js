@@ -11,49 +11,45 @@ module.exports = app => {
       defaultValue: '0',
       primaryKey: true
     },
-    xm:{
-      type: INTEGER,
-      allowNull: false,
-    },
-    byzh: {
+    Byzh:{
       type: STRING,
       allowNull: false,
     },
-    bysj: {
+    Pic: {
       type: STRING,
       allowNull: false,
     },
-    xxmc: {
+    Xm: {
       type: STRING,
       allowNull: false,
     },
-    zymc: {
+    Sfzh: {
       type: STRING,
       allowNull: false,
     },
-    bj: {
+    Xb: {
       type: STRING,
       allowNull: false,
     },
-    bylb: {
+    Rxsj: {
       type: STRING,
       allowNull: false,
     },
-    bz: {
-      type: INTEGER, ////1.已提交、2.审核未通过、3.审核已通过、4.初选入围、5.初选未入围、6.复选入围、7复选未入围
-      allowNull: true,
-    },
-    xxxs: {
-      type: INTEGER,
-      allowNull: false,
-    },
-    dh: {
+    Xh: {
       type: STRING,
       allowNull: false,
     },
-    xsf: {
+    Dh: {
       type: STRING,
       allowNull: true,
+    },
+    Zymc: {
+      type: STRING,
+      allowNull: false,
+    },
+    Xsf: {
+      type: STRING,
+      allowNull: false,
     },
 
   }, {
@@ -85,7 +81,7 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      order: [[ 'Id', 'asc' ]],
       where:{
 
       }
@@ -98,14 +94,14 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [[ 'createAt', 'desc' ], [ 'Id', 'desc' ]],
+      order: [ [ 'Id', 'asc' ]],
       where:{
-        userId:userId
+
       }
     };
 
     if (type == 1){ //按学号
-      condition.where.byzh = {
+      condition.where.Xh = {
         [app.Sequelize.Op.like]: '%'+searchData+'%',
       };
     }

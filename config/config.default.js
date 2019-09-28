@@ -2,6 +2,7 @@
 
 'use strict';
 
+const path = require('path');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -98,7 +99,7 @@ module.exports = appInfo => {
     ],
     maxFileSize: 0.3 * 1024 * 1024 * 1024,
   };
-  
+
   return {
     ...config,
     ...userConfig,

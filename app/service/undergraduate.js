@@ -5,15 +5,15 @@ const Service = require('egg').Service;
 class Undergraduate extends Service {
 
   async createUndergraduate(postgraduate){
-    return await this.ctx.model.Postgraduate.createUndergraduate(postgraduate);
+    return await this.ctx.model.Undergraduate.createUndergraduate(postgraduate);
   }
 
   async updateUndergraduate({ id, updates }){
-    return await this.ctx.model.Postgraduate.updateUndergraduate({ id, updates });
+    return await this.ctx.model.Undergraduate.updateUndergraduate({ id, updates });
   }
 
   async listUndergraduate({ offset = 0, limit = 10}) {
-    let resultObj = await this.ctx.model.Postgraduate.listUndergraduate({
+    let resultObj = await this.ctx.model.Undergraduate.listUndergraduate({
       offset,
       limit,
     });
@@ -22,11 +22,11 @@ class Undergraduate extends Service {
   }
 
   async delUndergraduateById(id){
-    return await this.ctx.model.Postgraduate.delUndergraduateById(id);
+    return await this.ctx.model.Undergraduate.delUndergraduateById(id);
   }
 
   async listUndergraduateByCondition({offset = 0, limit = 10, type = 0, searchData = ''}){
-    return await this.ctx.model.Postgraduate.listUndergraduateByCondition({
+    return await this.ctx.model.Undergraduate.listUndergraduateByCondition({
       offset,
       limit,
       type,
@@ -35,7 +35,7 @@ class Undergraduate extends Service {
   }
 
   async getDetailById(id){
-    return await this.ctx.model.Postgraduate.getDetailById(id);
+    return await this.ctx.model.Undergraduate.getDetailById(id);
   }
 
 }

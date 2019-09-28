@@ -32,7 +32,7 @@ class UndergraduateController extends BaseController{
   }
 
 
-  async listPostgraduateByCondition() {
+  async listUndergraduateByCondition() {
     const ctx = this.ctx;
     const query = {
       limit: ctx.helper.parseInt(ctx.query.limit),
@@ -40,7 +40,7 @@ class UndergraduateController extends BaseController{
       type: ctx.helper.parseInt(ctx.query.type),
       searchData:ctx.query.searchData,
     };
-
+    
     try{
       const result = await ctx.service.undergraduate.listUndergraduateByCondition(query);
       super.success(result);
