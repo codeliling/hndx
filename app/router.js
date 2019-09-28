@@ -13,6 +13,9 @@ module.exports = app => {
   router.get('/website/postgraduate/listPostgraduateByCondition', controller.website.postgraduate.listPostgraduateByCondition);
   router.get('/website/undergraduate/listUndergraduateByCondition', controller.website.undergraduate.listUndergraduateByCondition);
 
+  router.get('/manageLogin',controller.home.manageLogin);
+  router.get('/manageIndex',controller.home.manageIndex);
+  
   router.post('/manage/file/uploadFile/:fileType', adminAuthCheck, controller.manage.file.uploadFile);
 
   router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学历查询管理后台</title>
+  <script src="//vuejs.org/js/vue.min.js"></script>
+  <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
+  <script src="//unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+  {% block header %}
+  <i-menu mode="horizontal" theme="primary" active-name="1">
+    <menu-item name="1">
+      <icon type="ios-paper" />
+      内容管理
+    </menu-item>
+    <menu-item name="2">
+      <icon type="ios-people" />
+      用户管理
+    </menu-item>
+    <submenu name="3">
+      <template slot="title">
+                  <icon type="ios-stats" />
+                  统计分析
+              </template>
+      <menu-group title="使用">
+        <menu-item name="3-1">新增和启动</menu-item>
+        <menu-item name="3-2">活跃分析</menu-item>
+        <menu-item name="3-3">时段分析</menu-item>
+      </menu-group>
+      <menu-group title="留存">
+        <menu-item name="3-4">用户留存</menu-item>
+        <menu-item name="3-5">流失用户</menu-item>
+      </menu-group>
+    </submenu>
+    <menu-item name="4">
+      <icon type="ios-construct" />
+      综合设置
+    </menu-item>
+  </i-menu>
+  {% endblock %}
+
+  <section class="bottom">
+    {% block bottom %}{% endblock %}
+  </section>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      visible: false
+    },
+    methods: {
+
+    }
+  })
+</script>
+</html>
