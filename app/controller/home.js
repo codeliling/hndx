@@ -23,6 +23,16 @@ class HomeController extends Controller {
     await ctx.render('manage/postgraduate.html');
   }
 
+  async manageAddPostgraduate(){
+    const ctx = this.ctx;
+    await ctx.render('manage/addPostgraduate.html');
+  }
+
+  async manageAddUndergraduate(){
+    const ctx = this.ctx;
+    await ctx.render('manage/addUndergraduate.html');
+  }
+
   async manageImportInfo(){
     const ctx = this.ctx;
     await ctx.render('manage/importInfo.html');

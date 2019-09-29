@@ -16,6 +16,8 @@ module.exports = app => {
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/manageUndergraduate',controller.home.manageUndergraduate);
   router.get('/managePostgraduate',controller.home.managePostgraduate);
+  router.get('/manageAddPostgraduate',controller.home.manageAddPostgraduate);
+  router.get('/manageAddUndergraduate',controller.home.manageAddUndergraduate);
   router.get('/importInfo',controller.home.manageImportInfo);
   router.get('/statistics',controller.home.manageStatistics);
 

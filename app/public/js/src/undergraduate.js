@@ -111,16 +111,6 @@ new Vue({
               name: 'Jim Green',
               age: 24,
               address: 'London No. 1 Lake Park'
-            },
-            {
-              name: 'Joe Black',
-              age: 30,
-              address: 'Sydney No. 1 Lake Park'
-            },
-            {
-              name: 'Jon Snow',
-              age: 26,
-              address: 'Ottawa No. 2 Lake Park'
             }
       ]
     }
