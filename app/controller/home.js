@@ -13,9 +13,24 @@ class HomeController extends Controller {
     await ctx.render('manage/login.html');
   }
 
-  async manageIndex(){
+  async manageUndergraduate(){
     const ctx = this.ctx;
-    await ctx.render('manage/index.html');
+    await ctx.render('manage/undergraduate.html');
+  }
+
+  async managePostgraduate(){
+    const ctx = this.ctx;
+    await ctx.render('manage/postgraduate.html');
+  }
+
+  async manageImportInfo(){
+    const ctx = this.ctx;
+    await ctx.render('manage/importInfo.html');
+  }
+
+  async manageStatistics(){
+    const ctx = this.ctx;
+    await ctx.render('manage/statistics.html');
   }
 }
 

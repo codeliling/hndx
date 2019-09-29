@@ -14,8 +14,11 @@ module.exports = app => {
   router.get('/website/undergraduate/listUndergraduateByCondition', controller.website.undergraduate.listUndergraduateByCondition);
 
   router.get('/manageLogin',controller.home.manageLogin);
-  router.get('/manageIndex',controller.home.manageIndex);
-  
+  router.get('/manageUndergraduate',controller.home.manageUndergraduate);
+  router.get('/managePostgraduate',controller.home.managePostgraduate);
+  router.get('/importInfo',controller.home.manageImportInfo);
+  router.get('/statistics',controller.home.manageStatistics);
+
   router.post('/manage/file/uploadFile/:fileType', adminAuthCheck, controller.manage.file.uploadFile);
 
   router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);
