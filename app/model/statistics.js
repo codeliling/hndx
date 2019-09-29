@@ -35,6 +35,14 @@ module.exports = app => {
     return this.create(statistics);
   }
 
+  Statistics.countByType = async function(type){
+    return this.count({
+      where:{
+        type:type
+      }
+    });
+  }
+
   Statistics.queryGroupByType = async function (time,type){
     let sql = "";
     if (time = 1){ //年
