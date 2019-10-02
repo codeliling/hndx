@@ -4,20 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>湖南行政学院学历查询认证系统</title>
+  <link rel="stylesheet" href="/public/css/frame.css" />
+  <style type="text/css">
+    .contentPanel{
+      text-align: center;
+    }
+
+    .leftPanel{
+      display:inline-block;
+      width:500px;
+      height:500px;
+      background-color:red;
+      margin-right:10px;
+    }
+
+    .rightPanel{
+      display:inline-block;
+      background-color:blue;
+      margin-left:10px;
+    }
+
+    h1{
+      font-weight: bold;
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
-  <div style="text-align: center;">
-				<h1>测试</h1>
-			</div>
-			<br />
-			<div id="container">
-				<input type="button" value="学生一" onclick="student1()"/>
-				<input type="button" value="学生二" onclick="student2()"/>
-				<input type="button" value="导出学历" onclick="outputImage()"/>
-			</div>
-			<br />
-			<canvas id="myCanvas" width="842" height="1190" style="display: block;margin: 0 auto;"></canvas>
+  <div class="top-center-bottom">
+    <div class="top">
+      <img class="logo" src="/public/images/logo@2x.png"/>
+    </div>
+    <div class="center">
+      <div class="contentPanel">
+        <div class="leftPanel">
+          <div>
+            <h1>电子证书查询结果</h1>
+          </div>
+        </div>
+        <div class="rightPanel">
+          <canvas id="myCanvas" width="400px" height="500px"></canvas>
+        </div>
+
+      </div>
+      <div class="bottom">
+        <div class="bottomLeft">
+          <a href="#">网站首页</a>&nbsp&nbsp|&nbsp&nbsp<a href="#">网站后台</a>
+        </div>
+        <div class="bottomRight">
+          <p>
+            中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp&nbsp 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 <script>
 		(function(){

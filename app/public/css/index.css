@@ -1,0 +1,94 @@
+.selectPanel {
+  position: absolute;
+  top: calc(50% - 20em);
+  left: calc(50% - 30em);
+  width: 60em;
+  height: 26em;
+  text-align: center;
+}
+
+.formStyle {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  width: 30em;
+  height: 16em;
+}
+
+.formStyle label {
+  width: 5em;
+  height: 1.6em;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.6em;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color:#616161;
+}
+
+.formStyle div{
+  margin-top: 0.8em;
+}
+.formStyle label::after {
+  content: " ";
+  display: inline-block;
+  width: 100%
+}
+
+.inputStyle{
+  line-height: 2em;
+  width: 21em;
+  margin-left: 0.4em;
+  border:1px solid #9b9b9b;
+  border-radius: 8px;
+  outline:none;
+}
+
+
+.vertifyInputStyle{
+  line-height: 2em;
+  width: 12em;
+  margin-left: 0.4em;
+  border:1px solid #9b9b9b;
+  border-radius: 8px;
+  outline:none;
+}
+
+.searchBtn{
+  width: 21em;
+  height: 3em;
+  background-color: #b92121;
+  border:2px solid #b92121;
+  border-radius: 8px;
+  outline:none;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  color:white;
+}
+
+.graduateTypeBtnNormalStyle{
+ border: 2px;
+ border-radius: 8px;
+ width: 10em;
+ height:2.5em;
+ margin-right: 15px;
+ outline:none;
+ border-color: #9b9b9b;
+ color: #9b9b9b;
+ background-color: #f4f4f4;
+ font-weight: bold;
+}
+
+.graduateTypeBtnSelectStyle{
+  border: 2px;
+  border-radius: 8px;
+  width: 10em;
+  height:2.5em;
+  outline:none;
+   margin-right: 15px;
+   border-color: #b92121;
+   color: #b92121;
+   background-color: rgba(185,33,33,0.3);
+   font-weight: bold;
+}

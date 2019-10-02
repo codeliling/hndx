@@ -9,11 +9,16 @@ module.exports = app => {
   const adminAuthCheck = app.middleware.adminAuthCheck();
 
   router.get('/', controller.home.index);
+  router.get('/result', controller.home.result);
+  router.get('/noResult', controller.home.noResult);
 
   router.get('/website/postgraduate/listPostgraduateByCondition', controller.website.postgraduate.listPostgraduateByCondition);
   router.get('/website/undergraduate/listUndergraduateByCondition', controller.website.undergraduate.listUndergraduateByCondition);
 
   router.get('/manageLogin',controller.home.manageLogin);
+  router.get('/getCaptcha',controller.website.webutils.getCaptcha);
+  router.get('/checkCaptcha',controller.website.webutils.checkCaptcha);
+
   router.get('/manageUndergraduate',controller.home.manageUndergraduate);
   router.get('/managePostgraduate',controller.home.managePostgraduate);
   router.get('/manageAddPostgraduate',controller.home.manageAddPostgraduate);

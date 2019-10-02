@@ -5,7 +5,17 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     const { ctx } = this;
-    ctx.body = 'hi, egg';
+    await ctx.render('index.html');
+  }
+
+  async result() {
+    const { ctx } = this;
+    await ctx.render('result.html');
+  }
+
+  async noResult() {
+    const { ctx } = this;
+    await ctx.render('noResult.html');
   }
 
   async manageLogin(){
@@ -42,6 +52,7 @@ class HomeController extends Controller {
     const ctx = this.ctx;
     await ctx.render('manage/statistics.html');
   }
+
 }
 
 module.exports = HomeController;

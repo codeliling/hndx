@@ -4,7 +4,7 @@ let moment = require('moment');
 
 module.exports = app => {
 
-  const { INTEGER, STRING } = app.Sequelize;
+  const { INTEGER, STRING, DATE } = app.Sequelize;
 
   const Statistics = app.model.define('statistics', {
     Id: {
@@ -45,7 +45,7 @@ module.exports = app => {
 
   Statistics.queryGroupByType = async function (time,type){
     let sql = "";
-    if (time = 1){ //年
+    if (time == 1){ //年
       sql = `SELECT
               	DATE_FORMAT( createAt, '%Y' ) as time,
               	COUNT( Id) as count
@@ -59,7 +59,7 @@ module.exports = app => {
         	   time`;
 
     }
-    else if {time = 2}{ //月
+    else if (time == 2){ //月
       sql = `SELECT
               	DATE_FORMAT( createAt, '%Y-%m' ) as time,
               	COUNT( Id) as count
