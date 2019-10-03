@@ -3,8 +3,8 @@ new Vue({
   el: '#app',
   data() {
     return {
-      pageTotal:0,
-      pageSize:10,
+      pageTotal: 0,
+      pageSize: 10,
       searchData: '',
       columns: [{
           title: '姓名',
@@ -61,7 +61,7 @@ new Vue({
                 },
                 on: {
                   click: () => {
-                    this.show(params.Id)
+                    window.location.href = '/manageAddUndergraduate?Id=' + params.row.Id
                   }
                 }
               }, '修改'),
@@ -72,7 +72,7 @@ new Vue({
                 },
                 on: {
                   click: () => {
-                    this.remove(params.Id)
+                    this.remove(params.row.Id)
                   }
                 }
               }, '删除')
@@ -80,8 +80,7 @@ new Vue({
           }
         }
       ],
-      data6: [
-      ]
+      data6: []
     }
 
   },
@@ -106,19 +105,28 @@ new Vue({
           offset: offset,
         }
       }).then(function(res) {
-        that.pageTotal =  res.data.data.count;
+        that.pageTotal = res.data.data.count;
         that.data6 = res.data.data.rows;
       }).catch(function(res) {
         console.log(res);
       });
     },
 
-    handlePage(value){
+    handlePage(value) {
       this.getListData((value - 1) * this.pageSize);
     },
 
-    remove(Id){
-
+    remove(Id) {
+      this.$Modal.confirm({
+        title: '请确认是否删除',
+        content: `删除ID为：${Id} 的数据。`,
+        onOk: () => {
+          this.$Message.info('删除');
+        },
+        onCancel: () => {
+          this.$Message.info('取消删除');
+        }
+      })
     }
   },
   mounted() {
