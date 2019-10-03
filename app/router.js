@@ -28,9 +28,9 @@ module.exports = app => {
 
   router.post('/manage/file/uploadFile/:fileType', adminAuthCheck, controller.manage.file.uploadFile);
 
-  router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);
-  router.resources('/manage/undergraduate', adminAuthCheck, controller.manage.undergraduate);
-  router.resources('/manage/user',  adminAuthCheck, controller.manage.user);
+  router.resources('/manage/postgraduate',  controller.manage.postgraduate);
+  router.resources('/manage/undergraduate', controller.manage.undergraduate);
+  router.resources('/manage/user',  controller.manage.user);
 
   router.resources('/website/postgraduate',  controller.website.postgraduate);
   router.resources('/website/undergraduate',  controller.website.undergraduate);

@@ -7,27 +7,79 @@
   <title>湖南行政学院学历查询认证系统</title>
   <link rel="stylesheet" href="/public/css/frame.css" />
   <style type="text/css">
-    .contentPanel{
-      text-align: center;
+
+    @media screen and (min-width: 1024px) and (max-width: 1366px) {
+      .contentPanel{
+        margin: 0 auto;
+        width: 95%;
+        height: auto;
+      }
     }
 
+    @media screen and  (min-width: 1366px) and (max-width: 1440px) {
+      .contentPanel{
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+      }
+    }
+
+    @media screen and (min-width: 1440px) and (max-width: 1920px) {
+      .contentPanel{
+        margin: 0 auto;
+        width: 70%;
+        height: auto;
+      }
+    }
     .leftPanel{
-      display:inline-block;
-      width:500px;
-      height:500px;
-      background-color:red;
+      display: inline-block;
+      float:left;
+      width:56%;
+      height:auto;
       margin-right:10px;
     }
 
     .rightPanel{
-      display:inline-block;
-      background-color:blue;
+      display: inline-block;
+      width:40%;
+      height: 500px;
       margin-left:10px;
     }
 
     h1{
       font-weight: bold;
       font-size: 24px;
+    }
+
+    .labelTitle{
+      display: block;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-top: 10px;
+    }
+
+    .labelResult{
+      display: block;
+      font-weight: bold;
+      width:20em;
+      height: 2.5em;
+      line-height: 2.5em;
+      border:1px solid #f4f4f4;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      color:#838383;
+    }
+    .downloadBtn{
+      width: 21em;
+      height: 3em;
+      background-color: #b92121;
+      border:2px solid #b92121;
+      border-radius: 8px;
+      outline:none;
+      margin-top: 10px;
+      margin-left: 10px;
+      font-weight: bold;
+      color:white;
     }
   </style>
 </head>
@@ -39,12 +91,41 @@
     <div class="center">
       <div class="contentPanel">
         <div class="leftPanel">
-          <div>
-            <h1>电子证书查询结果</h1>
-          </div>
+
+            <h1 style="margin-top:15px;">电子证书查询结果</h1>
+            <div style="display:inline-block">
+              <label class="labelTitle">姓名</label>
+              <lable class="labelResult">李灵</lable>
+              <label class="labelTitle">出生日期</label>
+              <lable class="labelResult"></lable>
+              <label class="labelTitle">毕(结)业日期</label>
+              <lable class="labelResult"></lable>
+              <label class="labelTitle">学习形式</label>
+              <lable class="labelResult"></lable>
+            </div>
+            <div style="display:inline-block;margin-left:40px;">
+              <label class="labelTitle">性别</label>
+              <lable class="labelResult"></lable>
+              <label class="labelTitle">入学日期</label>
+              <lable class="labelResult"></lable>
+              <label class="labelTitle">学历类别</label>
+              <lable class="labelResult"></lable>
+              <label class="labelTitle">证书编号</label>
+              <lable class="labelResult"></lable>
+            </div>
+            <p style="margin-top:20px;color:#838383;line-height:20px;">
+              声明：<br/>
+1、未经学历信息权属人同意，不得将本材料用于违背权属人意愿之用途。学历信息内容标注“＊”号，表示该项内容不详。学历信息如有修改，请以网站在线查询内容为准。
+<br/>
+2、学历证书查询结果仅供查询人使用，不具有再验证功能。如需向第三方提供学历信息，建议使用具有验证功能的学历证书电子注册备案表。
+            </p>
+
+            <div style="text-align:center">
+              <input type="button" class="downloadBtn" onclick="outputImage()" value="下载保存电子学历证书" />
+            </div>
         </div>
-        <div class="rightPanel">
-          <canvas id="myCanvas" width="400px" height="500px"></canvas>
+        <div id="rPanel" class="rightPanel">
+          <canvas id="myCanvas" width="100%" height="auto" style="border:0px"></canvas>
         </div>
 
       </div>
@@ -74,29 +155,6 @@
 		let cardNum = "";
 		let certificateNumber = "";
 
-		function student1(){
-			name = "周金金";
-			number = "10133345";
-			gender = "女";
-			nation = "汉";
-			cardNum = "4113212231103256";
-			certificateNumber = "10262223";
-
-			clearCanvas();
-			loadCertifate();
-		}
-
-		function student2(){
-			name = "成吉思汗";
-			number = "9652321";
-			gender = "男";
-			nation = "蒙古族";
-			cardNum = "9536201970031103562";
-			certificateNumber = "6632158";
-			clearCanvas();
-			loadCertifate();
-		}
-
 		function clearCanvas()
 		{
 		    var c = document.getElementById("myCanvas");
@@ -106,64 +164,50 @@
 
 		function loadCertifate(){
 			var canvas = document.getElementById('myCanvas');
+      canvas.width = document.getElementById('rPanel').offsetWidth;
+		  canvas.height = document.getElementById('rPanel').offsetHeight;
 
 			var ctx = canvas.getContext('2d');
-			var myImage = new Image(842, 1190);
-			myImage.src = 'img/bg.png';
+			var myImage = new Image();
+
+			myImage.src = '/public/images/Preview_of_record _@2x.png';
 			myImage.style.cssText = "transform:scale(0.5)";
+
 			myImage.onload = function(){
-				ctx.drawImage(myImage,0,0);
+        var scale = canvas.width / myImage.width;
 
-				var img = new Image(200,200);
-			    img.onload = function(){
-			      ctx.drawImage(img,500,800);
+				ctx.drawImage(myImage,0,-70, scale*myImage.width, scale*myImage.height);
 
-			      ctx.font = "15px Arial";
-			      ctx.fillText("学历认定依据：根据中发【2000】10号文件和湘发【2000】23号文件以及省委组织部，省教育厅联合",100,85);
-			      ctx.fillText("下发的湘组【2003】33号文件、省委组织部湘组【2008】8号文件规定，党校及行政学院函授学历",100,105);
-			      ctx.fillText("享受国民教育同等学历待遇。",100,125);
+				var sealImg = new Image();
+			    sealImg.onload = function(){
+			      ctx.drawImage(sealImg,260,350,sealImg.width/5,sealImg.height/5);
 
-			      ctx.font = "30px Arial";
-			      ctx.fillText("中共湖南省委党校", 100, 170);
-			      ctx.fillText("湖 南  行 政 学  院", 100, 220);
+			      ctx.font = "10px Arial";
+			      ctx.fillText("2019010213123", 280, 188);
+			      ctx.fillText("2019", 280, 202);
+            ctx.fillText("10", 322, 202);
+            ctx.fillText("3", 345, 202);
 
-			      ctx.font = "38px Arial";
-			      ctx.fillText("函授教育学历认证报告", 350, 200);
+            ctx.font = "16px Arial";
+            ctx.fillText("张学友", 80, 235);
+            ctx.font = "10px Arial";
+            ctx.fillText("4301811977010123123", 245, 235);
+            ctx.fillText("2019", 70, 253);
+            ctx.fillText("10", 130,253);
 
-			      ctx.font = "18px Arial";
-			      ctx.fillText("报告编号：  "+number, 550, 300);
-			      ctx.fillText("报告日期：  2019年6月28日", 550, 330);
+            ctx.fillText("2019",190, 253);
+            ctx.fillText("10", 250, 253);
 
-			      ctx.font = "23px Arial";
-			      ctx.fillText(name, 230, 400);
-			      ctx.fillText(gender+"，", 430, 400);
-			      ctx.fillText(nation, 560, 400);
-			      ctx.fillText(cardNum+"  。", 100, 455);
-			      ctx.fillText("于2005年获得中央党校函授学院", 430, 455);
-			      ctx.fillText("经济管理专业", 100, 510);
-			      ctx.fillText("本科毕业证书。", 300, 510);
+            ctx.fillText("经济学", 130, 275);
+            ctx.fillText("32131232", 260, 275);
+            ctx.fillText("3", 345, 275);
 
-			      ctx.fillText("毕业证及学历证明编号为：" +certificateNumber+"。", 210, 565);
+            ctx.fillText("2019", 90, 315);
+            ctx.fillText("10", 150, 315);
 
-			      ctx.font = "21px Arial";
-			      ctx.fillText("（中央党校学历认证网址：http://ci.ccps.gov.cn）", 210, 600);
-
-			      ctx.font = "26px Arial";
-			      ctx.fillText("中央党校函授学院湖南分院", 410, 690);
-
-			      ctx.font = "18px Arial";
-			      ctx.fillText("报告说明：", 100, 800);
-
-			      ctx.font = "15px Arial";
-			      ctx.fillText("1.报告持有人可以凭此报告在中共湖南省委党校湖南行政学院网站“函授学历查询”页", 100, 830);
-			  	  ctx.fillText("（http://61.187.64.19）核实报告的真实性。", 105, 855);
-
-			  	  ctx.fillText("2.本报告必须加盖中共中央党校函授学院湖南分院（或“中共湖南省委党校函授学院”、“湖南行政学院", 100, 880);
-			  	  ctx.fillText("函授学院”）红印方为有效。",110,905);
-
-			  	  ctx.fillText("3.本报告如与实际情况或网上查询数据不一致，请与0731-82780144联系核实。",100,930);
+            ctx.fillText("14301123123", 220, 337);
 			    }
-			    img.src = 'img/yin.png';
+			    sealImg.src = '/public/images/seal.png';
 
 
 			};
