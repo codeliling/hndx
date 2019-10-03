@@ -3,11 +3,13 @@ new Vue({
   el: '#app',
   data(){
     return {
+      pageTotal:0,
+      pageSize:10,
       searchData: '',
       columns: [
         {
-            title: 'Name',
-            key: 'name',
+            title: '姓名',
+            key: 'Xm',
             render: (h, params) => {
               return h('div', [
                 h('Icon', {
@@ -15,20 +17,48 @@ new Vue({
                     type: 'person'
                   }
                 }),
-                h('strong', params.row.name)
+                h('strong', params.row.Xm)
               ]);
             }
           },
           {
-            title: 'Age',
-            key: 'age'
+            title: '毕业证号',
+            key: 'Byzh'
           },
           {
-            title: 'Address',
-            key: 'address'
+            title: '照片',
+            key: 'Pic'
           },
           {
-            title: 'Action',
+            title: '身份证号',
+            key: 'Sfzh'
+          },
+          {
+            title: '性别',
+            key: 'Xb'
+          },
+          {
+            title: '入学时间',
+            key: 'Rxsj'
+          },
+          {
+            title: '毕业时间',
+            key: 'Bysj'
+          },
+          {
+            title: '学号',
+            key: 'Xh'
+          },
+          {
+            title: '代号',
+            key: 'Dh'
+          },
+          {
+            title: '专业名称',
+            key: 'Zymc'
+          },
+          {
+            title: '操作',
             key: 'action',
             width: 150,
             align: 'center',
@@ -47,7 +77,7 @@ new Vue({
                       this.show(params.index)
                     }
                   }
-                }, 'View'),
+                }, '修改'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -58,60 +88,12 @@ new Vue({
                       this.remove(params.index)
                     }
                   }
-                }, 'Delete')
+                }, '删除')
               ]);
             }
           }
       ],
-      data6: [{
-          name: 'John Brown',
-          age: 18,
-          address: 'New York No. 1 Lake Park'
-        },
-        {
-          name: 'Jim Green',
-          age: 24,
-          address: 'London No. 1 Lake Park'
-        },
-        {
-          name: 'Joe Black',
-          age: 30,
-          address: 'Sydney No. 1 Lake Park'
-        },
-        {
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park'
-        },
-        {
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park'
-          },
-          {
-            name: 'Jim Green',
-            age: 24,
-            address: 'London No. 1 Lake Park'
-          },
-          {
-            name: 'Joe Black',
-            age: 30,
-            address: 'Sydney No. 1 Lake Park'
-          },
-          {
-            name: 'Jon Snow',
-            age: 26,
-            address: 'Ottawa No. 2 Lake Park'
-          },{
-              name: 'John Brown',
-              age: 18,
-              address: 'New York No. 1 Lake Park'
-            },
-            {
-              name: 'Jim Green',
-              age: 24,
-              address: 'London No. 1 Lake Park'
-            }
+      data6: [
       ]
     }
 
@@ -131,6 +113,29 @@ new Vue({
         console.log(name);
         window.location.href = '/statistics';
       }
-    }
-  }
+    },
+
+    getListData(offset) {
+      var that = this;
+      axios.get('/manage/postgraduate', {
+        params: {
+          limit: that.pageSize,
+          offset: offset,
+        }
+      }).then(function(res) {
+      
+        that.pageTotal = res.data.data.count;
+        that.data6 = res.data.data.rows;
+      }).catch(function(res) {
+        console.log(res);
+      });
+    },
+
+    handlePage(value){
+      this.getListData((value - 1) * this.pageSize);
+    },
+  },
+  mounted() {
+    this.getListData(0);
+  },
 })

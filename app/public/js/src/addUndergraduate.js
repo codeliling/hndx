@@ -2,7 +2,17 @@ Vue.config.devtools = true;
 new Vue({
   el: '#app',
   data: {
-    visible: false
+    visible: false,
+    undergraduateForm:{
+      xm:'',
+      byzh:'',
+      bysj:'',
+      xxmc:'',
+      zymc:'',
+      bj:'',
+      bylb:'',
+      xxxs:''
+    }
   },
   methods: {
     menuClick(name){

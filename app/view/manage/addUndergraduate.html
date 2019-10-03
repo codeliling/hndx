@@ -47,7 +47,71 @@
           </breadcrumb>
           <card>
             <div class="contentPanel">
-              
+              <i-form :model="undergraduateForm" label-position="left" :label-width="100">
+                <row>
+                  <i-col span="3">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="姓名">
+                        <i-input v-model="undergraduateForm.xm"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="2">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="毕业证号">
+                        <i-input v-model="undergraduateForm.byzh"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="3"></i-col>
+                </row>
+                <row>
+                  <i-col span="3">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="毕业时间">
+                        <i-input v-model="undergraduateForm.bysj"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="2">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="学院名称">
+                        <i-input v-model="undergraduateForm.xxmc"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="3"></i-col>
+                </row>
+                <row>
+                  <i-col span="3">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="专业名称">
+                        <i-input v-model="undergraduateForm.zymc"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="2">&nbsp</i-col>
+                    <i-col span="8">
+                    <form-item label="班级">
+                        <i-input v-model="undergraduateForm.bj"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="3"></i-col>
+                </row>
+                <row>
+                  <i-col span="3">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="毕业类别">
+                        <i-input v-model="undergraduateForm.bylb"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="2">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="学习形式">
+                        <i-input v-model="undergraduateForm.xxxs"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="3"></i-col>
+                </row>
+                <row style="text-align:center">
+                  <i-button style="width:200px;margin-top:30px" type="primary" @click="handleSubmit()">提交</i-button>
+                </row>
+            </i-form>
             </div>
           </card>
         </i-content>
@@ -59,6 +123,6 @@
 </body>
 <script src="/public/js/lib/vue.min.js"></script>
 <script src="/public/js/lib/iview.min.js"></script>
-<script src="/public/js/src/importInfo.js"></script>
+<script src="/public/js/src/addUndergraduate.js"></script>
 
 </html>

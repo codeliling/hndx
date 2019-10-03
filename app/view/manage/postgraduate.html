@@ -60,7 +60,7 @@
                        <i-table border :columns="columns" :data="data6"></i-table>
                      </row>
                      <row style="margin-top:15px;text-align:right">
-                       <page :total="100" show-elevator />
+                       <page :total="pageTotal"  @on-change="handlePage"  show-elevator show-total />
                      </row>
                    </div>
                </card>
@@ -73,5 +73,6 @@
 </body>
 <script src="/public/js/lib/vue.min.js"></script>
 <script src="/public/js/lib/iview.min.js"></script>
+<script src="/public/js/lib/axios.min.js"></script>
 <script src="/public/js/src/postgraduate.js"></script>
 </html>

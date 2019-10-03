@@ -3,6 +3,8 @@ new Vue({
   el: '#app',
   data() {
     return {
+      pageTotal:0,
+      pageSize:10,
       searchData: '',
       columns: [{
           title: '姓名',
@@ -62,7 +64,7 @@ new Vue({
                     this.show(params.Id)
                   }
                 }
-              }, 'View'),
+              }, '修改'),
               h('Button', {
                 props: {
                   type: 'error',
@@ -73,7 +75,7 @@ new Vue({
                     this.remove(params.Id)
                   }
                 }
-              }, 'Delete')
+              }, '删除')
             ]);
           }
         }
@@ -100,15 +102,23 @@ new Vue({
       var that = this;
       axios.get('/manage/undergraduate', {
         params: {
-          limit: 10,
+          limit: that.pageSize,
           offset: offset,
         }
       }).then(function(res) {
-        console.log(that.data6.length);
+        that.pageTotal =  res.data.data.count;
         that.data6 = res.data.data.rows;
       }).catch(function(res) {
         console.log(res);
       });
+    },
+
+    handlePage(value){
+      this.getListData((value - 1) * this.pageSize);
+    },
+
+    remove(Id){
+
     }
   },
   mounted() {

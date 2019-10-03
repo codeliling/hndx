@@ -47,7 +47,90 @@
                </breadcrumb>
                <card>
                    <div class="contentPanel">
+                     <i-form :model="postgraduateForm" label-position="left" :label-width="100">
+                       <row>
+                         <i-col span="3">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="姓名">
+                               <i-input v-model="postgraduateForm.Xm"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="2">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="毕业证号">
+                               <i-input v-model="postgraduateForm.Byzh"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="3"></i-col>
+                       </row>
+                       <row>
+                         <i-col span="3">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="入学日期">
+                               <i-input v-model="postgraduateForm.Rxrq"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="2">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="毕业时间">
+                               <i-input v-model="postgraduateForm.Bysj"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="3"></i-col>
+                       </row>
+                       <row>
+                         <i-col span="3">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="性别">
+                               <i-input v-model="postgraduateForm.Xb"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="2">&nbsp</i-col>
+                           <i-col span="8">
+                             <form-item label="代号">
+                                 <i-input v-model="postgraduateForm.Dh"></i-input>
+                             </form-item>
+                         </i-col>
+                         <i-col span="3"></i-col>
+                       </row>
+                       <row>
+                         <i-col span="3">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="专业名称">
+                               <i-input v-model="postgraduateForm.Zymc"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="2">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="身份证号">
+                               <i-input v-model="postgraduateForm.Sfzh"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="3"></i-col>
+                       </row>
+                       <row>
+                         <i-col span="3">&nbsp</i-col>
+                         <i-col span="8">
+                           <form-item label="学号">
+                               <i-input v-model="postgraduateForm.Xh"></i-input>
+                           </form-item>
+                         </i-col>
+                         <i-col span="2">&nbsp</i-col>
+                         <i-col span="8">
 
+                           <form-item label="照片">
+                             <upload action="//jsonplaceholder.typicode.com/posts/">
+                                <i-button icon="ios-cloud-upload-outline">Upload files</i-button>
+                            </upload>
+                            <img src="" style="width:110px;height:140px;"/>
+                           </form-item>
+                         </i-col>
+                         <i-col span="3"></i-col>
+                       </row>
+                       <row style="text-align:center">
+                         <i-button style="width:200px;margin-top:30px" type="primary" @click="handleSubmit()">提交</i-button>
+                       </row>
+                   </i-form>
                    </div>
                </card>
            </i-content>
