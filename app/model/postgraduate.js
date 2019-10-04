@@ -58,11 +58,11 @@ module.exports = app => {
 
 
   Postgraduate.createPostgraduate = async function (postgraduate) {
-    return this.create(postgraduate);
+    return await this.create(postgraduate);
   }
 
   Postgraduate.bulkCreatePostgraduate = async function (postgraduateList) {
-    return this.bulkCreate(postgraduateList);
+    return await this.bulkCreate(postgraduateList);
   }
 
   Postgraduate.updatePostgraduate = async function ({ id, updates }) {
@@ -91,7 +91,7 @@ module.exports = app => {
       }
     };
 
-    return this.findAndCountAll(condition);
+    return await this.findAndCountAll(condition);
   }
 
   Postgraduate.listPostgraduateByCondition = async function ({offset = 0, limit = 10, type = 0, searchData = ''}){
@@ -115,7 +115,7 @@ module.exports = app => {
       };
     }
 
-    return this.findAndCountAll(condition);
+    return await this.findAndCountAll(condition);
   }
 
   Postgraduate.getDetailById = async function(id){

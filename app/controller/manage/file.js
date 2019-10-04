@@ -43,15 +43,18 @@ class FileController extends BaseController {
           const target = path.join(fileTagget, filename);
           const writeStream = fs.createWriteStream(target);
           await awaitWriteStream(stream.pipe(writeStream));
+
+          let postgraduateList = [];
+          let undergraduateList = [];
+
           let countRecord = 0;
           var workbook = new Excel.Workbook();
-          workbook.xlsx.readFile(target)
+          await workbook.xlsx.readFile(target)
           .then(function() {
             var worksheet = workbook.getWorksheet(1);
             if(worksheet.rowCount > 1){
               countRecord = worksheet.rowCount - 1;
               if(fileType == 1){
-                let postgraduateList = [];
                 worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
                   if (rowNumber != 1){
                     let postgraduate = {
@@ -69,17 +72,8 @@ class FileController extends BaseController {
                     postgraduateList.push(postgraduate);
                   }
                 });
-                try{
-                  const result = await ctx.service.postgraduate.bulkCreatePostgraduate(postgraduateList);
-                  super.success(result);
-                }
-                catch(e){
-                  ctx.logger.error(e.message);
-                  super.failure(e.message);
-                }
               }
               else{
-                let undergraduateList = [];
                 worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
                   if (rowNumber != 1){
                     let undergraduate = {
@@ -98,20 +92,29 @@ class FileController extends BaseController {
                     undergraduateList.push(undergraduate);
                   }
                 });
-                try{
-                  const result = await ctx.service.postgraduate.bulkCreateUndergraduate(undergraduateList);
-                  super.success(result);
-                }
-                catch(e){
-                  ctx.logger.error(e.message);
-                  super.failure(e.message);
-                }
               }
             }
-            else{
-
-            }
           });
+          if(fileType == 1){
+            try{
+              const result = await ctx.service.postgraduate.bulkCreatePostgraduate(postgraduateList);
+              super.success(result);
+            }
+            catch(e){
+              ctx.logger.error(e.message);
+              super.failure(e.message);
+            }
+          }
+          else{
+            try{
+              const result = await ctx.service.undergraduate.bulkCreateUndergraduate(undergraduateList);
+              super.success(result);
+            }
+            catch(e){
+              ctx.logger.error(e.message);
+              super.failure(e.message);
+            }
+          }
           result.countRecord = countRecord;
         } catch (err) {
             //如果出现错误，关闭管道

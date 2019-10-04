@@ -13,7 +13,9 @@ new Vue({
         }
       ],
       graduateTypeModel:'',
-      uploadActionUrl:''
+      uploadActionUrl:'',
+      recordCount:0,
+      selectType:'',
     };
   },
   methods: {
@@ -30,12 +32,19 @@ new Vue({
       }
     },
     changeSelect(value){
+      this.selectType = value;
       if(value == '本专科学历信息导入'){
         this.uploadActionUrl = '/manage/file/uploadFile/2';
       }
       else if (value == '研究生学历信息导入'){
         this.uploadActionUrl = '/manage/file/uploadFile/1';
       }
+    },
+    uploadSuccess(response, file, fileList){
+      this.recordCount = response.countRecord;
+    },
+    uploadError(error, file, fileList){
+      
     }
   }
 })

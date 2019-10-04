@@ -62,11 +62,11 @@ module.exports = app => {
 
 
   Undergraduate.createUndergraduate = async function (undergraduate) {
-    return this.create(undergraduate);
+    return await this.create(undergraduate);
   }
 
   Undergraduate.bulkCreateUndergraduate = async function (undergraduateList) {
-    return this.bulkCreate(undergraduateList);
+    return await this.bulkCreate(undergraduateList);
   }
 
   Undergraduate.updateUndergraduate = async function ({ id, updates }) {
@@ -74,7 +74,7 @@ module.exports = app => {
     if (!undergraduate) {
       throw new Error('undergraduate not found');
     }
-    return undergraduate.update(updates);
+    return await undergraduate.update(updates);
   }
 
   Undergraduate.delUndergraduateById = async function (id) {
@@ -82,7 +82,7 @@ module.exports = app => {
     if (!undergraduate) {
       throw new Error('undergraduate not found');
     }
-    return undergraduate.destroy();
+    return await undergraduate.destroy();
   }
 
   Undergraduate.listUndergraduate = async function ({offset = 0, limit = 10}){
@@ -95,7 +95,7 @@ module.exports = app => {
       }
     };
 
-    return this.findAndCountAll(condition);
+    return await this.findAndCountAll(condition);
   }
 
   Undergraduate.listUndergraduateByCondition = async function ({offset = 0, limit = 10, type = 0, searchData = ''}){
@@ -120,7 +120,7 @@ module.exports = app => {
       };
     }
 
-    return this.findAndCountAll(condition);
+    return await this.findAndCountAll(condition);
   }
 
   Undergraduate.getDetailById = async function(id){

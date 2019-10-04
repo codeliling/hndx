@@ -62,7 +62,7 @@
                          </i-select>
                        </i-col>
                        <i-col span="6">
-                         <upload multiple type="drag" :action="uploadActionUrl">
+                         <upload multiple type="drag" :action="uploadActionUrl" @on-success="uploadSuccess" @on-error="uploadError">
                            <div style="padding: 20px 0">
                              <icon type="ios-cloud-upload" size="52" style="color: #3399ff"></icon>
                              <p>点击或者拖拽文件到此上传...</p>
@@ -71,7 +71,7 @@
                        </i-col>
                      </row>
                      <row style="text-align:center;margin-top:30px">
-                        <p>当前选择为本专科学历信息导入，总共导入记录为 10000条!</p>
+                        <p>当前选择为{{selectType}}导入，总共导入记录为 {{recordCount}} 条!</p>
                      <row>
                    </div>
                </card>
