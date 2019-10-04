@@ -61,12 +61,16 @@ module.exports = app => {
     return this.create(postgraduate);
   }
 
+  Postgraduate.bulkCreatePostgraduate = async function (postgraduateList) {
+    return this.bulkCreate(postgraduateList);
+  }
+
   Postgraduate.updatePostgraduate = async function ({ id, updates }) {
-    const production = await this.findById(id);
-    if (!production) {
-      throw new Error('production not found');
+    const postgraduate = await this.findById(id);
+    if (!postgraduate) {
+      throw new Error('postgraduate not found');
     }
-    return production.update(updates);
+    return postgraduate.update(updates);
   }
 
   Postgraduate.delPostgraduateById = async function (id) {

@@ -50,19 +50,19 @@
                      <row>
                      <br>
                      <hr style="height:1px;border:none;border-top:1px dashed #0066CC;"/>
-                     
+
                      <row style="text-align:center;margin-top:20px">
                           <a href="" style="margin-right:5px;">本专科导入模板下载</a>
                           <a href="" style="margin-left:5px;">研究生导入模板下载</a>
                      <row>
                      <row style="margin-top:60px;">
                        <i-col span="9" style="text-align:right;margin-right:30px;">
-                         <i-select v-model="graduateTypeModel" style="width:200px">
+                         <i-select v-model="graduateTypeModel" @on-change="changeSelect" style="width:200px">
                            <i-option v-for="item in graduateTypeList" :value="item.value" :key="item.value">{{ item.label }}</i-option>
                          </i-select>
                        </i-col>
                        <i-col span="6">
-                         <upload multiple type="drag" action="//jsonplaceholder.typicode.com/posts/">
+                         <upload multiple type="drag" :action="uploadActionUrl">
                            <div style="padding: 20px 0">
                              <icon type="ios-cloud-upload" size="52" style="color: #3399ff"></icon>
                              <p>点击或者拖拽文件到此上传...</p>

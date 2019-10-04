@@ -55,6 +55,9 @@
                        <i-col span="2">
                          <i-button type="primary" icon="ios-search">搜索</i-button>
                        </i-col>
+                       <i-col span="17" style="text-align:right">
+                         <i-button type="primary" icon="ios-search" @click="addClick">添加</i-button>
+                       </i-col>
                      </row>
                      <row style="margin-top:10px;">
                        <i-table border :columns="columns" :data="data6"></i-table>

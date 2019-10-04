@@ -92,6 +92,12 @@ module.exports = appInfo => {
     },
   };
 
+  config.multipart = {
+    fileSize: '50mb',
+    mode: 'stream',
+    fileExtensions: ['.xls', '.xlsx'], // 扩展几种上传的文件格式
+  };
+
   config.logrotator = {
     filesRotateBySize: [
       path.join(appInfo.root, 'logs', appInfo.name, '-web.log'),

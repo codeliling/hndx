@@ -61,24 +61,28 @@ module.exports = app => {
   });
 
 
-  Undergraduate.createUndergraduate = async function (production) {
-    return this.create(production);
+  Undergraduate.createUndergraduate = async function (undergraduate) {
+    return this.create(undergraduate);
+  }
+
+  Undergraduate.bulkCreateUndergraduate = async function (undergraduateList) {
+    return this.bulkCreate(undergraduateList);
   }
 
   Undergraduate.updateUndergraduate = async function ({ id, updates }) {
-    const production = await this.findById(id);
-    if (!production) {
+    const undergraduate = await this.findById(id);
+    if (!undergraduate) {
       throw new Error('undergraduate not found');
     }
-    return production.update(updates);
+    return undergraduate.update(updates);
   }
 
   Undergraduate.delUndergraduateById = async function (id) {
-    const production = await this.findById(id);
-    if (!production) {
+    const undergraduate = await this.findById(id);
+    if (!undergraduate) {
       throw new Error('undergraduate not found');
     }
-    return production.destroy();
+    return undergraduate.destroy();
   }
 
   Undergraduate.listUndergraduate = async function ({offset = 0, limit = 10}){

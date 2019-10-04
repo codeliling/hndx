@@ -76,7 +76,7 @@ class UndergraduateController extends BaseController{
     }
   }
 
-  async listPostgraduateByCondition() {
+  async listUndergraduateByCondition() {
     const ctx = this.ctx;
     const query = {
       limit: ctx.helper.parseInt(ctx.query.limit),

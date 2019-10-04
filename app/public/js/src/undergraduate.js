@@ -5,6 +5,7 @@ new Vue({
     return {
       pageTotal: 0,
       pageSize: 10,
+      currentPage:0,
       searchData: '',
       columns: [{
           title: '姓名',
@@ -117,16 +118,57 @@ new Vue({
     },
 
     remove(Id) {
+      var that = this;
       this.$Modal.confirm({
         title: '请确认是否删除',
         content: `删除ID为：${Id} 的数据。`,
         onOk: () => {
-          this.$Message.info('删除');
+          axios.delete('/manageundergraduate/'+Id).then(function(res) {
+            this.$Message.info('删除成功');
+            that.getListData((currentPage - 1) * that.pageSize);
+          }).catch(function(res) {
+            this.$Message.info('删除失败'+res);
+          });
         },
         onCancel: () => {
           this.$Message.info('取消删除');
         }
       })
+    },
+
+    searchClick(){
+      var that = this;
+      var type = 0;
+      if(that.searchData != ''){
+        var re = new RegExp("^[\u4e00-\u9fa5]+$");
+        if (re.test(v)){
+        	type = 2;
+        }
+        else{
+          type = 1;
+        }
+
+        axios.get('/manage/undergraduate/listUndergraduateByCondition', {
+          params: {
+            limit: that.pageSize,
+            offset: (currentPage - 1) * that.pageSize,
+            searchData:that.searchData,
+            type:type,
+          }
+        }).then(function(res) {
+          that.pageTotal = res.data.data.count;
+          that.data6 = res.data.data.rows;
+        }).catch(function(res) {
+          console.log(res);
+        });
+      }
+      else{
+        this.getListData(0);
+      }
+    },
+
+    addClick(){
+      window.location.href = '/manageAddUndergraduate?Id=0';
     }
   },
   mounted() {

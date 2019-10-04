@@ -12,7 +12,8 @@ new Vue({
           label: 'postgraduate'
         }
       ],
-      graduateTypeModel:''
+      graduateTypeModel:'',
+      uploadActionUrl:''
     };
   },
   methods: {
@@ -26,6 +27,14 @@ new Vue({
       } else if (name == 3) {
         console.log(name);
         window.location.href = '/statistics';
+      }
+    },
+    changeSelect(value){
+      if(value == '本专科学历信息导入'){
+        this.uploadActionUrl = '/manage/file/uploadFile/2';
+      }
+      else if (value == '研究生学历信息导入'){
+        this.uploadActionUrl = '/manage/file/uploadFile/1';
       }
     }
   }

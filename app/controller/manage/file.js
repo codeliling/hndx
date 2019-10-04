@@ -4,6 +4,9 @@ const BaseController = require('../BaseController');
 const fs = require('fs');
 const path = require('path');
 const Controller = require('egg').Controller;
+const awaitWriteStream = require('await-stream-ready').write;
+const sendToWormhole = require('stream-wormhole');
+const Excel = require('exceljs');
 
 class FileController extends BaseController {
 
@@ -36,11 +39,80 @@ class FileController extends BaseController {
         try {
 
           const filename = ctx.helper.randomString(8) + path.extname(stream.filename);
+
           const target = path.join(fileTagget, filename);
           const writeStream = fs.createWriteStream(target);
           await awaitWriteStream(stream.pipe(writeStream));
+          let countRecord = 0;
+          var workbook = new Excel.Workbook();
+          workbook.xlsx.readFile(target)
+          .then(function() {
+            var worksheet = workbook.getWorksheet(1);
+            if(worksheet.rowCount > 1){
+              countRecord = worksheet.rowCount - 1;
+              if(fileType == 1){
+                let postgraduateList = [];
+                worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
+                  if (rowNumber != 1){
+                    let postgraduate = {
+                      Byzh : row.getCell(1).value,
+                      Pic : row.getCell(2).value,
+                      Xm : row.getCell(3).value,
+                      Sfzh : row.getCell(4).value,
+                      Xb : row.getCell(5).value,
+                      Rxsj : row.getCell(6).value,
+                      Xh : row.getCell(7).value,
+                      Dh : row.getCell(8).value,
+                      Zymc : row.getCell(9).value,
+                      Xsf : row.getCell(10).value,
+                    };
+                    postgraduateList.push(postgraduate);
+                  }
+                });
+                try{
+                  const result = await ctx.service.postgraduate.bulkCreatePostgraduate(postgraduateList);
+                  super.success(result);
+                }
+                catch(e){
+                  ctx.logger.error(e.message);
+                  super.failure(e.message);
+                }
+              }
+              else{
+                let undergraduateList = [];
+                worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
+                  if (rowNumber != 1){
+                    let undergraduate = {
+                      xm : row.getCell(1).value,
+                      byzh : row.getCell(2).value,
+                      bysj : row.getCell(3).value,
+                      xxmc : row.getCell(4).value,
+                      zymc : row.getCell(5).value,
+                      bj : row.getCell(6).value,
+                      bylb : row.getCell(7).value,
+                      bz : row.getCell(8).value,
+                      xxxs : row.getCell(9).value,
+                      dh : row.getCell(10).value,
+                      xsf : row.getCell(11).value,
+                    };
+                    undergraduateList.push(undergraduate);
+                  }
+                });
+                try{
+                  const result = await ctx.service.postgraduate.bulkCreateUndergraduate(undergraduateList);
+                  super.success(result);
+                }
+                catch(e){
+                  ctx.logger.error(e.message);
+                  super.failure(e.message);
+                }
+              }
+            }
+            else{
 
-
+            }
+          });
+          result.countRecord = countRecord;
         } catch (err) {
             //如果出现错误，关闭管道
           ctx.logger.error(err.message);
