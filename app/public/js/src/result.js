@@ -31,13 +31,13 @@ function outputImage() {
   if (IEVersion() == -1) {
     downLoad(saveAsPNG());
   } else {
-    var canvas = document.getElementById('myCanvas');
+    var canvas = document.getElementById('downLoadCanvas');
     downloadURI(canvas, '你的学历.png');
   }
 }
 
 function saveAsPNG() {
-  var canvas = document.getElementById('myCanvas');
+  var canvas = document.getElementById('downLoadCanvas');
   return canvas.toDataURL("image/png");
 }
 

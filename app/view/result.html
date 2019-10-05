@@ -142,6 +142,7 @@
       </div>
     </div>
   </div>
+  <canvas id="downLoadCanvas" width="858px" height="1214px" style="border:0px;position:absolute;top:0px;left:0px;display:none"></canvas>
 
 </body>
 <script src="/public/js/lib/jquery-3.4.1.min.js"></script>
@@ -158,7 +159,7 @@
     function searchFailure(){
       $.toast({
           heading: 'Error',
-          text: '查询失败，返回重试!',,
+          text: '查询失败，返回重试!',
           showHideTransition: 'fade',
           position: 'mid-center',
           icon: 'error'
@@ -182,7 +183,7 @@
         requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
       }
 
-      $.get(requestUrl,,function(data, textStatus) {
+      $.get(requestUrl,function(data, textStatus) {
         if(textStatus){
           if(data.status == 200){
 
@@ -199,15 +200,17 @@
             data.data.xsf;
           }
           else{
-            searchFailure();
+            //searchFailure();
           }
         }
         else{
-          searchFailure();
+          //searchFailure();
         }
       })
 
 			loadCertifate();
+
+      loadBigCertifate();
 		})();
 
 		function clearCanvas()
@@ -263,12 +266,58 @@
             ctx.fillText("14301123123", 220, 337);
 			    }
 			    sealImg.src = '/public/images/seal.png';
+			};
+		}
+
+    function loadBigCertifate(){
+      var canvas = document.getElementById('downLoadCanvas');
+
+			var ctx = canvas.getContext('2d');
+			var myImage = new Image();
+
+			myImage.src = '/public/images/Preview_of_record _@2x.png';
+
+			myImage.onload = function(){
+
+				ctx.drawImage(myImage,0,0, myImage.width, myImage.height);
+
+				var sealImg = new Image();
+			    sealImg.onload = function(){
+			      ctx.drawImage(sealImg,500,800,sealImg.width/2,sealImg.height/2);
+
+			      ctx.font = "16px Arial";
+			      ctx.fillText("2019010213123", 560, 505);
+			      ctx.fillText("2019", 560, 532);
+            ctx.fillText("10",638, 532);
+            ctx.fillText("3", 680, 532);
+
+            ctx.font = "20px Arial";
+            ctx.fillText("张学友", 200, 598);
+            ctx.fillText("男", 326, 598);
+
+            ctx.font = "16px Arial";
+            ctx.fillText("4301811977010123123", 486, 600);
+            ctx.fillText("2019", 180, 635);
+            ctx.fillText("10", 270,635);
+
+            ctx.fillText("2019",380, 635);
+            ctx.fillText("10", 500, 635);
+
+            ctx.font = "20px Arial";
+            ctx.fillText("经济学", 260, 680);
+            ctx.fillText("32131232", 510, 680);
+            ctx.fillText("3", 680, 680);
+
+            ctx.fillText("2019", 200,755);
+            ctx.fillText("10", 290, 755);
+
+            ctx.fillText("14301123123", 420, 800);
+			    }
+			    sealImg.src = '/public/images/seal.png';
 
 
 			};
 		}
-
-
 
 	</script>
 </html>

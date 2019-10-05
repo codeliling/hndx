@@ -63,12 +63,12 @@ $(document).ready(function() {
       if(textStatus){
         if (data.status == 200){
           if (data.data.length > 0){
-            var id = data.data[0].Id;
+
             if(undergraduateType == 1){
-              window.location.href = '/result?' + 'type=1&Id='+id;
+              window.location.href = '/result?' + 'type=1&number='+$("#number").val();
             }
             else{
-              window.location.href = '/result?' + 'type=2&Id='+id;
+              window.location.href = '/result?' + 'type=2&number='+$("#number").val();
             }
           }
           else{
