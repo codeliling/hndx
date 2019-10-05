@@ -24,7 +24,18 @@ class UndergraduateController extends BaseController{
         super.failure(e.message);
       }
     }
+  }
 
+  async getDetailById() {
+    const ctx = this.ctx;
+    try{
+      const result = await ctx.service.undergraduate.getDetailById(ctx.helper.parseInt(ctx.params.id));
+      super.success(result);
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
   }
 }
 
