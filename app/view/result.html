@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>湖南行政学院学历查询认证系统</title>
   <link rel="stylesheet" href="/public/css/frame.css" />
+  <link type="text/css" rel="stylesheet" href="/public/css/jquery.toast.css">
   <style type="text/css">
 
     @media screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -144,6 +145,7 @@
 
 </body>
 <script src="/public/js/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script src="/public/js/src/result.js"></script>
 <script>
     var name = "";
@@ -153,6 +155,19 @@
     var cardNum = "";
     var certificateNumber = "";
 
+    function searchFailure(){
+      $.toast({
+          heading: 'Error',
+          text: '查询失败，返回重试!',,
+          showHideTransition: 'fade',
+          position: 'mid-center',
+          icon: 'error'
+      })
+      setTimeout(function(){
+          window.location.href = '/';
+      },2000);
+    }
+
 		(function(){
       var type = getQueryStringByName('type');
       var Id = getQueryStringByName('Id');
@@ -161,14 +176,35 @@
       var requestUrl = "";
 
       if (type == 1){
-        requestUrl = "'/website/undergraduate/getDetailById/" + type;
+        requestUrl = "/website/undergraduate/getDetailById/" + Id;
       }
       else{
-        requestUrl = "/website/postgraduate/getDetailById/" + type;
+        requestUrl = "/website/postgraduate/getDetailById/" + Id;
       }
 
       $.get(requestUrl, function(data, textStatus) {
+        if(textStatus){
+          if(data.status == 200){
 
+            data.data.xm;
+            data.data.byzh;
+            data.data.bysj;
+            data.data.xxmc;
+            data.data.zymc;
+            data.data.bj;
+            data.data.bylb;
+            data.data.bz;
+            data.data.xxxs;
+            data.data.dh;
+            data.data.xsf;
+          }
+          else{
+            searchFailure();
+          }
+        }
+        else{
+          searchFailure();
+        }
       })
 
 			loadCertifate();

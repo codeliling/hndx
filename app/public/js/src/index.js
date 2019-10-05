@@ -47,7 +47,7 @@ $(document).ready(function() {
     var requestUrl = "";
 
     if (undergraduateType == 1){
-      requestUrl = "'/website/undergraduate/searchUndergraduateByCondition";
+      requestUrl = "/website/undergraduate/searchUndergraduateByCondition";
     }
     else{
       requestUrl = "/website/postgraduate/searchPostgraduateByCondition";
@@ -55,21 +55,46 @@ $(document).ready(function() {
 
     $.get(requestUrl, {
       // 向服务器传递参数，encodeURI进行完整编码
-      username: encodeURI($("#username").val()),
-      number: encodeURI($("#number").val()),
-      vertifyCode: encodeURI($("#vertifyCode").val())
+      username: $("#username").val(),
+      number: $("#number").val(),
+      vertifyCode: $("#verificationCode").val()
     }, function(data, textStatus) {
-      if (data){
-        if(undergraduateType == 1){
-          window.location.href = '/result?' + 'type=1&Id=';
+
+      if(textStatus){
+        if (data.status == 200){
+          if (data.data.length > 0){
+            var id = data.data[0].Id;
+            if(undergraduateType == 1){
+              window.location.href = '/result?' + 'type=1&Id='+id;
+            }
+            else{
+              window.location.href = '/result?' + 'type=2&Id='+id;
+            }
+          }
+          else{
+            window.location.href = '/noResult';
+          }
         }
         else{
-          window.location.href = '/result?' + 'type=2&Id=';
+          $.toast({
+              heading: 'Error',
+              text: data.data,
+              showHideTransition: 'fade',
+              position: 'mid-center',
+              icon: 'error'
+          })
         }
       }
       else{
-        window.location.href = '/noResult';
+        $.toast({
+            heading: 'Error',
+            text: '查询失败，请重试!',
+            showHideTransition: 'fade',
+            position: 'mid-center',
+            icon: 'error'
+        })
       }
+
     })
   });
 });

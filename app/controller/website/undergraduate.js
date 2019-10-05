@@ -16,7 +16,7 @@ class UndergraduateController extends BaseController{
       };
 
       try{
-        const result = await ctx.service.postgraduate.searchUndergraduateByCondition(query);
+        const result = await ctx.service.undergraduate.searchUndergraduateByCondition(query);
         super.success(result);
       }
       catch(e){
