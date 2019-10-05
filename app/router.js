@@ -15,8 +15,8 @@ module.exports = app => {
   router.get('/website/postgraduate/searchPostgraduateByCondition', controller.website.postgraduate.searchPostgraduateByCondition);
   router.get('/website/undergraduate/searchUndergraduateByCondition', controller.website.undergraduate.searchUndergraduateByCondition);
 
-  router.get('/website/postgraduate/getDetailById/:id', controller.website.postgraduate.getDetailById);
-  router.get('/website/undergraduate/getDetailById/:id', controller.website.undergraduate.getDetailById);
+  router.get('/website/postgraduate/getDetailByNumber', controller.website.postgraduate.getDetailByNumber);
+  router.get('/website/undergraduate/getDetailByNumber', controller.website.undergraduate.getDetailByNumber);
 
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/getCaptcha',controller.website.webutils.getCaptcha);

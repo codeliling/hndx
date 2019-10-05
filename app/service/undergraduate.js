@@ -38,6 +38,9 @@ class Undergraduate extends Service {
     return await this.ctx.model.Undergraduate.getDetailById(id);
   }
 
+  async getDetailByNumber(number){
+      return await this.ctx.model.Undergraduate.getDetailByNumber(number);
+  }
   async bulkCreateUndergraduate(undergraduateList){
     return await this.ctx.model.Undergraduate.bulkCreateUndergraduate(undergraduateList);
   }

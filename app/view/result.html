@@ -170,19 +170,19 @@
 
 		(function(){
       var type = getQueryStringByName('type');
-      var Id = getQueryStringByName('Id');
+      var number = getQueryStringByName('number');
 
       // 点击按钮触发get请求
       var requestUrl = "";
 
       if (type == 1){
-        requestUrl = "/website/undergraduate/getDetailById/" + Id;
+        requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
       }
       else{
-        requestUrl = "/website/postgraduate/getDetailById/" + Id;
+        requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
       }
 
-      $.get(requestUrl, function(data, textStatus) {
+      $.get(requestUrl,,function(data, textStatus) {
         if(textStatus){
           if(data.status == 200){
 

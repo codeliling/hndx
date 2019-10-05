@@ -135,5 +135,19 @@ module.exports = app => {
       }
     });
   }
+
+  Undergraduate.getDetailByNumber = async function(number){
+    let result = await this.findAll({
+      where:{
+        byzh:query.number,
+      }
+    });
+    if (result.length > 0){
+      return result[0];
+    }
+    else{
+      return null;
+    }
+  }
   return Undergraduate;
 };

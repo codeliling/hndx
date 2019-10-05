@@ -38,6 +38,10 @@ class Postgraduate extends Service {
     return await this.ctx.model.Postgraduate.getDetailById(id);
   }
 
+  async getDetailByNumber(number){
+      return await this.ctx.model.Postgraduate.getDetailByNumber(number);
+  }
+
   async bulkCreatePostgraduate(postgraduateList){
     return await this.ctx.model.Postgraduate.bulkCreatePostgraduate(postgraduateList);
   }

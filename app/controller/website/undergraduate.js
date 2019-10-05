@@ -26,10 +26,11 @@ class UndergraduateController extends BaseController{
     }
   }
 
-  async getDetailById() {
+  async getDetailByNumber() {
     const ctx = this.ctx;
     try{
-      const result = await ctx.service.undergraduate.getDetailById(ctx.helper.parseInt(ctx.params.id));
+      const number = ctx.query.number;
+      const result = await ctx.service.undergraduate.getDetailByNumber(number);
       super.success(result);
     }
     catch(e){
