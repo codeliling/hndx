@@ -41,6 +41,10 @@ class Undergraduate extends Service {
   async bulkCreateUndergraduate(undergraduateList){
     return await this.ctx.model.Undergraduate.bulkCreateUndergraduate(undergraduateList);
   }
+
+  async searchUndergraduateByCondition(query){
+    return await this.ctx.model.Undergraduate.searchUndergraduateByCondition(query);
+  }
 }
 
 module.exports = Undergraduate;

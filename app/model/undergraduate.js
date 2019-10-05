@@ -127,6 +127,13 @@ module.exports = app => {
     return await this.findByPk(id);
   }
 
-
+  Undergraduate.searchUndergraduateByCondition = async function(query){
+    return await this.findAll({
+      where:{
+        byzh:query.number,
+        xm:query.username
+      }
+    });
+  }
   return Undergraduate;
 };

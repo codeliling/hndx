@@ -122,6 +122,14 @@ module.exports = app => {
     return await this.findByPk(id);
   }
 
+  Postgraduate.searchPostgraduateByCondition = async function(query){
+    return await this.findAll({
+      where:{
+        Byzh:query.number,
+        Xm:query.username
+      }
+    });
+  }
 
   return Postgraduate;
 };
