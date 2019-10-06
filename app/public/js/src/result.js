@@ -79,3 +79,109 @@ function getQueryStringByName(name){
      }
      return result[1];
 }
+
+function clearCanvas()
+{
+    var c = document.getElementById("myCanvas");
+    var cxt = c.getContext("2d");
+    cxt.clearRect(0,0,c.width,c.height);
+}
+
+function loadCertifate(){
+  var canvas = document.getElementById('myCanvas');
+  canvas.width = document.getElementById('rPanel').offsetWidth;
+  canvas.height = document.getElementById('rPanel').offsetHeight;
+
+  var ctx = canvas.getContext('2d');
+  var myImage = new Image();
+
+  myImage.src = '/public/images/Preview_of_record _@2x.png';
+  myImage.style.cssText = "transform:scale(0.5)";
+
+  myImage.onload = function(){
+    var scale = canvas.width / myImage.width;
+
+    ctx.drawImage(myImage,0,-70, scale*myImage.width, scale*myImage.height);
+
+    var sealImg = new Image();
+      sealImg.onload = function(){
+        ctx.drawImage(sealImg,260,350,sealImg.width/5,sealImg.height/5);
+
+        ctx.font = "10px Arial";
+        ctx.fillText("2019010213123", 280, 188);
+        ctx.fillText("2019", 280, 202);
+        ctx.fillText("10", 322, 202);
+        ctx.fillText("3", 345, 202);
+
+        ctx.font = "16px Arial";
+        ctx.fillText("张学友", 80, 235);
+        ctx.font = "10px Arial";
+        ctx.fillText("4301811977010123123", 245, 235);
+        ctx.fillText("2019", 70, 253);
+        ctx.fillText("10", 130,253);
+
+        ctx.fillText("2019",190, 253);
+        ctx.fillText("10", 250, 253);
+
+        ctx.fillText("经济学", 130, 275);
+        ctx.fillText("32131232", 260, 275);
+        ctx.fillText("3", 345, 275);
+
+        ctx.fillText("2019", 90, 315);
+        ctx.fillText("10", 150, 315);
+
+        ctx.fillText("14301123123", 220, 337);
+      }
+      sealImg.src = '/public/images/seal.png';
+  };
+}
+
+function loadBigCertifate(){
+  var canvas = document.getElementById('downLoadCanvas');
+
+  var ctx = canvas.getContext('2d');
+  var myImage = new Image();
+
+  myImage.src = '/public/images/Preview_of_record _@2x.png';
+
+  myImage.onload = function(){
+
+    ctx.drawImage(myImage,0,0, myImage.width, myImage.height);
+
+    var sealImg = new Image();
+      sealImg.onload = function(){
+        ctx.drawImage(sealImg,500,800,sealImg.width/2,sealImg.height/2);
+
+        ctx.font = "16px Arial";
+        ctx.fillText("2019010213123", 560, 505);
+        ctx.fillText("2019", 560, 532);
+        ctx.fillText("10",638, 532);
+        ctx.fillText("3", 680, 532);
+
+        ctx.font = "20px Arial";
+        ctx.fillText("张学友", 200, 598);
+        ctx.fillText("男", 326, 598);
+
+        ctx.font = "16px Arial";
+        ctx.fillText("4301811977010123123", 486, 600);
+        ctx.fillText("2019", 180, 635);
+        ctx.fillText("10", 270,635);
+
+        ctx.fillText("2019",380, 635);
+        ctx.fillText("10", 500, 635);
+
+        ctx.font = "20px Arial";
+        ctx.fillText("经济学", 260, 680);
+        ctx.fillText("32131232", 510, 680);
+        ctx.fillText("3", 680, 680);
+
+        ctx.fillText("2019", 200,755);
+        ctx.fillText("10", 290, 755);
+
+        ctx.fillText("14301123123", 420, 800);
+      }
+      sealImg.src = '/public/images/seal.png';
+
+
+  };
+}

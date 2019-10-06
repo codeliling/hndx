@@ -42,6 +42,16 @@ $(document).ready(function() {
     }
   });
 
+  function tips(text){
+    $.toast({
+        heading: 'Error',
+        text: text,
+        showHideTransition: 'fade',
+        position: 'mid-center',
+        icon: 'error'
+    })
+  }
+
   $("#searchBtn").click(function() {
     // 点击按钮触发get请求
     var requestUrl = "";
@@ -53,10 +63,29 @@ $(document).ready(function() {
       requestUrl = "/website/postgraduate/searchPostgraduateByCondition";
     }
 
+    var username = $("#username").val();
+    var number = $("#number").val();
+
+    if(number == '' || number == null){
+      tips('证书编号不能为空!');
+      return;
+    }
+
+    if(username == '' || username == null){
+      tips('姓名不能为空!');
+      return;
+    }
+
+    var re = new RegExp("^[\u4e00-\u9fa5]+$");
+    if (!re.test(username)){
+      tips('姓名请填写中文!');
+      return;
+    }
+
     $.get(requestUrl, {
       // 向服务器传递参数，encodeURI进行完整编码
-      username: $("#username").val(),
-      number: $("#number").val(),
+      username: username,
+      number: number,
       vertifyCode: $("#verificationCode").val()
     }, function(data, textStatus) {
 
@@ -76,23 +105,11 @@ $(document).ready(function() {
           }
         }
         else{
-          $.toast({
-              heading: 'Error',
-              text: data.data,
-              showHideTransition: 'fade',
-              position: 'mid-center',
-              icon: 'error'
-          })
+          tips(data.data);
         }
       }
       else{
-        $.toast({
-            heading: 'Error',
-            text: '查询失败，请重试!',
-            showHideTransition: 'fade',
-            position: 'mid-center',
-            icon: 'error'
-        })
+        tips('查询失败，请重试!');
       }
 
     })
