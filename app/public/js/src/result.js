@@ -86,7 +86,8 @@ function clearCanvas() {
   cxt.clearRect(0, 0, c.width, c.height);
 }
 
-function loadCertifate() {
+function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+  zy,xh,xz,graduate_year,graduate_month,zsbh) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -106,30 +107,31 @@ function loadCertifate() {
         ctx.drawImage(sealImg, 260, 480, sealImg.width / 3, sealImg.height / 3);
 
         ctx.font = "10px Arial";
-        ctx.fillText("2019010213123", 350, 318);
-        ctx.fillText("2019", 280, 332);
-        ctx.fillText("10", 322, 332);
-        ctx.fillText("3", 345, 332);
+        ctx.fillText(bgbh, 350, 318);
+        ctx.fillText(bgrq_year, 280, 332);
+        ctx.fillText(bgrq_month, 322, 332);
+        ctx.fillText(bgrq_day, 345, 332);
 
         ctx.font = "16px Arial";
-        ctx.fillText("张学友", 100, 375);
+        ctx.fillText(xm, 100, 375);
         ctx.font = "12px Arial";
-        ctx.fillText("4301811977010123123", 300, 375);
-        ctx.fillText("2019", 110, 398);
-        ctx.fillText("10", 170, 398);
+        ctx.fillText(xb, 140, 375);
+        ctx.fillText(sfzh, 300, 375);
+        ctx.fillText(start_year, 110, 398);
+        ctx.fillText(start_month, 170, 398);
 
-        ctx.fillText("2019", 260, 398);
-        ctx.fillText("12", 310, 398);
+        ctx.fillText(end_year, 260, 398);
+        ctx.fillText(end_month, 310, 398);
 
         ctx.font = "14px Arial";
-        ctx.fillText("经济学", 130, 425);
-        ctx.fillText("32131232", 310, 425);
-        ctx.fillText("3", 425, 425);
+        ctx.fillText(zy, 130, 425);
+        ctx.fillText(xh, 310, 425);
+        ctx.fillText(xz, 425, 425);
 
-        ctx.fillText("2019", 110, 475);
-        ctx.fillText("10", 180, 475);
+        ctx.fillText(graduate_year, 110, 475);
+        ctx.fillText(graduate_month, 180, 475);
 
-        ctx.fillText("14301123123", 260, 500);
+        ctx.fillText(zsbh, 260, 500);
       }
       sealImg.src = '/public/images/seal.png';
     };
@@ -156,32 +158,33 @@ function loadCertifate() {
         ctx.drawImage(sealImg, 260, 420, sealImg.width / 5, sealImg.height / 5);
 
         ctx.font = "10px Arial";
-        ctx.fillText("2019010213123", 280, 263);
-        ctx.fillText("2019", 285, 277);
-        ctx.fillText("10", 321, 277);
-        ctx.fillText("3", 340, 277);
+        ctx.fillText(bgbh, 280, 263);
+        ctx.fillText(bgrq_year, 285, 277);
+        ctx.fillText(bgrq_month, 321, 277);
+        ctx.fillText(bgrq_day, 340, 277);
 
         ctx.font = "16px Arial";
-        ctx.fillText("张学友", 80, 310);
+        ctx.fillText(xm, 80, 310);
         ctx.font = "10px Arial";
-        ctx.fillText("4301811977010123123", 245, 310);
-        ctx.fillText("2019", 90, 328);
-        ctx.fillText("10", 140, 328);
+        ctx.fillText(xb, 100, 310);
+        ctx.fillText(sfzh, 245, 310);
+        ctx.fillText(start_year, 90, 328);
+        ctx.fillText(start_month, 140, 328);
 
-        ctx.fillText("2019", 210, 328);
-        ctx.fillText("12", 250, 328);
+        ctx.fillText(end_year, 210, 328);
+        ctx.fillText(end_month, 250, 328);
 
         ctx.font = "14px Arial";
-        ctx.fillText("经济学", 130, 350);
+        ctx.fillText(zy, 130, 350);
         ctx.font = "12px Arial";
-        ctx.fillText("32131232", 260, 350);
-        ctx.fillText("3", 350, 350);
+        ctx.fillText(xh, 260, 350);
+        ctx.fillText(xz, 350, 350);
 
-        ctx.fillText("2019", 100, 390);
-        ctx.fillText("10", 150, 390);
+        ctx.fillText(graduate_year, 100, 390);
+        ctx.fillText(graduate_month, 150, 390);
 
         ctx.font = "11px Arial";
-        ctx.fillText("14301123123", 220, 412);
+        ctx.fillText(zsbh, 220, 412);
       }
       sealImg.src = '/public/images/seal.png';
     };
@@ -198,32 +201,33 @@ function loadCertifate() {
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
 
         ctx.font = "10px Arial";
-        ctx.fillText("2019010213123", 220, 208);
-        ctx.fillText("2019", 220, 217);
-        ctx.fillText("10", 255, 217);
-        ctx.fillText("3", 275, 217);
+        ctx.fillText(bgbh, 220, 208);
+        ctx.fillText(bgrq_year, 220, 217);
+        ctx.fillText(bgrq_month, 255, 217);
+        ctx.fillText(bgrq_day, 275, 217);
 
         ctx.font = "14px Arial";
-        ctx.fillText("张学友", 60, 245);
+        ctx.fillText(xm, 60, 245);
         ctx.font = "8px Arial";
-        ctx.fillText("4301811977010123123", 190, 245);
-        ctx.fillText("2019", 70, 260);
-        ctx.fillText("10", 110, 260);
+        ctx.fillText(xb, 80, 245);
+        ctx.fillText(sfzh, 190, 245);
+        ctx.fillText(start_year, 70, 260);
+        ctx.fillText(start_month, 110, 260);
 
-        ctx.fillText("2019", 170, 260);
-        ctx.fillText("12", 200, 260);
+        ctx.fillText(end_year, 170, 260);
+        ctx.fillText(end_month, 200, 260);
 
         ctx.font = "12px Arial";
-        ctx.fillText("经济学", 90, 275);
+        ctx.fillText(zy, 90, 275);
         ctx.font = "10px Arial";
-        ctx.fillText("32131232", 210, 277);
-        ctx.fillText("3", 276, 277);
+        ctx.fillText(xh, 210, 277);
+        ctx.fillText(xz, 276, 277);
 
-        ctx.fillText("2019", 70, 307);
-        ctx.fillText("10", 115, 309);
+        ctx.fillText(graduate_year, 70, 307);
+        ctx.fillText(graduate_month, 115, 309);
 
         ctx.font = "10px Arial";
-        ctx.fillText("14301123123", 175, 326);
+        ctx.fillText(zsbh, 175, 326);
       }
       sealImg.src = '/public/images/seal.png';
     };
@@ -232,7 +236,8 @@ function loadCertifate() {
 
 }
 
-function loadBigCertifate() {
+function loadBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+  zy,xh,xz,graduate_year,graduate_month,zsbh) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -249,32 +254,32 @@ function loadBigCertifate() {
       ctx.drawImage(sealImg, 500, 800, sealImg.width / 2, sealImg.height / 2);
 
       ctx.font = "16px Arial";
-      ctx.fillText("2019010213123", 560, 505);
-      ctx.fillText("2019", 560, 532);
-      ctx.fillText("10", 638, 532);
-      ctx.fillText("3", 680, 532);
+      ctx.fillText(bgbh, 560, 505);
+      ctx.fillText(bgrq_year, 560, 532);
+      ctx.fillText(bgrq_month, 638, 532);
+      ctx.fillText(bgrq_day, 680, 532);
 
       ctx.font = "20px Arial";
-      ctx.fillText("张学友", 200, 598);
-      ctx.fillText("男", 326, 598);
+      ctx.fillText(xm, 200, 598);
+      ctx.fillText(xb, 326, 598);
 
       ctx.font = "16px Arial";
-      ctx.fillText("4301811977010123123", 486, 600);
-      ctx.fillText("2019", 180, 635);
-      ctx.fillText("10", 270, 635);
+      ctx.fillText(sfzh, 486, 600);
+      ctx.fillText(start_year, 180, 635);
+      ctx.fillText(start_month, 270, 635);
 
-      ctx.fillText("2019", 380, 635);
-      ctx.fillText("10", 500, 635);
+      ctx.fillText(end_year, 380, 635);
+      ctx.fillText(end_month, 500, 635);
 
       ctx.font = "20px Arial";
-      ctx.fillText("经济学", 260, 680);
-      ctx.fillText("32131232", 510, 680);
-      ctx.fillText("3", 680, 680);
+      ctx.fillText(zy, 260, 680);
+      ctx.fillText(xh, 510, 680);
+      ctx.fillText(xz, 680, 680);
 
-      ctx.fillText("2019", 200, 755);
-      ctx.fillText("10", 290, 755);
+      ctx.fillText(graduate_year, 200, 755);
+      ctx.fillText(graduate_month, 290, 755);
 
-      ctx.fillText("14301123123", 420, 800);
+      ctx.fillText(zsbh, 420, 800);
     }
     sealImg.src = '/public/images/seal.png';
 
