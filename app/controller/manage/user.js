@@ -5,9 +5,8 @@ class UserController extends BaseController{
     const ctx = this.ctx;
     try{
       let data = ctx.request.body;
-
-        const user = await ctx.service.user.createUser(data);
-        super.success('创建成功!');
+      //const user = await ctx.service.user.createUser(data);
+      super.success('创建成功!');
 
     }
     catch(e){

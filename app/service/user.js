@@ -5,6 +5,8 @@ const Service = require('egg').Service;
 class User extends Service {
 
   async createUser(user) {
+    const ctx = this.ctx;
+    user.password = ctx.helper.cryptoPwd(ctx.helper.cryptoPwd(user.password));
     const createUserObj = await this.ctx.model.User.createUser(user);
     return createUserObj;
   }
