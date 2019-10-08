@@ -23,14 +23,15 @@ html, body {
 }
 
 .layout-logo {
-  width: 100px;
-  height: 30px;
-  background: #5b6270;
+  width: 200px;
+  height: 50px;
   border-radius: 3px;
   float: left;
   position: relative;
-  top: 15px;
+  top: 5px;
   left: 20px;
+  background-image: url('/public/images/logo2_@2x.png');
+  background-size: 100% 100%;
 }
 
 .layout-nav {
