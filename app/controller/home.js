@@ -23,11 +23,22 @@ class HomeController extends Controller {
     await ctx.render('manage/login.html');
   }
 
+  async manageIndex(){
+    const ctx = this.ctx;
+    if(ctx.isAuthenticated()){
+      ctx.redirect('/manageUndergraduate');
+    }
+    else{
+      ctx.redirect('/manageLogin');
+    }
+  }
+
   async relogin(){
     const ctx = this.ctx;
-    await ctx.render('anage/login.html', {
+    await ctx.render('manage/login.html', {
       message:'用户名或者密码错误!'
     });
+
   }
 
   async manageUndergraduate(){
