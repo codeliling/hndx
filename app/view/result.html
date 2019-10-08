@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,90 +9,128 @@
   <link rel="stylesheet" href="/public/css/frame.css" />
   <link type="text/css" rel="stylesheet" href="/public/css/jquery.toast.css">
   <style type="text/css">
-
-    @media screen and (min-width: 1024px) and (max-width: 1366px) {
-      .contentPanel{
-        margin: 0 auto;
-        width: 95%;
-        height: auto;
-      }
-    }
-
-    @media screen and  (min-width: 1366px) and (max-width: 1440px) {
-      .contentPanel{
-        margin: 0 auto;
-        width: 80%;
-        height: auto;
-      }
-    }
-
-    @media screen and (min-width: 1440px) and (max-width: 1920px) {
-      .contentPanel{
-        margin: 0 auto;
-        width: 70%;
-        height: auto;
-      }
-    }
-    .leftPanel{
+    .leftPanel {
       display: inline-block;
-      float:left;
-      width:56%;
-      height:auto;
-      margin-right:10px;
+      float: left;
+      width: 56%;
+      height: auto;
+      margin-right: 10px;
     }
 
-    .rightPanel{
+    .rightPanel {
       display: inline-block;
-      width:40%;
+      width: 40%;
       height: 500px;
-      margin-left:10px;
+      margin-left: 10px;
+      margin-top: 1em;
     }
 
-    h1{
+    .tips {
+      margin-top: 20px;
+      color: #838383;
+      line-height: 20px;
+      width: 45em;
+    }
+
+    h1 {
       font-weight: bold;
       font-size: 24px;
     }
 
-    .labelTitle{
+    .labelTitle {
       display: block;
       font-weight: bold;
       padding-bottom: 5px;
       margin-top: 10px;
     }
 
-    .labelResult{
+    .labelResult {
       display: block;
       font-weight: bold;
-      width:20em;
+      width: 20em;
       height: 2.5em;
       line-height: 2.5em;
-      border:1px solid #f4f4f4;
+      border: 1px solid #f4f4f4;
       background-color: #f4f4f4;
       border-radius: 5px;
-      color:#838383;
+      color: #838383;
     }
-    .downloadBtn{
+
+    .downloadBtn {
       width: 21em;
       height: 3em;
       background-color: #b92121;
-      border:2px solid #b92121;
+      border: 2px solid #b92121;
       border-radius: 8px;
-      outline:none;
+      outline: none;
       margin-top: 10px;
-      margin-left: 10px;
       font-weight: bold;
-      color:white;
+      color: white;
+    }
+
+    .downloadDiv{
+      text-align:center;
+      width: 45em;
+    }
+
+    @media screen and (min-width: 1000px) and (max-width: 1280px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 90%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 500px;
+      }
+
+      .labelResult{
+        width:17em;
+      }
+
+      .tips{
+        width:38em;
+      }
+
+      .downloadDiv{
+        width: 38em;
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1600px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 660px;
+      }
+    }
+
+    @media screen and (min-width: 1600px) and (max-width: 1920px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 70%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 760px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="top-center-bottom">
     <div class="top">
       <img class="logo" src="/public/images/logo@2x.png"/>
     </div>
-    <div class="center">
-      <div class="contentPanel">
-        <div class="leftPanel">
+      <div class="center">
+        <div class="contentPanel">
+          <div class="leftPanel">
 
             <h1 style="margin-top:15px;">电子证书查询结果</h1>
             <div style="display:inline-block">
@@ -114,105 +153,101 @@
               <label class="labelTitle">证书编号</label>
               <lable class="labelResult"></lable>
             </div>
-            <p style="margin-top:20px;color:#838383;line-height:20px;">
+            <p class="tips">
               声明：<br/>
 1、未经学历信息权属人同意，不得将本材料用于违背权属人意愿之用途。学历信息内容标注“＊”号，表示该项内容不详。学历信息如有修改，请以网站在线查询内容为准。
-<br/>
+              <br/>
 2、学历证书查询结果仅供查询人使用，不具有再验证功能。如需向第三方提供学历信息，建议使用具有验证功能的学历证书电子注册备案表。
             </p>
 
-            <div style="text-align:center">
-              <input type="button" class="downloadBtn" onclick="outputImage()" value="下载保存电子学历证书" />
+              <div class="downloadDiv">
+                <input type="button" class="downloadBtn" onclick="outputImage()" value="下载保存电子学历证书" />
             </div>
-        </div>
-        <div id="rPanel" class="rightPanel">
-          <canvas id="myCanvas" width="100%" height="auto" style="border:0px"></canvas>
-        </div>
+              </div>
+              <div id="rPanel" class="rightPanel">
+                <canvas id="myCanvas" width="100%" height="auto" style="border:0px"></canvas>
+              </div>
 
-      </div>
-      <div class="bottom">
-        <div class="bottomLeft">
-          <a href="/">网站首页</a>&nbsp&nbsp|&nbsp&nbsp<a href="/manageLogin">网站后台</a>
+          </div>
+          <div class="bottom">
+            <div class="bottomLeft">
+              <a href="/">网站首页</a>&nbsp&nbsp|&nbsp&nbsp<a href="/manageLogin">网站后台</a>
+            </div>
+            <div class="bottomRight">
+              <p>
+                中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp&nbsp 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="bottomRight">
-          <p>
-            中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp&nbsp 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
-          </p>
-        </div>
       </div>
-    </div>
-  </div>
-  <canvas id="downLoadCanvas" width="858px" height="1214px" style="border:0px;position:absolute;top:0px;left:0px;display:none"></canvas>
+      <canvas id="downLoadCanvas" width="858px" height="1214px" style="border:0px;position:absolute;top:0px;left:0px;display:none"></canvas>
 
 </body>
 <script src="/public/js/lib/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script src="/public/js/src/result.js"></script>
 <script>
-    var name = "";
-    var number = "";
-    var gender = "";
-    var nation = "";
-    var cardNum = "";
-    var certificateNumber = "";
+  var name = "";
+  var number = "";
+  var gender = "";
+  var nation = "";
+  var cardNum = "";
+  var certificateNumber = "";
 
-    function searchFailure(){
-      $.toast({
-          heading: 'Error',
-          text: '查询失败，返回重试!',
-          showHideTransition: 'fade',
-          position: 'mid-center',
-          icon: 'error'
-      })
-      setTimeout(function(){
-          window.location.href = '/';
-      },2000);
+  function searchFailure() {
+    $.toast({
+      heading: 'Error',
+      text: '查询失败，返回重试!',
+      showHideTransition: 'fade',
+      position: 'mid-center',
+      icon: 'error'
+    })
+    setTimeout(function() {
+      window.location.href = '/';
+    }, 2000);
+  }
+
+  (function() {
+    var type = getQueryStringByName('type');
+    var number = getQueryStringByName('number');
+
+    // 点击按钮触发get请求
+    var requestUrl = "";
+
+    if (type == 1) {
+      requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
+    } else {
+      requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
     }
 
-		(function(){
-      var type = getQueryStringByName('type');
-      var number = getQueryStringByName('number');
+    $.get(requestUrl, function(data, textStatus) {
+      if (textStatus) {
+        if (data.status == 200) {
 
-      // 点击按钮触发get请求
-      var requestUrl = "";
-
-      if (type == 1){
-        requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
-      }
-      else{
-        requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
-      }
-
-      $.get(requestUrl,function(data, textStatus) {
-        if(textStatus){
-          if(data.status == 200){
-
-            data.data.xm;
-            data.data.byzh;
-            data.data.bysj;
-            data.data.xxmc;
-            data.data.zymc;
-            data.data.bj;
-            data.data.bylb;
-            data.data.bz;
-            data.data.xxxs;
-            data.data.dh;
-            data.data.xsf;
-          }
-          else{
-            //searchFailure();
-          }
-        }
-        else{
+          data.data.xm;
+          data.data.byzh;
+          data.data.bysj;
+          data.data.xxmc;
+          data.data.zymc;
+          data.data.bj;
+          data.data.bylb;
+          data.data.bz;
+          data.data.xxxs;
+          data.data.dh;
+          data.data.xsf;
+        } else {
           //searchFailure();
         }
-      })
+      } else {
+        //searchFailure();
+      }
+    })
 
-			loadCertifate();
+    loadCertifate();
 
-      loadBigCertifate();
-		})();
+    loadBigCertifate();
+  })();
+</script>
 
-
-	</script>
 </html>

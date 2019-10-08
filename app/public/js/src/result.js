@@ -72,71 +72,160 @@ function downloadURI(canvas, name) {
   }
 }
 
-function getQueryStringByName(name){
-     var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
-     if(result == null || result.length < 1){
-         return "";
-     }
-     return result[1];
+function getQueryStringByName(name) {
+  var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+  if (result == null || result.length < 1) {
+    return "";
+  }
+  return result[1];
 }
 
-function clearCanvas()
-{
-    var c = document.getElementById("myCanvas");
-    var cxt = c.getContext("2d");
-    cxt.clearRect(0,0,c.width,c.height);
+function clearCanvas() {
+  var c = document.getElementById("myCanvas");
+  var cxt = c.getContext("2d");
+  cxt.clearRect(0, 0, c.width, c.height);
 }
 
-function loadCertifate(){
+function loadCertifate() {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
-
   var ctx = canvas.getContext('2d');
-  var myImage = new Image();
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
 
-  myImage.src = '/public/images/Preview_of_record _@2x.png';
-  myImage.style.cssText = "transform:scale(0.5)";
-
-  myImage.onload = function(){
-    var scale = canvas.width / myImage.width;
-
-    ctx.drawImage(myImage,0,-70, scale*myImage.width, scale*myImage.height);
-
-    var sealImg = new Image();
-      sealImg.onload = function(){
-        ctx.drawImage(sealImg,260,350,sealImg.width/5,sealImg.height/5);
+  if (screenWidth > 1600) {
+    var myImage = new Image();
+    myImage.src = '/public/images/Preview_of_record _@2x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+    myImage.onload = function() {
+      var scale = canvas.width / myImage.width;
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 260, 480, sealImg.width / 3, sealImg.height / 3);
 
         ctx.font = "10px Arial";
-        ctx.fillText("2019010213123", 280, 188);
-        ctx.fillText("2019", 280, 202);
-        ctx.fillText("10", 322, 202);
-        ctx.fillText("3", 345, 202);
+        ctx.fillText("2019010213123", 350, 318);
+        ctx.fillText("2019", 280, 332);
+        ctx.fillText("10", 322, 332);
+        ctx.fillText("3", 345, 332);
 
         ctx.font = "16px Arial";
-        ctx.fillText("张学友", 80, 235);
-        ctx.font = "10px Arial";
-        ctx.fillText("4301811977010123123", 245, 235);
-        ctx.fillText("2019", 70, 253);
-        ctx.fillText("10", 130,253);
+        ctx.fillText("张学友", 100, 375);
+        ctx.font = "12px Arial";
+        ctx.fillText("4301811977010123123", 300, 375);
+        ctx.fillText("2019", 110, 398);
+        ctx.fillText("10", 170, 398);
 
-        ctx.fillText("2019",190, 253);
-        ctx.fillText("10", 250, 253);
+        ctx.fillText("2019", 260, 398);
+        ctx.fillText("12", 310, 398);
 
-        ctx.fillText("经济学", 130, 275);
-        ctx.fillText("32131232", 260, 275);
-        ctx.fillText("3", 345, 275);
+        ctx.font = "14px Arial";
+        ctx.fillText("经济学", 130, 425);
+        ctx.fillText("32131232", 310, 425);
+        ctx.fillText("3", 425, 425);
 
-        ctx.fillText("2019", 90, 315);
-        ctx.fillText("10", 150, 315);
+        ctx.fillText("2019", 110, 475);
+        ctx.fillText("10", 180, 475);
 
-        ctx.fillText("14301123123", 220, 337);
+        ctx.fillText("14301123123", 260, 500);
       }
       sealImg.src = '/public/images/seal.png';
-  };
+    };
+
+  } else if (screenWidth > 1280 && screenWidth <= 1600) {
+    var myImage = new Image();
+
+    myImage.src = '/public/images/Preview_of_record _@2x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+
+    myImage.onload = function() {
+
+      var scale = canvas.width / myImage.width;
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 260, 420, sealImg.width / 5, sealImg.height / 5);
+
+        ctx.font = "10px Arial";
+        ctx.fillText("2019010213123", 280, 263);
+        ctx.fillText("2019", 285, 277);
+        ctx.fillText("10", 326, 277);
+        ctx.fillText("3", 349, 277);
+
+        ctx.font = "16px Arial";
+        ctx.fillText("张学友", 80, 310);
+        ctx.font = "10px Arial";
+        ctx.fillText("4301811977010123123", 245, 310);
+        ctx.fillText("2019", 90, 328);
+        ctx.fillText("10", 140, 328);
+
+        ctx.fillText("2019", 210, 328);
+        ctx.fillText("12", 250, 328);
+
+        ctx.font = "14px Arial";
+        ctx.fillText("经济学", 130, 350);
+        ctx.font = "12px Arial";
+        ctx.fillText("32131232", 260, 350);
+        ctx.fillText("3", 350, 350);
+
+        ctx.fillText("2019", 100, 390);
+        ctx.fillText("10", 150, 390);
+
+        ctx.font = "11px Arial";
+        ctx.fillText("14301123123", 220, 412);
+      }
+      sealImg.src = '/public/images/seal.png';
+    };
+
+  } else if (screenWidth <= 1280) {
+    var myImage = new Image();
+    myImage.src = '/public/images/Preview_of_record_@1x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+    myImage.onload = function() {
+      var scale = canvas.width / myImage.width;
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
+
+        ctx.font = "10px Arial";
+        ctx.fillText("2019010213123", 220, 208);
+        ctx.fillText("2019", 220, 217);
+        ctx.fillText("10", 255, 217);
+        ctx.fillText("3", 275, 217);
+
+        ctx.font = "14px Arial";
+        ctx.fillText("张学友", 60, 245);
+        ctx.font = "8px Arial";
+        ctx.fillText("4301811977010123123", 190, 245);
+        ctx.fillText("2019", 70, 260);
+        ctx.fillText("10", 110, 260);
+
+        ctx.fillText("2019", 170, 260);
+        ctx.fillText("12", 200, 260);
+
+        ctx.font = "12px Arial";
+        ctx.fillText("经济学", 90, 275);
+        ctx.font = "10px Arial";
+        ctx.fillText("32131232", 210, 277);
+        ctx.fillText("3", 276, 277);
+
+        ctx.fillText("2019", 70, 307);
+        ctx.fillText("10", 115, 309);
+
+        ctx.font = "10px Arial";
+        ctx.fillText("14301123123", 175, 326);
+      }
+      sealImg.src = '/public/images/seal.png';
+    };
+
+  }
+
 }
 
-function loadBigCertifate(){
+function loadBigCertifate() {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -144,43 +233,43 @@ function loadBigCertifate(){
 
   myImage.src = '/public/images/Preview_of_record _@2x.png';
 
-  myImage.onload = function(){
+  myImage.onload = function() {
 
-    ctx.drawImage(myImage,0,0, myImage.width, myImage.height);
+    ctx.drawImage(myImage, 0, 0, myImage.width, myImage.height);
 
     var sealImg = new Image();
-      sealImg.onload = function(){
-        ctx.drawImage(sealImg,500,800,sealImg.width/2,sealImg.height/2);
+    sealImg.onload = function() {
+      ctx.drawImage(sealImg, 500, 800, sealImg.width / 2, sealImg.height / 2);
 
-        ctx.font = "16px Arial";
-        ctx.fillText("2019010213123", 560, 505);
-        ctx.fillText("2019", 560, 532);
-        ctx.fillText("10",638, 532);
-        ctx.fillText("3", 680, 532);
+      ctx.font = "16px Arial";
+      ctx.fillText("2019010213123", 560, 505);
+      ctx.fillText("2019", 560, 532);
+      ctx.fillText("10", 638, 532);
+      ctx.fillText("3", 680, 532);
 
-        ctx.font = "20px Arial";
-        ctx.fillText("张学友", 200, 598);
-        ctx.fillText("男", 326, 598);
+      ctx.font = "20px Arial";
+      ctx.fillText("张学友", 200, 598);
+      ctx.fillText("男", 326, 598);
 
-        ctx.font = "16px Arial";
-        ctx.fillText("4301811977010123123", 486, 600);
-        ctx.fillText("2019", 180, 635);
-        ctx.fillText("10", 270,635);
+      ctx.font = "16px Arial";
+      ctx.fillText("4301811977010123123", 486, 600);
+      ctx.fillText("2019", 180, 635);
+      ctx.fillText("10", 270, 635);
 
-        ctx.fillText("2019",380, 635);
-        ctx.fillText("10", 500, 635);
+      ctx.fillText("2019", 380, 635);
+      ctx.fillText("10", 500, 635);
 
-        ctx.font = "20px Arial";
-        ctx.fillText("经济学", 260, 680);
-        ctx.fillText("32131232", 510, 680);
-        ctx.fillText("3", 680, 680);
+      ctx.font = "20px Arial";
+      ctx.fillText("经济学", 260, 680);
+      ctx.fillText("32131232", 510, 680);
+      ctx.fillText("3", 680, 680);
 
-        ctx.fillText("2019", 200,755);
-        ctx.fillText("10", 290, 755);
+      ctx.fillText("2019", 200, 755);
+      ctx.fillText("10", 290, 755);
 
-        ctx.fillText("14301123123", 420, 800);
-      }
-      sealImg.src = '/public/images/seal.png';
+      ctx.fillText("14301123123", 420, 800);
+    }
+    sealImg.src = '/public/images/seal.png';
 
 
   };
