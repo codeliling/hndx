@@ -143,8 +143,9 @@ function loadCertifate() {
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-      if(screenWidth == 1366){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.01) * myImage.height  );
+
+      if(screenWidth == 1360 || screenWidth == 1366){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
