@@ -23,6 +23,13 @@ class HomeController extends Controller {
     await ctx.render('manage/login.html');
   }
 
+  async relogin(){
+    const ctx = this.ctx;
+    await ctx.render('anage/login.html', {
+      message:'用户名或者密码错误!'
+    });
+  }
+
   async manageUndergraduate(){
     const ctx = this.ctx;
     await ctx.render('manage/undergraduate.html');

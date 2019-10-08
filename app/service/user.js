@@ -4,7 +4,7 @@ const Service = require('egg').Service;
 
 class User extends Service {
 
-  async createUser(user,role) {
+  async createUser(user) {
     const createUserObj = await this.ctx.model.User.createUser(user, transaction);
     return createUserObj;
   }
