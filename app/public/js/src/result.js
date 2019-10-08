@@ -143,7 +143,13 @@ function loadCertifate() {
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      if(screenWidth == 1366){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.01) * myImage.height  );
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      }
+
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 260, 420, sealImg.width / 5, sealImg.height / 5);
@@ -151,8 +157,8 @@ function loadCertifate() {
         ctx.font = "10px Arial";
         ctx.fillText("2019010213123", 280, 263);
         ctx.fillText("2019", 285, 277);
-        ctx.fillText("10", 326, 277);
-        ctx.fillText("3", 349, 277);
+        ctx.fillText("10", 321, 277);
+        ctx.fillText("3", 340, 277);
 
         ctx.font = "16px Arial";
         ctx.fillText("张学友", 80, 310);
