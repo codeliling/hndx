@@ -7,6 +7,7 @@ module.exports = app => {
   const { router, controller } = app;
 
   const adminAuthCheck = app.middleware.adminAuthCheck();
+  const pageAuthCheck = app.middleware.pageAuthCheck();
 
   router.get('/', controller.home.index);
   router.get('/result', controller.home.result);
@@ -14,7 +15,7 @@ module.exports = app => {
 
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/relogin',controller.home.relogin);
-  router.get('/manageIndex',controller.home.manageIndex);
+  router.get('/manageIndex', pageAuthCheck, controller.home.manageIndex);
   router.get('/manageLogout',controller.home.manageLogout);
 
   router.post('/login',app.passport.authenticate('local', {
@@ -31,18 +32,18 @@ module.exports = app => {
   router.get('/getCaptcha',controller.website.webutils.getCaptcha);
   router.get('/checkCaptcha',controller.website.webutils.checkCaptcha);
 
-  router.get('/manageUndergraduate',controller.home.manageUndergraduate);
-  router.get('/managePostgraduate',controller.home.managePostgraduate);
-  router.get('/manageAddPostgraduate',controller.home.manageAddPostgraduate);
-  router.get('/manageAddUndergraduate',controller.home.manageAddUndergraduate);
-  router.get('/importInfo',controller.home.manageImportInfo);
-  router.get('/statistics',controller.home.manageStatistics);
+  router.get('/manageUndergraduate', pageAuthCheck, controller.home.manageUndergraduate);
+  router.get('/managePostgraduate', pageAuthCheck, controller.home.managePostgraduate);
+  router.get('/manageAddPostgraduate', pageAuthCheck, controller.home.manageAddPostgraduate);
+  router.get('/manageAddUndergraduate', pageAuthCheck, controller.home.manageAddUndergraduate);
+  router.get('/importInfo', pageAuthCheck, controller.home.manageImportInfo);
+  router.get('/statistics', pageAuthCheck, controller.home.manageStatistics);
 
-  router.post('/manage/file/uploadFile/:fileType', controller.manage.file.uploadFile);
+  router.post('/manage/file/uploadFile/:fileType',  adminAuthCheck, controller.manage.file.uploadFile);
 
-  router.resources('/manage/postgraduate',  controller.manage.postgraduate);
-  router.resources('/manage/undergraduate', controller.manage.undergraduate);
-  router.resources('/manage/user',  controller.manage.user);
+  router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);
+  router.resources('/manage/undergraduate', adminAuthCheck,  controller.manage.undergraduate);
+  router.resources('/manage/user', adminAuthCheck, controller.manage.user);
 
   router.resources('/website/postgraduate',  controller.website.postgraduate);
   router.resources('/website/undergraduate',  controller.website.undergraduate);
