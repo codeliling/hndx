@@ -111,8 +111,9 @@ new Vue({
         window.location.href = '/importInfo';
       }
       else if(name == 3){
-        console.log(name);
         window.location.href = '/statistics';
+      }else if (name == 4) {
+        window.location.href = '/manageLogout';
       }
     },
 

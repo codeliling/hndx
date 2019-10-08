@@ -13,6 +13,7 @@ module.exports = app => {
       username,
       password,
     };
+    
     app.passport.doVerify(req, user, done);
 
   }));
@@ -21,7 +22,7 @@ module.exports = app => {
 
   app.passport.verify(async (ctx, user) => {
     let existsUser = await ctx.service.user.loginFindUserByUserName(user.username);
-    
+
     if (existsUser) {
       if (ctx.helper.cryptoPwd(ctx.helper.cryptoPwd(user.password)) == existsUser.password){
         existsUser.password = '';

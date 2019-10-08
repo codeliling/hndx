@@ -12,12 +12,14 @@ module.exports = app => {
   router.get('/result', controller.home.result);
   router.get('/noResult', controller.home.noResult);
 
-  router.post('/login',app.passport.authenticate('local', {
-       successReturnToOrRedirect : '/manageIndex',successFlash: true,
-       failureRedirect: '/relogin',failureFlash: true }));
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/relogin',controller.home.relogin);
   router.get('/manageIndex',controller.home.manageIndex);
+  router.get('/manageLogout',controller.home.manageLogout);
+
+  router.post('/login',app.passport.authenticate('local', {
+       successReturnToOrRedirect : '/manageIndex',successFlash: true,
+       failureRedirect: '/relogin',failureFlash: true }));
 
   router.get('/website/postgraduate/searchPostgraduateByCondition', controller.website.postgraduate.searchPostgraduateByCondition);
   router.get('/website/undergraduate/searchUndergraduateByCondition', controller.website.undergraduate.searchUndergraduateByCondition);

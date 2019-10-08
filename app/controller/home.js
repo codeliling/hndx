@@ -33,6 +33,12 @@ class HomeController extends Controller {
     }
   }
 
+  async manageLogout(){
+    const ctx = this.ctx;
+    ctx.logout();
+    await ctx.render('manage/login.html');
+  }
+
   async relogin(){
     const ctx = this.ctx;
     await ctx.render('manage/login.html', {
