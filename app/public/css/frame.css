@@ -29,7 +29,7 @@ html, body {
   float: left;
   position: relative;
   top: 5px;
-  left: 20px;
+  left: 5px;
   background-image: url('/public/images/logo2_@2x.png');
   background-size: 100% 100%;
 }
