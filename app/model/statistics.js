@@ -43,48 +43,38 @@ module.exports = app => {
     });
   }
 
-  Statistics.queryGroupByType = async function (time,type){
-    let sql = "";
-    if (time == 1){ //年
-      sql = `SELECT
-              	DATE_FORMAT( createAt, '%Y' ) as time,
-              	COUNT( Id) as count
-              FROM
-              	statistics
-              WHERE
-                type = ${'type'}
-              GROUP BY
-              	time
-              ORDER BY
-        	   time`;
+  Statistics.queryGroupByDay = async function(type, startDate, endDate){
+    let sql = `SELECT
+              DATE_FORMAT( createAt, '%Y-%m-%d' ) as time,
+              COUNT( Id) as count
+            FROM
+              statistics
+            WHERE
+              type = ${'type'},
+              and createAt >= ${'startDate'} and createAt <= ${'endDate'}
+            GROUP BY
+              time
+            ORDER BY
+           time`;
+    return this.query(sql);
+  }
 
-    }
-    else if (time == 2){ //月
-      sql = `SELECT
+  Statistics.queryGroupByMonth = async function (type,year){
+
+    let sql = "";
+    sql = `SELECT
               	DATE_FORMAT( createAt, '%Y-%m' ) as time,
               	COUNT( Id) as count
               FROM
               	statistics
               WHERE
                 type = ${'type'}
+                and DATE_FORMAT(createAt,'%Y') = DATE_FORMAT( ${'year'} ,'%Y')
               GROUP BY
               	time
               ORDER BY
         	   time`;
-    } //日
-    else{
-      sql = `SELECT
-              	DATE_FORMAT( createAt, '%Y-%m-%d' ) as time,
-              	COUNT( Id) as count
-              FROM
-              	statistics
-              WHERE
-                type = ${'type'}
-              GROUP BY
-              	time
-              ORDER BY
-        	   time`;
-    }
+
     return this.query(sql);
   }
 
