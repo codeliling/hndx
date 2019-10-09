@@ -1,29 +1,4 @@
-Vue.config.devtools = true;
-
-new Vue({
-  el: '#app',
-  data: {
-    visible: false
-  },
-  methods: {
-    menuClick(name) {
-      if (name == '1-1') {
-        window.location.href = '/manageUndergraduate';
-      } else if (name == '1-2') {
-        window.location.href = '/managePostgraduate';
-      } else if (name == 2) {
-        window.location.href = '/importInfo';
-      } else if (name == 3) {
-        window.location.href = '/statistics';
-      }else if (name == 4) {
-        window.location.href = '/manageLogout';
-      }
-
-    }
-  }
-})
-
-var chart1 = echarts.init(document.getElementById('chart1'));
+//Vue.config.devtools = true;
 
 // 指定图表的配置项和数据
 var option1_1 = {
@@ -62,14 +37,9 @@ var option1_2 = {
   series: [{
     name: '访问量',
     type: 'line',
-    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33,5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33, 5, 20]
+    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19, 33,5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33, 5, 20]
   }]
 };
-
-// 使用刚指定的配置项和数据显示图表。
-chart1.setOption(option1_2);
-
-var chart2 = echarts.init(document.getElementById('chart2'));
 
 // 指定图表的配置项和数据
 var option2_1 = {
@@ -93,7 +63,7 @@ var option2_1 = {
 
 var option2_2 = {
   title: {
-    text: '学历查询按日统计图'
+    text: '学历下载按日统计图'
   },
   tooltip: {},
   legend: {
@@ -111,5 +81,47 @@ var option2_2 = {
     data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33,5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33, 5, 20]
   }]
 };
-// 使用刚指定的配置项和数据显示图表。
-chart2.setOption(option2_2);
+
+new Vue({
+  el: '#app',
+  data: {
+    visible: false,
+    chart1: null,
+    chart2: null,
+  },
+  mounted: function () {
+    this.chart1 = echarts.init(document.getElementById('chart1'));
+    this.chart2 = echarts.init(document.getElementById('chart2'));
+
+    this.chart1.setOption(option1_1);
+    this.chart2.setOption(option2_1);
+  },
+  methods: {
+    menuClick(name) {
+      if (name == '1-1') {
+        window.location.href = '/manageUndergraduate';
+      } else if (name == '1-2') {
+        window.location.href = '/managePostgraduate';
+      } else if (name == 2) {
+        window.location.href = '/importInfo';
+      } else if (name == 3) {
+        window.location.href = '/statistics';
+      }else if (name == 4) {
+        window.location.href = '/manageLogout';
+      }
+
+    },
+    searchCountByYear(){
+      this.chart1.setOption(option1_1);
+    },
+    searchCountByMonth(){
+      this.chart1.setOption(option1_2);
+    },
+    downLoadCountByYear(){
+      this.chart2.setOption(option2_1);
+    },
+    downLoadCountByMonth(){
+      this.chart2.setOption(option2_2);
+    }
+  }
+})
