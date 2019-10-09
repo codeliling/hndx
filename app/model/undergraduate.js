@@ -136,6 +136,10 @@ module.exports = app => {
     });
   }
 
+  Undergraduate.countData = async function(){
+      return await this.count();
+  }
+
   Undergraduate.getDetailByNumber = async function(number){
     let result = await this.findAll({
       where:{

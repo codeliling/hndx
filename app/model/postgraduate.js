@@ -65,6 +65,10 @@ module.exports = app => {
     return await this.bulkCreate(postgraduateList);
   }
 
+  Postgraduate.countData = async function(){
+      return await this.count();
+  }
+  
   Postgraduate.updatePostgraduate = async function ({ id, updates }) {
     const postgraduate = await this.findById(id);
     if (!postgraduate) {

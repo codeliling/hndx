@@ -109,7 +109,6 @@ new Vue({
       }else if (name == 4) {
         window.location.href = '/manageLogout';
       }
-
     },
     searchCountByYear(){
       this.chart1.setOption(option1_1);

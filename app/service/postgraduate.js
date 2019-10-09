@@ -49,6 +49,10 @@ class Postgraduate extends Service {
   async searchPostgraduateByCondition(query){
     return await this.ctx.model.Postgraduate.searchPostgraduateByCondition(query);
   }
+
+  async countData(){
+    return await this.ctx.model.Postgraduate.countData();
+  }
 }
 
 module.exports = Postgraduate;

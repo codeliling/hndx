@@ -38,6 +38,18 @@ class UndergraduateController extends BaseController{
       super.failure(e.message);
     }
   }
+
+  async getCountData() {
+    const ctx = this.ctx;
+    try{
+      const result = await ctx.service.undergraduate.countData();
+      super.success(result);
+    }
+    catch(e){
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 }
 
 module.exports = UndergraduateController;
