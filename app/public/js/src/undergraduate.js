@@ -46,7 +46,7 @@ new Vue({
           key: 'xxxs'
         },
         {
-          title: 'Action',
+          title: '操作',
           key: 'action',
           width: 150,
           align: 'center',
@@ -143,17 +143,21 @@ new Vue({
       var type = 0;
       if(that.searchData != ''){
         var re = new RegExp("^[\u4e00-\u9fa5]+$");
-        if (re.test(v)){
+        if (re.test(that.searchData)){
         	type = 2;
         }
         else{
           type = 1;
         }
 
+        var offset = 0;
+        if (that.currentPage >= 1){
+          offset = (that.currentPage - 1) * that.pageSize;
+        }
         axios.get('/manage/undergraduate/listUndergraduateByCondition', {
           params: {
             limit: that.pageSize,
-            offset: (currentPage - 1) * that.pageSize,
+            offset: offset,
             searchData:that.searchData,
             type:type,
           }

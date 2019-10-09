@@ -84,7 +84,7 @@ class UndergraduateController extends BaseController{
       type: ctx.helper.parseInt(ctx.query.type),
       searchData:ctx.query.searchData,
     };
-
+    
     try{
       const result = await ctx.service.undergraduate.listUndergraduateByCondition(query);
       super.success(result);

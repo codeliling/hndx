@@ -41,6 +41,46 @@ new Vue({
       }
     },
     handleSubmit(){
+      if (this.undergraduateForm.Xm == '' || this.undergraduateForm.Xm == null){
+        this.$Message.warning('请填写姓名!');
+        return;
+      }
+
+      if (this.undergraduateForm.Byzh == '' || this.undergraduateForm.Byzh == null){
+        this.$Message.warning('请填写毕业证号!');
+        return;
+      }
+
+      if (this.undergraduateForm.Sfzh == '' || this.undergraduateForm.Sfzh == null){
+        this.$Message.warning('请填写身份证号!');
+        return;
+      }
+
+      if (this.undergraduateForm.Xb == '' || this.undergraduateForm.Xb == null){
+        this.$Message.warning('请选择性别!');
+        return;
+      }
+
+      if (this.undergraduateForm.Rxrq == '' || this.undergraduateForm.Rxrq == null){
+        this.$Message.warning('请填写入学日期!');
+        return;
+      }
+
+      if (this.undergraduateForm.Bysj == '' || this.undergraduateForm.Bysj == null){
+        this.$Message.warning('请填写毕业时间!');
+        return;
+      }
+
+      if (this.undergraduateForm.Xh == '' || this.undergraduateForm.Xh == null){
+        this.$Message.warning('请填写学号!');
+        return;
+      }
+
+      if (this.undergraduateForm.Zymc == '' || this.undergraduateForm.Zymc == null){
+        this.$Message.warning('请填写专业名称!');
+        return;
+      }
+
       if(this.urlId > 0){ //更新
         var that = this;
         axios.put('/manage/postgraduate/'+this.urlId, that.undergraduateForm)
