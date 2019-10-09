@@ -42,6 +42,45 @@ new Vue({
       }
     },
     handleSubmit(){
+      if (this.undergraduateForm.xm == '' || this.undergraduateForm.xm == null){
+        this.$Message.warning('请填写姓名!');
+        return;
+      }
+
+      if (this.undergraduateForm.byzh == '' || this.undergraduateForm.byzh == null){
+        this.$Message.warning('请填写毕业证号!');
+        return;
+      }
+
+      if (this.undergraduateForm.bysj == '' || this.undergraduateForm.bysj == null){
+        this.$Message.warning('请填写毕业时间!');
+        return;
+      }
+
+      if (this.undergraduateForm.xxmc == '' || this.undergraduateForm.xxmc == null){
+        this.$Message.warning('请填写学校名称!');
+        return;
+      }
+
+      if (this.undergraduateForm.zymc == '' || this.undergraduateForm.zymc == null){
+        this.$Message.warning('请填写专业名称!');
+        return;
+      }
+
+      if (this.undergraduateForm.bj == '' || this.undergraduateForm.bj == null){
+        this.$Message.warning('请填写班级!');
+        return;
+      }
+
+      if (this.undergraduateForm.bylb == '' || this.undergraduateForm.bylb == null){
+        this.$Message.warning('请填写毕业类别!');
+        return;
+      }
+
+      if (this.undergraduateForm.xxxs == '' || this.undergraduateForm.xxxs == null){
+        this.$Message.warning('请填写学习形式!');
+        return;
+      }
       if(this.urlId > 0){ //更新
         var that = this;
         axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)

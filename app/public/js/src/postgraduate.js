@@ -161,17 +161,22 @@ new Vue({
       var type = 0;
       if(that.searchData != ''){
         var re = new RegExp("^[\u4e00-\u9fa5]+$");
-        if (re.test(v)){
+        if (re.test(that.searchData)){
         	type = 2;
         }
         else{
           type = 1;
         }
 
+        var offset = 0;
+        if (that.currentPage >= 1){
+          offset = (that.currentPage - 1) * that.pageSize;
+        }
+
         axios.get('/manage/postgraduate/listPostgraduateByCondition', {
           params: {
             limit: that.pageSize,
-            offset: (currentPage - 1) * that.pageSize,
+            offset: offset,
             searchData:that.searchData,
             type:type,
           }
