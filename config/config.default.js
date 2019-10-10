@@ -72,7 +72,7 @@ module.exports = appInfo => {
   };
 
   config.notfound= {
-    pageUrl: '/404.html',
+    pageUrl: '/404',
   };
 
   config.logger = {

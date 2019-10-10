@@ -220,7 +220,7 @@
 
     $.get(requestUrl, function(data, textStatus) {
       if (textStatus) {
-        if (data.status == 200) {
+        if (data.status == 200 && data.data != null) {
           var xm = "";
           var byzh = "";
           var bysj = "";

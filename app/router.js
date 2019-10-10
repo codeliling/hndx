@@ -12,6 +12,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/result', controller.home.result);
   router.get('/noResult', controller.home.noResult);
+  router.get('/404', controller.home.noFound);
 
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/relogin',controller.home.relogin);

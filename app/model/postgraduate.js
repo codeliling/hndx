@@ -143,7 +143,7 @@ module.exports = app => {
   Postgraduate.getDetailByNumber = async function(number){
     let result = await this.findAll({
       where:{
-        Byzh:query.number,
+        Byzh:number,
       }
     });
     if (result.length > 0){
