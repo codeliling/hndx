@@ -68,7 +68,7 @@ module.exports = app => {
   Postgraduate.countData = async function(){
       return await this.count();
   }
-  
+
   Postgraduate.updatePostgraduate = async function ({ id, updates }) {
     const postgraduate = await this.findById(id);
     if (!postgraduate) {
@@ -126,8 +126,9 @@ module.exports = app => {
     return await this.findByPk(id);
   }
 
-  Postgraduate.searchPostgraduateByCondition = async function(query){
+  Postgraduate.searchPostgraduateByCondition = async function(query,transaction){
     return await this.findAll({
+      transaction:transaction,
       where:{
         Byzh:query.number,
         Xm:query.username

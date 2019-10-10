@@ -5,7 +5,8 @@ class StatisticsController extends BaseController {
   async createStatistics() {
     const ctx = this.ctx;
     const statistics = {
-      type: ctx.helper.parseInt(ctx.query.type)
+      type: ctx.helper.parseInt(ctx.query.type),
+      condition:ctx.query.xm + '|' + ctx.query.zsbh,
     };
 
     try {

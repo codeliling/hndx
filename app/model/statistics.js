@@ -17,6 +17,10 @@ module.exports = app => {
       type: INTEGER,
       allowNull: false,
     },
+    condition:{
+      type: STRING,
+      allowNull: false,
+    },
     createAt: {
       type: DATE,
       allowNull: false,
@@ -31,8 +35,10 @@ module.exports = app => {
   });
 
 
-  Statistics.createStatistics = async function (statistics) {
-    return this.create(statistics);
+  Statistics.createStatistics = async function (statistics,transaction) {
+    return this.create(statistics,{
+      transaction:transaction,
+    });
   }
 
   Statistics.countByType = async function(type){
