@@ -192,6 +192,9 @@
 <script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script src="/public/js/src/result.js"></script>
 <script>
+  var downLoadXM = '';
+  var downLoadNumber = "";
+
   function searchFailure() {
     $.toast({
       heading: 'Error',
@@ -208,7 +211,7 @@
   (function() {
     var type = getQueryStringByName('type');
     var number = getQueryStringByName('number');
-
+    downLoadNumber = number;
     // 点击按钮触发get请求
     var requestUrl = "";
 
@@ -298,6 +301,7 @@
           var xz = "3";
           var graduate_year = "2019";
           var graduate_month = "10";
+          downLoadXM = xm;
 
           if (type == 1) //本科
           {

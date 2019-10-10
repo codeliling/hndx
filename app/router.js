@@ -34,6 +34,7 @@ module.exports = app => {
 
   router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
   router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);
+  router.post('/manage/statistics/createStatistics',controller.manage.statistics.createStatistics);
 
   router.get('/getCaptcha',controller.website.webutils.getCaptcha);
   router.get('/checkCaptcha',controller.website.webutils.checkCaptcha);

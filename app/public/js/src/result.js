@@ -34,6 +34,8 @@ function outputImage() {
     var canvas = document.getElementById('downLoadCanvas');
     downloadURI(canvas, '你的学历.png');
   }
+
+  $.post("/manage/statistics/createStatistics",{type:2,xm:downLoadXM,zsbh:downLoadNumber});
 }
 
 function saveAsPNG() {

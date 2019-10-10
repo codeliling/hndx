@@ -5,14 +5,15 @@ class StatisticsController extends BaseController {
   async createStatistics() {
     const ctx = this.ctx;
     const statistics = {
-      type: ctx.helper.parseInt(ctx.query.type),
-      condition:ctx.query.xm + '|' + ctx.query.zsbh,
+      type: ctx.request.body.type,
+      condition:ctx.request.body.xm + '|' + ctx.request.body.zsbh,
     };
 
     try {
       const result = await ctx.service.statistics.createStatistics(statistics);
       super.success(result);
     } catch (e) {
+      console.log()
       ctx.logger.error(e.message);
       super.failure(e.message);
     }
