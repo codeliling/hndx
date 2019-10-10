@@ -69,7 +69,7 @@ module.exports = app => {
               	statistics
               WHERE
                 type = ${'type'}
-                and DATE_FORMAT(createAt,'%Y') = DATE_FORMAT( ${'year'} ,'%Y')
+                and DATE_FORMAT(createAt,'%Y') = ${'year'}
               GROUP BY
               	time
               ORDER BY

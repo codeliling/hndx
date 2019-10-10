@@ -1,6 +1,6 @@
 const BaseController = require('../BaseController');
 
-class StatisticsController extends BaseController{
+class StatisticsController extends BaseController {
 
   async createStatistics() {
     const ctx = this.ctx;
@@ -8,11 +8,10 @@ class StatisticsController extends BaseController{
       type: ctx.helper.parseInt(ctx.query.type)
     };
 
-    try{
+    try {
       const result = await ctx.service.statistics.createStatistics(statistics);
       super.success(result);
-    }
-    catch(e){
+    } catch (e) {
       ctx.logger.error(e.message);
       super.failure(e.message);
     }
@@ -23,16 +22,25 @@ class StatisticsController extends BaseController{
     let time = ctx.helper.parseInt(ctx.query.time);
     let type = ctx.helper.parseInt(ctx.query.type);
 
-    try{
+    try {
       const result = await ctx.service.statistics.queryGroupByType(time, type);
       super.success(result);
-    }
-    catch(e){
+    } catch (e) {
       ctx.logger.error(e.message);
       super.failure(e.message);
     }
   }
 
+  async getCountData() {
+    const ctx = this.ctx;
+    try {
+      const result = await ctx.service.statistics.countData();
+      super.success(result);
+    } catch (e) {
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
 }
 
 module.exports = StatisticsController;
