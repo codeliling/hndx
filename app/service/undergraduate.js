@@ -47,7 +47,21 @@ class Undergraduate extends Service {
   }
 
   async searchUndergraduateByCondition(query){
-    return await this.ctx.model.Undergraduate.searchUndergraduateByCondition(query);
+    let transaction;
+      try {
+        transaction = await this.ctx.model.transaction();
+        let statisticsObj = {
+          type:1,
+          condition: query.number+'|'+query.username
+        }
+        await this.ctx.model.Statistics.createStatistics(statisticsObj,transaction);
+        return await this.ctx.model.Undergraduate.searchUndergraduateByCondition(query,transaction);
+    } catch (e) {
+      this.ctx.logger.error(e);
+      await transaction.rollback();
+      return false
+    }
+
   }
 
   async countData(){

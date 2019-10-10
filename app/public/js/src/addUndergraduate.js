@@ -85,20 +85,30 @@ new Vue({
         var that = this;
         axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)
         .then(function (response) {
-          console.log(response);
+          if(response.data.success == true){
+            that.$Message.info('操作成功!');
+          }
+          else{
+            that.$Message.warning('操作失败!');
+          }
         })
         .catch(function (error) {
-          console.log(error);
+          that.$Message.error('操作失败!');
         });
       }
       else{ //添加
         var that = this;
         axios.post('/manage/undergraduate', that.undergraduateForm)
         .then(function (response) {
-          console.log(response);
+          if(response.data.success == true){
+            that.$Message.info('操作成功!');
+          }
+          else{
+            that.$Message.warning('操作失败!');
+          }
         })
         .catch(function (error) {
-          console.log(error);
+          that.$Message.error('操作失败!');
         });
       }
     }

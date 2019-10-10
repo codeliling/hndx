@@ -47,7 +47,20 @@ class Postgraduate extends Service {
   }
 
   async searchPostgraduateByCondition(query){
-    return await this.ctx.model.Postgraduate.searchPostgraduateByCondition(query);
+    let transaction;
+      try {
+        transaction = await this.ctx.model.transaction();
+        let statisticsObj = {
+          type:1,
+          condition: query.number+'|'+query.username
+        }
+        await this.ctx.model.Statistics.createStatistics(statisticsObj,transaction);
+        return await this.ctx.model.Postgraduate.searchPostgraduateByCondition(query,transaction);
+    } catch (e) {
+      this.ctx.logger.error(e);
+      await transaction.rollback();
+      return false
+    }
   }
 
   async countData(){

@@ -127,8 +127,9 @@ module.exports = app => {
     return await this.findByPk(id);
   }
 
-  Undergraduate.searchUndergraduateByCondition = async function(query){
+  Undergraduate.searchUndergraduateByCondition = async function(query,transaction){
     return await this.findAll({
+      transaction:transaction,
       where:{
         byzh:query.number,
         xm:query.username
