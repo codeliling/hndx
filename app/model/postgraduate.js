@@ -35,6 +35,10 @@ module.exports = app => {
       type: STRING,
       allowNull: false,
     },
+    Bysj: {
+      type: STRING,
+      allowNull: false,
+    },
     Xh: {
       type: STRING,
       allowNull: false,

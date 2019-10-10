@@ -134,24 +134,24 @@
 
             <h1 style="margin-top:15px;">电子证书查询结果</h1>
             <div style="display:inline-block">
-              <label class="labelTitle">姓名</label>
-              <lable class="labelResult">李灵</lable>
-              <label class="labelTitle">出生日期</label>
-              <lable class="labelResult"></lable>
-              <label class="labelTitle">毕(结)业日期</label>
-              <lable class="labelResult"></lable>
-              <label class="labelTitle">学习形式</label>
-              <lable class="labelResult"></lable>
+              <label class="labelTitle" id="xmTitle">姓名</label>
+              <lable class="labelResult" id="xmValue"></lable>
+              <label class="labelTitle" id="zsbhTitle">证书编号</label>
+              <lable class="labelResult" id="zsbhValue"></lable>
+              <label class="labelTitle" id="byrqTitle">毕(结)业日期</label>
+              <lable class="labelResult" id="byrqValue"></lable>
+              <label class="labelTitle" id="xxxsTitle">学习形式</label>
+              <lable class="labelResult" id="xxxsValue"></lable>
             </div>
             <div style="display:inline-block;margin-left:40px;">
-              <label class="labelTitle">性别</label>
-              <lable class="labelResult"></lable>
-              <label class="labelTitle">入学日期</label>
-              <lable class="labelResult"></lable>
-              <label class="labelTitle">学历类别</label>
-              <lable class="labelResult"></lable>
-              <label class="labelTitle">证书编号</label>
-              <lable class="labelResult"></lable>
+              <label class="labelTitle" id="xbTitle">性别</label>
+              <lable class="labelResult" id="xbValue"></lable>
+              <label class="labelTitle" id="rxrqTitle">入学日期</label>
+              <lable class="labelResult" id="rxrqValue"></lable>
+              <label class="labelTitle" id="xllbTitle">学历类别</label>
+              <lable class="labelResult" id="xllbValue"></lable>
+              <label class="labelTitle" id="zymcTitle">专业名称</label>
+              <lable class="labelResult" id="zymcValue"></lable>
             </div>
             <p class="tips">
               声明：<br/>
@@ -188,12 +188,6 @@
 <script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script src="/public/js/src/result.js"></script>
 <script>
-  var name = "";
-  var number = "";
-  var gender = "";
-  var nation = "";
-  var cardNum = "";
-  var certificateNumber = "";
 
   function searchFailure() {
     $.toast({
@@ -224,24 +218,89 @@
     $.get(requestUrl, function(data, textStatus) {
       if (textStatus) {
         if (data.status == 200) {
+          var xm = "";
+          var byzh = "";
+          var bysj = "";
+          var xxmc = "";
+          var zymc = "";
+          var bj = "";
+          var bylb = "";
+          var bz = "";
+          var xxxs = "";
+          var xsf = "";
+          var Pic = "";
+          var Sfzh = "";
+          var xb = "";
+          var Rxsj = "";
+          var Xh = "";
 
-          data.data.xm;
-          data.data.byzh;
-          data.data.bysj;
-          data.data.xxmc;
-          data.data.zymc;
-          data.data.bj;
-          data.data.bylb;
-          data.data.bz;
-          data.data.xxxs;
-          data.data.dh;
-          data.data.xsf;
+          if(type == 1){
+            xm = data.data.xm;   //姓名
+            byzh = data.data.byzh;  //毕业证号
+            zymc = data.data.zymc;  //专业名称
 
-          loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
-            start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+            bysj = data.data.bysj;  //毕业时间
+            xxmc = data.data.xxmc;  //学校名称
+            bj = data.data.bj;    //班级
+            bylb = data.data.bylb;  //毕业类别
+            bz = data.data.bz;    //备注
+            xxxs = data.data.xxxs;  //学习形式
+            xsf = data.data.xsf;
 
-          loadBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
-            start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+            $("#byrqValue").text(bysj);
+            $("#xxxsText").text(xxxs);
+
+            $("#xbText").text('毕业类别');
+            $("#xbValue").text(bylb);
+
+
+            $("#rxrqText").text('毕业时间');
+            $("#rxrqValue").text(bysj);
+
+            $("#xllbValue").text(bylb);
+          }
+          else{
+            byzh = data.data.Byzh;  //毕业证号
+            Pic = data.data.Pic;  //图像
+            xm = data.data.Xm;   //姓名
+            Sfzh = data.data.Sfzh;  //身份证号
+
+            $("#byrqText").text('身份证号');
+            $("#byrqValue").text(Sfzh);
+
+            xb = data.data.Xb;  //性别
+            $("#xbValue").text();
+
+            Rxsj = data.data.Rxsj; //入学时间
+            $("#rxrqValue").text(Rxrq);
+
+            Xh = data.data.Xh;  //学号
+            $("#xllbText").text('学号');
+            $("#xllbValue").text(Xh);
+
+            zymc = data.data.Zymc; //专业名称
+            xsf = data.data.Xsf;
+          }
+
+          $("#xmValue").text(xm);
+          $("#zsbhValue").text(byzh);
+          $("#zymcValue").text(zymc);
+
+          if(type == 1) //本科
+          {
+            loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
+              start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+
+            loadBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
+              start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+          }else{
+            loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
+              start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+
+            loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
+              start_month,end_year,end_month,zy,xh,xz,graduate_year,graduate_month,zsbh);
+          }
+
         } else {
           //searchFailure();
         }

@@ -86,7 +86,7 @@ function clearCanvas() {
   cxt.clearRect(0, 0, c.width, c.height);
 }
 
-function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
   zy,xh,xz,graduate_year,graduate_month,zsbh) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
@@ -97,7 +97,7 @@ function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
 
   if (screenWidth > 1600) {
     var myImage = new Image();
-    myImage.src = '/public/images/Preview_of_record _@2x.png';
+    myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
@@ -139,7 +139,7 @@ function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
     var myImage = new Image();
 
-    myImage.src = '/public/images/Preview_of_record _@2x.png';
+    myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
 
     myImage.onload = function() {
@@ -191,7 +191,155 @@ function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
 
   } else if (screenWidth <= 1280) {
     var myImage = new Image();
-    myImage.src = '/public/images/Preview_of_record_@1x.png';
+    myImage.src = '/public/images/Postgraduate_Certificate@1x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+    myImage.onload = function() {
+      var scale = canvas.width / myImage.width;
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
+
+        ctx.font = "10px Arial";
+        ctx.fillText(bgbh, 220, 208);
+        ctx.fillText(bgrq_year, 220, 217);
+        ctx.fillText(bgrq_month, 255, 217);
+        ctx.fillText(bgrq_day, 275, 217);
+
+        ctx.font = "14px Arial";
+        ctx.fillText(xm, 60, 245);
+        ctx.font = "8px Arial";
+        ctx.fillText(xb, 80, 245);
+        ctx.fillText(sfzh, 190, 245);
+        ctx.fillText(start_year, 70, 260);
+        ctx.fillText(start_month, 110, 260);
+
+        ctx.fillText(end_year, 170, 260);
+        ctx.fillText(end_month, 200, 260);
+
+        ctx.font = "12px Arial";
+        ctx.fillText(zy, 90, 275);
+        ctx.font = "10px Arial";
+        ctx.fillText(xh, 210, 277);
+        ctx.fillText(xz, 276, 277);
+
+        ctx.fillText(graduate_year, 70, 307);
+        ctx.fillText(graduate_month, 115, 309);
+
+        ctx.font = "10px Arial";
+        ctx.fillText(zsbh, 175, 326);
+      }
+      sealImg.src = '/public/images/seal.png';
+    };
+  }
+}
+
+function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  var canvas = document.getElementById('myCanvas');
+  canvas.width = document.getElementById('rPanel').offsetWidth;
+  canvas.height = document.getElementById('rPanel').offsetHeight;
+  var ctx = canvas.getContext('2d');
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
+
+  if (screenWidth > 1600) {
+    var myImage = new Image();
+    myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+    myImage.onload = function() {
+      var scale = canvas.width / myImage.width;
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 260, 480, sealImg.width / 3, sealImg.height / 3);
+
+        ctx.font = "10px Arial";
+        ctx.fillText(bgbh, 350, 318);
+        ctx.fillText(bgrq_year, 280, 332);
+        ctx.fillText(bgrq_month, 322, 332);
+        ctx.fillText(bgrq_day, 345, 332);
+
+        ctx.font = "16px Arial";
+        ctx.fillText(xm, 100, 375);
+        ctx.font = "12px Arial";
+        ctx.fillText(xb, 140, 375);
+        ctx.fillText(sfzh, 300, 375);
+        ctx.fillText(start_year, 110, 398);
+        ctx.fillText(start_month, 170, 398);
+
+        ctx.fillText(end_year, 260, 398);
+        ctx.fillText(end_month, 310, 398);
+
+        ctx.font = "14px Arial";
+        ctx.fillText(zy, 130, 425);
+        ctx.fillText(xh, 310, 425);
+        ctx.fillText(xz, 425, 425);
+
+        ctx.fillText(graduate_year, 110, 475);
+        ctx.fillText(graduate_month, 180, 475);
+
+        ctx.fillText(zsbh, 260, 500);
+      }
+      sealImg.src = '/public/images/seal.png';
+    };
+
+  } else if (screenWidth > 1280 && screenWidth <= 1600) {
+    var myImage = new Image();
+
+    myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    myImage.style.cssText = "transform:scale(0.5)";
+
+    myImage.onload = function() {
+
+      var scale = canvas.width / myImage.width;
+
+      if(screenWidth == 1360 || screenWidth == 1366){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      }
+
+      var sealImg = new Image();
+      sealImg.onload = function() {
+        ctx.drawImage(sealImg, 260, 420, sealImg.width / 5, sealImg.height / 5);
+
+        ctx.font = "10px Arial";
+        ctx.fillText(bgbh, 280, 263);
+        ctx.fillText(bgrq_year, 285, 277);
+        ctx.fillText(bgrq_month, 321, 277);
+        ctx.fillText(bgrq_day, 340, 277);
+
+        ctx.font = "16px Arial";
+        ctx.fillText(xm, 80, 310);
+        ctx.font = "10px Arial";
+        ctx.fillText(xb, 100, 310);
+        ctx.fillText(sfzh, 245, 310);
+        ctx.fillText(start_year, 90, 328);
+        ctx.fillText(start_month, 140, 328);
+
+        ctx.fillText(end_year, 210, 328);
+        ctx.fillText(end_month, 250, 328);
+
+        ctx.font = "14px Arial";
+        ctx.fillText(zy, 130, 350);
+        ctx.font = "12px Arial";
+        ctx.fillText(xh, 260, 350);
+        ctx.fillText(xz, 350, 350);
+
+        ctx.fillText(graduate_year, 100, 390);
+        ctx.fillText(graduate_month, 150, 390);
+
+        ctx.font = "11px Arial";
+        ctx.fillText(zsbh, 220, 412);
+      }
+      sealImg.src = '/public/images/seal.png';
+    };
+
+  } else if (screenWidth <= 1280) {
+    var myImage = new Image();
+    myImage.src = '/public/images/Undergraduate_Certificate@1x.png';
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
@@ -236,14 +384,14 @@ function loadCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,
 
 }
 
-function loadBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
   zy,xh,xz,graduate_year,graduate_month,zsbh) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
   var myImage = new Image();
 
-  myImage.src = '/public/images/Preview_of_record _@2x.png';
+  myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
 
   myImage.onload = function() {
 
@@ -282,7 +430,54 @@ function loadBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_ye
       ctx.fillText(zsbh, 420, 800);
     }
     sealImg.src = '/public/images/seal.png';
+  };
+}
 
+function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
+  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  var canvas = document.getElementById('downLoadCanvas');
 
+  var ctx = canvas.getContext('2d');
+  var myImage = new Image();
+
+  myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+
+  myImage.onload = function() {
+
+    ctx.drawImage(myImage, 0, 0, myImage.width, myImage.height);
+
+    var sealImg = new Image();
+    sealImg.onload = function() {
+      ctx.drawImage(sealImg, 500, 800, sealImg.width / 2, sealImg.height / 2);
+
+      ctx.font = "16px Arial";
+      ctx.fillText(bgbh, 560, 505);
+      ctx.fillText(bgrq_year, 560, 532);
+      ctx.fillText(bgrq_month, 638, 532);
+      ctx.fillText(bgrq_day, 680, 532);
+
+      ctx.font = "20px Arial";
+      ctx.fillText(xm, 200, 598);
+      ctx.fillText(xb, 326, 598);
+
+      ctx.font = "16px Arial";
+      ctx.fillText(sfzh, 486, 600);
+      ctx.fillText(start_year, 180, 635);
+      ctx.fillText(start_month, 270, 635);
+
+      ctx.fillText(end_year, 380, 635);
+      ctx.fillText(end_month, 500, 635);
+
+      ctx.font = "20px Arial";
+      ctx.fillText(zy, 260, 680);
+      ctx.fillText(xh, 510, 680);
+      ctx.fillText(xz, 680, 680);
+
+      ctx.fillText(graduate_year, 200, 755);
+      ctx.fillText(graduate_month, 290, 755);
+
+      ctx.fillText(zsbh, 420, 800);
+    }
+    sealImg.src = '/public/images/seal.png';
   };
 }
