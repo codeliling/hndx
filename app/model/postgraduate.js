@@ -17,7 +17,7 @@ module.exports = app => {
     },
     Pic: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
     },
     Xm: {
       type: STRING,
@@ -53,7 +53,7 @@ module.exports = app => {
     },
     Xsf: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
     },
 
   }, {

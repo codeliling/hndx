@@ -154,10 +154,10 @@ new Vue({
         content: `删除ID为：${Id} 的数据。`,
         onOk: () => {
           axios.delete('/manage/postgraduate/'+Id).then(function(res) {
-            this.$Message.info('删除成功');
-            that.getListData((currentPage - 1) * that.pageSize);
+            that.$Message.info('删除成功');
+            that.getListData((that.currentPage - 1) * that.pageSize);
           }).catch(function(res) {
-            this.$Message.info('删除失败'+res);
+            that.$Message.info('删除失败'+res);
           });
         },
         onCancel: () => {

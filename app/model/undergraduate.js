@@ -49,7 +49,7 @@ module.exports = app => {
     },
     dh: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
     },
     xsf: {
       type: STRING,

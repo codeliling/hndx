@@ -20,7 +20,7 @@ new Vue({
       Byzh: '',
       Sfzh: '',
       Xb: '',
-      Rxrq: '',
+      Rxsj: '',
       Bysj: '',
       Xh: '',
       Dh: '',
@@ -103,7 +103,7 @@ new Vue({
       }
       else{ //添加
         var that = this;
-        axios.post('/manage/postgraduate', that.undergraduateForm)
+        axios.post('/manage/postgraduate', that.postgraduateForm)
         .then(function (response) {
           if(response.data.status == 200){
             that.$Message.info('操作成功!');
@@ -133,7 +133,7 @@ new Vue({
           that.postgraduateForm.Byzh = postgraduateObject.Byzh;
           that.postgraduateForm.Sfzh = postgraduateObject.Sfzh;
           that.postgraduateForm.Xb = postgraduateObject.Xb;
-          that.postgraduateForm.Rxrq = postgraduateObject.Rxsj;
+          that.postgraduateForm.Rxsj = postgraduateObject.Rxsj;
           that.postgraduateForm.Bysj = postgraduateObject.Bysj;
           that.postgraduateForm.Xh = postgraduateObject.Xh;
           that.postgraduateForm.Dh = postgraduateObject.Dh;

@@ -71,13 +71,14 @@
                          <i-col span="3">&nbsp</i-col>
                          <i-col span="8">
                            <form-item label="入学日期">
-                               <i-input v-model="postgraduateForm.Rxrq"></i-input>
+                               <date-picker type="year" v-model="postgraduateForm.Rxrq" placeholder="选择入学日期"></date-picker>
+
                            </form-item>
                          </i-col>
                          <i-col span="2">&nbsp</i-col>
                          <i-col span="8">
                            <form-item label="毕业时间">
-                               <i-input v-model="postgraduateForm.Bysj"></i-input>
+                             <date-picker type="year" v-model="postgraduateForm.Bysj" placeholder="选择毕业时间"></date-picker>
                            </form-item>
                          </i-col>
                          <i-col span="3"></i-col>
