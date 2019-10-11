@@ -97,22 +97,24 @@ class FileController extends BaseController {
           });
           if(fileType == 1){
             try{
-              const result = await ctx.service.postgraduate.bulkCreatePostgraduate(postgraduateList);
-              super.success(result);
+              await ctx.service.postgraduate.bulkCreatePostgraduate(postgraduateList);
             }
             catch(e){
+              countRecord = 0;
+              result.status = 500;
               ctx.logger.error(e.message);
-              super.failure(e.message);
+              result.message = e.message;
             }
           }
           else{
             try{
-              const result = await ctx.service.undergraduate.bulkCreateUndergraduate(undergraduateList);
-              super.success(result);
+              await ctx.service.undergraduate.bulkCreateUndergraduate(undergraduateList);
             }
             catch(e){
+              countRecord = 0;
+              result.status = 500;
               ctx.logger.error(e.message);
-              super.failure(e.message);
+              result.message = e.message;
             }
           }
           result.countRecord = countRecord;
@@ -121,6 +123,7 @@ class FileController extends BaseController {
           ctx.logger.error(err.message);
           await sendToWormhole(stream);
           result.status = 500;
+          result.message = err.message;
         }
         //文件响应
         ctx.body = result;

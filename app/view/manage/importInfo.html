@@ -61,12 +61,12 @@
                      <row>
                      <row style="margin-top:60px;">
                        <i-col span="9" style="text-align:right;margin-right:30px;">
-                         <i-select v-model="graduateTypeModel" @on-change="changeSelect" style="width:200px">
+                         <i-select v-model="graduateTypeModel" placeholder="请选择上传类型" @on-change="changeSelect" style="width:200px">
                            <i-option v-for="item in graduateTypeList" :value="item.value" :key="item.value">{{ item.label }}</i-option>
                          </i-select>
                        </i-col>
                        <i-col span="6">
-                         <upload multiple type="drag" :action="uploadActionUrl" @on-success="uploadSuccess" @on-error="uploadError">
+                         <upload multiple type="drag" :action="uploadActionUrl" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforeUpload">
                            <div style="padding: 20px 0">
                              <icon type="ios-cloud-upload" size="52" style="color: #3399ff"></icon>
                              <p>点击或者拖拽文件到此上传...</p>
@@ -75,7 +75,7 @@
                        </i-col>
                      </row>
                      <row style="text-align:center;margin-top:30px">
-                        <p>当前选择为{{selectType}}导入，总共导入记录为 {{recordCount}} 条!</p>
+                      <p>当前选择为 <strong style="color:red">${selectType}</strong>，总共导入记录为<strong style="color:red"> ${recordCount} </strong>条!</p>
                      <row>
                    </div>
                </card>
