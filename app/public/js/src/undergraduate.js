@@ -1,11 +1,20 @@
 Vue.config.devtools = true;
+
+function getQueryStringByName(name){
+     var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+     if(result == null || result.length < 1){
+         return "";
+     }
+     return result[1];
+}
+
 new Vue({
   el: '#app',
   data() {
     return {
       pageTotal: 0,
       pageSize: 10,
-      currentPage:0,
+      currentPage:1,
       searchData: '',
       columns: [{
           title: '姓名',
@@ -62,7 +71,7 @@ new Vue({
                 },
                 on: {
                   click: () => {
-                    window.location.href = '/manageAddUndergraduate?Id=' + params.row.Id
+                    window.location.href = '/manageAddUndergraduate?Id=' + params.row.Id +'&currentPage=' + this.currentPage;
                   }
                 }
               }, '修改'),
@@ -116,6 +125,7 @@ new Vue({
     },
 
     handlePage(value) {
+      this.currentPage = value;
       this.getListData((value - 1) * this.pageSize);
     },
 
@@ -178,6 +188,13 @@ new Vue({
     }
   },
   mounted() {
-    this.getListData(0);
+    var currentPage = getQueryStringByName("currentPage");
+    if(currentPage){
+      this.getListData( (currentPage - 1) * this.pageSize);
+    }
+    else{
+      this.getListData(0);
+    }
+
   },
 })

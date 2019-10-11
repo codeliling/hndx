@@ -74,7 +74,7 @@ module.exports = app => {
   }
 
   Postgraduate.updatePostgraduate = async function ({ id, updates }) {
-    const postgraduate = await this.findById(id);
+    const postgraduate = await this.findByPk(id);
     if (!postgraduate) {
       throw new Error('postgraduate not found');
     }
@@ -82,7 +82,7 @@ module.exports = app => {
   }
 
   Postgraduate.delPostgraduateById = async function (id) {
-    const postgraduate = await this.findById(id);
+    const postgraduate = await this.findByPk(id);
     if (!postgraduate) {
       throw new Error('postgraduate not found');
     }

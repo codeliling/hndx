@@ -13,6 +13,7 @@ new Vue({
   data: {
     visible: false,
     urlId:0,
+    currentPage:0,
     undergraduateForm:{
       xm:'',
       byzh:'',
@@ -85,36 +86,41 @@ new Vue({
         var that = this;
         axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)
         .then(function (response) {
-          if(response.data.success == true){
+          if(response.data.status == 200){
             that.$Message.info('操作成功!');
+            setTimeout( function(){
+              window.location.href = "/manageUndergraduate?currentPage="+that.currentPage;
+            }, 1000 );
           }
           else{
             that.$Message.warning('操作失败!');
           }
         })
         .catch(function (error) {
-          that.$Message.error('操作失败!');
+          that.$Message.error('操作失败!' + response.data.data);
         });
       }
       else{ //添加
         var that = this;
         axios.post('/manage/undergraduate', that.undergraduateForm)
         .then(function (response) {
-          if(response.data.success == true){
+          if(response.data.status == 200){
             that.$Message.info('操作成功!');
+            window.location.href = "/manageUndergraduate";
           }
           else{
-            that.$Message.warning('操作失败!');
+            that.$Message.warning('操作失败!' + response.data.data);
           }
         })
         .catch(function (error) {
-          that.$Message.error('操作失败!');
+          that.$Message.error('操作失败!' + error);
         });
       }
     }
   },
   created(){
     this.urlId = getQueryStringByName("Id");
+    this.currentPage = getQueryStringByName("currentPage");
     if (this.urlId > 0){
       var that = this;
       axios.get('/manage/undergraduate/'+this.urlId).then(function(res) {
@@ -131,12 +137,11 @@ new Vue({
           that.undergraduateForm.xxxs = undergraduateObject.xxxs;
         }
         else{
-
+          that.$Message.error('读取数据失败!');
         }
-        that.$Message.info('This is a info tip');
-        console.log(that.xm);
+
       }).catch(function(res) {
-        console.log(res);
+        that.$Message.error('读取数据失败!' + res);
       });
     }
 
