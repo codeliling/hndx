@@ -8,8 +8,12 @@ class Statistics extends Service {
     return await this.ctx.model.Statistics.createStatistics(statistics);
   }
 
-  async queryGroupByType(time, type){
-    return await this.ctx.model.Statistics.queryGroupByType(time, type);
+  async queryGroupByDay(type, startDate, endDate){
+    return await this.ctx.model.Statistics.queryGroupByDay(this.ctx, type, startDate, endDate);
+  }
+
+  async queryGroupByMonth(type, year){
+    return await this.ctx.model.Statistics.queryGroupByMonth(this.ctx, type, year);
   }
 
   async countData(){

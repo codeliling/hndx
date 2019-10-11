@@ -32,9 +32,12 @@ module.exports = app => {
   //router.get('/website/postgraduate/getCountData', controller.website.postgraduate.getCountData);
   //router.get('/website/undergraduate/getCountData', controller.website.undergraduate.getCountData);
 
-  router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
-  router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);
+  router.get('/manage/postgraduate/listPostgraduateByCondition', adminAuthCheck, controller.manage.postgraduate.listPostgraduateByCondition);
+  router.get('/manage/undergraduate/listUndergraduateByCondition', adminAuthCheck, controller.manage.undergraduate.listUndergraduateByCondition);
   router.post('/manage/statistics/createStatistics',controller.manage.statistics.createStatistics);
+  router.get('/manage/statistics/queryGroupByDay',controller.manage.statistics.queryGroupByDay);
+  router.get('/manage/statistics/queryGroupByMonth',controller.manage.statistics.queryGroupByMonth);
+  router.get('/manage/statistics/getCountData',controller.manage.statistics.getCountData);
 
   router.get('/getCaptcha',controller.website.webutils.getCaptcha);
   router.get('/checkCaptcha',controller.website.webutils.checkCaptcha);

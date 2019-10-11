@@ -19,15 +19,33 @@ class StatisticsController extends BaseController {
     }
   }
 
-  async queryGroupByType() {
+  async queryGroupByDay() {
     const ctx = this.ctx;
-    let time = ctx.helper.parseInt(ctx.query.time);
+
     let type = ctx.helper.parseInt(ctx.query.type);
+    let startDate = ctx.query.startDate;
+    let endDate = ctx.query.endDate;
 
     try {
-      const result = await ctx.service.statistics.queryGroupByType(time, type);
+      const result = await ctx.service.statistics.queryGroupByDay(type, startDate, endDate);
       super.success(result);
     } catch (e) {
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
+  async queryGroupByMonth() {
+    const ctx = this.ctx;
+
+    let type = ctx.helper.parseInt(ctx.query.type);
+    let year = ctx.query.year;
+
+    try {
+      const result = await ctx.service.statistics.queryGroupByMonth(type, year);
+      super.success(result);
+    } catch (e) {
+      console.log(e);
       ctx.logger.error(e.message);
       super.failure(e.message);
     }

@@ -36,36 +36,36 @@ module.exports = app => {
 
 
   Statistics.createStatistics = async function (statistics,transaction) {
-    return this.create(statistics,{
+    return await this.create(statistics,{
       transaction:transaction,
     });
   }
 
   Statistics.countByType = async function(type){
-    return this.count({
+    return await this.count({
       where:{
         type:type
       }
     });
   }
 
-  Statistics.queryGroupByDay = async function(type, startDate, endDate){
+  Statistics.queryGroupByDay = async function(ctx,type, startDate, endDate){
     let sql = `SELECT
               DATE_FORMAT( createAt, '%Y-%m-%d' ) as time,
               COUNT( Id) as count
             FROM
               statistics
             WHERE
-              type = ${'type'},
-              and createAt >= ${'startDate'} and createAt <= ${'endDate'}
+              type = ${type}
+              and createAt >= '${startDate}' and createAt <= '${endDate}'
             GROUP BY
               time
             ORDER BY
            time`;
-    return this.query(sql);
+    return await ctx.model.query(sql, {type: 'SELECT'});
   }
 
-  Statistics.queryGroupByMonth = async function (type,year){
+  Statistics.queryGroupByMonth = async function (ctx,type,year){
 
     let sql = "";
     sql = `SELECT
@@ -74,14 +74,13 @@ module.exports = app => {
               FROM
               	statistics
               WHERE
-                type = ${'type'}
-                and DATE_FORMAT(createAt,'%Y') = ${'year'}
+                type = ${type}
+                and DATE_FORMAT(createAt,'%Y') = ${year}
               GROUP BY
               	time
               ORDER BY
         	   time`;
-
-    return this.query(sql);
+    return await ctx.model.query(sql, {type: 'SELECT'});
   }
 
   return Statistics;
