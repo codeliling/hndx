@@ -58,20 +58,20 @@
                       <row style="margin-top:30px">
                         <i-col span="1"><p>按月</p></i-col>
                         <i-col span="4">
-                          <date-picker type="year" confirm placeholder="Select year" :value="value1" @on-ok="searchCountByYear" style="width: 200px"></date-picker>
+                          <date-picker type="year" confirm placeholder="Select year" format="yyyy" @on-change="time1" @on-ok="searchCountByYear" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="1"><p>按日</p></i-col>
                         <i-col span="4">
-                          <date-picker type="month" confirm placeholder="Select month" :value="value2" @on-ok="searchCountByMonth" style="width: 200px"></date-picker>
+                          <date-picker type="month" confirm placeholder="Select month" format="yyyy-MM" @on-change="time2" @on-ok="searchCountByMonth" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="2">&nbsp&nbsp&nbsp&nbsp</i-col>
                         <i-col span="1"><p>按月</p></i-col>
                         <i-col span="4">
-                          <date-picker type="year" confirm placeholder="Select year" :value="value3" @on-ok="downLoadCountByYear" style="width: 200px"></date-picker>
+                          <date-picker type="year" confirm placeholder="Select year" format="yyyy" @on-change="time3" @on-ok="downLoadCountByYear" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="1"><p>按日</p></i-col>
                         <i-col span="4">
-                          <date-picker type="month" confirm placeholder="Select month" :value="value4" @on-ok="downLoadCountByMonth" style="width: 200px"></date-picker>
+                          <date-picker type="month" confirm placeholder="Select month" format="yyyy-MM" @on-change="time4" @on-ok="downLoadCountByMonth" style="width: 200px"></date-picker>
                         </i-col>
                       </row>
                        <row style="margin-top:30px;">

@@ -16,7 +16,7 @@ var option1_1 = {
   series: [{
     name: '访问量',
     type: 'line',
-    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33]
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0]
   }]
 };
 
@@ -29,15 +29,13 @@ var option1_2 = {
     data: ['访问量']
   },
   xAxis: {
-    data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-    "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
-     "24","25","26","27","28","29","30"]
+    data: []
   },
   yAxis: {},
   series: [{
     name: '访问量',
     type: 'line',
-    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19, 33,5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33, 5, 20]
+    data: []
   }]
 };
 
@@ -57,7 +55,7 @@ var option2_1 = {
   series: [{
     name: '访问量',
     type: 'line',
-    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33]
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   }]
 };
 
@@ -70,17 +68,22 @@ var option2_2 = {
     data: ['访问量']
   },
   xAxis: {
-    data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-    "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
-     "24","25","26","27","28","29","30"]
+    data: []
   },
   yAxis: {},
   series: [{
     name: '访问量',
     type: 'line',
-    data: [5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33,5, 20, 36, 10, 10, 20, 51, 23, 36, 18, 11, 23, 19,33, 5, 20]
+    data: []
   }]
 };
+
+function days(year,month){
+  var dayCount;
+  var now = new Date(year,month, 0);
+  var dayCount = now.getDate();
+  return dayCount;
+}
 
 new Vue({
   el: '#app',
@@ -123,77 +126,232 @@ new Vue({
         window.location.href = '/manageLogout';
       }
     },
+    time1(e){
+      this.value1 = e;
+    },
+    time2(e){
+      this.value2 = e;
+    },
+    time3(e){
+      this.value3 = e;
+    },
+    time4(e){
+      this.value4 = e;
+    },
     searchCountByYear(){
       let that = this;
       axios.get('/manage/statistics/queryGroupByMonth',{
-        type : 1,
-        year : that.value1,
+          params: {
+            type : 1,
+            year : that.value1,
+          }
       }).then(function(res) {
         if (res.data.status == 200){
-
+          let resultData = res.data.data;
+          if (resultData.length == 0){
+            that.chart1.setOption(option1_1);
+          }
+          else{
+            let chartData = [];
+            for (let i = 0; i < 12; i++){
+              let hasData = false;
+              for (let j = 0; j < resultData.length; j++){
+                let timeStr = '';
+                if(i < 9){
+                  let month = i + 1;
+                  timeStr = that.value1 + '-0' + month;
+                }
+                else{
+                  timeStr = that.value1 + '-' + i;
+                }
+                if(resultData[j].time == timeStr){
+                  chartData[i] = resultData[j].count;
+                  hasData = true;
+                }
+              }
+              if (!hasData){
+                chartData[i] = 0;
+              }
+            }
+            option1_1.series[0].data = chartData;
+            that.chart1.setOption(option1_1);
+          }
         }
         else{
-          this.$Message.warning('获取学生总数数据失败!');
+          that.$Message.warning('获取学生总数数据失败!');
         }
-        this.chart1.setOption(option1_1);
+
       }).catch(function(res) {
-        this.$Message.warning('获取学生总数数据失败!' + res);
+        that.$Message.warning('获取学生总数数据失败!' + res);
       });
 
     },
     searchCountByMonth(){
       let that = this;
+      let dateStr = that.value2.split('-');
+      let dayCount = days(dateStr[0], dateStr[1]);
+      let xAxisData = [];
+      let seriesData = [];
+      for (let i = 1; i <= dayCount; i++){
+        xAxisData.push(i+'号');
+        seriesData.push(0);
+      }
+      option1_2.xAxis.data = xAxisData;
+      option1_2.series[0].data = seriesData;
+
       axios.get('/manage/statistics/queryGroupByDay',{
-        type : 1,
-        startDate : that.value2,
+          params: {
+            type : 1,
+            startDate : that.value2,
+          }
       }).then(function(res) {
         if (res.data.status == 200){
-
+          let resultData = res.data.data;
+          if (resultData.length == 0){
+            that.chart1.setOption(option1_2);
+          }
+          else{
+            let chartData = [];
+            for (let i = 0; i < dayCount; i++){
+              let hasData = false;
+              for (let j = 0; j < resultData.length; j++){
+                let timeStr = '';
+                if(i < 9){
+                  let day = i + 1;
+                  timeStr = that.value2 + '-0' + day;
+                }
+                else{
+                  timeStr = that.value2 + '-' + i;
+                }
+                if(resultData[j].time == timeStr){
+                  chartData[i] = resultData[j].count;
+                  hasData = true;
+                }
+              }
+              if (!hasData){
+                chartData[i] = 0;
+              }
+            }
+            option1_2.series[0].data = chartData;
+            that.chart1.setOption(option1_2);
+          }
         }
         else{
-          this.$Message.warning('获取学生总数数据失败!');
+          that.chart1.setOption(option1_2);
+          that.$Message.warning('获取学生总数数据失败!');
         }
 
       }).catch(function(res) {
-        this.$Message.warning('获取学生总数数据失败!' + res);
+        that.$Message.warning('获取学生总数数据失败!' + res);
       });
-      this.chart1.setOption(option1_2);
     },
     downLoadCountByYear(){
       let that = this;
       axios.get('/manage/statistics/queryGroupByMonth',{
-        type : 2,
-        year : that.value3,
+          params: {
+            type : 2,
+            year : that.value3,
+          }
       }).then(function(res) {
         if (res.data.status == 200){
-
+          let resultData = res.data.data;
+          if (resultData.length == 0){
+            that.chart1.setOption(option1_1);
+          }
+          else{
+            let chartData = [];
+            for (let i = 0; i < 12; i++){
+              let hasData = false;
+              for (let j = 0; j < resultData.length; j++){
+                let timeStr = '';
+                if(i < 9){
+                  let month = i + 1;
+                  timeStr = that.value1 + '-0' + month;
+                }
+                else{
+                  timeStr = that.value1 + '-' + i;
+                }
+                if(resultData[j].time == timeStr){
+                  chartData[i] = resultData[j].count;
+                  hasData = true;
+                }
+              }
+              if (!hasData){
+                chartData[i] = 0;
+              }
+            }
+            option2_1.series[0].data = chartData;
+            that.chart1.setOption(option2_1);
+          }
         }
         else{
-          this.$Message.warning('获取学生总数数据失败!');
+          that.$Message.warning('获取学生总数数据失败!');
         }
 
       }).catch(function(res) {
-        this.$Message.warning('获取学生总数数据失败!' + res);
+        that.$Message.warning('获取学生总数数据失败!' + res);
       });
-      this.chart2.setOption(option2_1);
+      that.chart2.setOption(option2_1);
     },
     downLoadCountByMonth(){
       let that = this;
+      let dateStr = that.value2.split('-');
+      let dayCount = days(dateStr[0], dateStr[1]);
+      let xAxisData = [];
+      let seriesData = [];
+      for (let i = 1; i <= dayCount; i++){
+        xAxisData.push(i+'号');
+        seriesData.push(0);
+      }
+      option2_2.xAxis.data = xAxisData;
+      option2_2.series[0].data = seriesData;
       axios.get('/manage/statistics/queryGroupByDay',{
-        type : 2,
-        year : that.value4,
+          params: {
+            type : 2,
+            startDate : that.value4,
+          }
       }).then(function(res) {
         if (res.data.status == 200){
           res.data.data;
+          let resultData = res.data.data;
+          if (resultData.length == 0){
+            that.chart1.setOption(option1_1);
+          }
+          else{
+            let chartData = [];
+            for (let i = 0; i < dayCount; i++){
+              let hasData = false;
+              for (let j = 0; j < resultData.length; j++){
+                let timeStr = '';
+                if(i < 9){
+                  let day = i + 1;
+                  timeStr = that.value4 + '-0' + day;
+                }
+                else{
+                  timeStr = that.value4 + '-' + i;
+                }
+                if(resultData[j].time == timeStr){
+                  chartData[i] = resultData[j].count;
+                  hasData = true;
+                }
+              }
+              if (!hasData){
+                chartData[i] = 0;
+              }
+            }
+            option2_2.series[0].data = chartData;
+            that.chart2.setOption(option2_2);
+          }
         }
         else{
-          this.$Message.warning('获取学生总数数据失败!');
+          that.chart2.setOption(option2_2);
+          that.$Message.warning('获取学生总数数据失败!');
         }
 
       }).catch(function(res) {
-        this.$Message.warning('获取学生总数数据失败!' + res);
+        that.$Message.warning('获取学生总数数据失败!' + res);
       });
-      this.chart2.setOption(option2_2);
+
     },
     loadingCountStatisticsData(){
       let that = this;
