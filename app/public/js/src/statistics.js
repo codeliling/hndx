@@ -84,10 +84,20 @@ var option2_2 = {
 
 new Vue({
   el: '#app',
+  delimiters: ['${', '}'],
   data: {
     visible: false,
     chart1: null,
     chart2: null,
+    amount:0,
+    postgraduateCount:0,
+    undergraduateCount:0,
+    downLoadCount:0,
+    searchCount:0,
+    value1:'',
+    value2:'',
+    value3:'',
+    value4:'',
   },
   mounted: function () {
     this.chart1 = echarts.init(document.getElementById('chart1'));
@@ -95,6 +105,9 @@ new Vue({
 
     this.chart1.setOption(option1_1);
     this.chart2.setOption(option2_1);
+
+    this.loadingCountStatisticsData();
+    this.loadingGraduateData();
   },
   methods: {
     menuClick(name) {
@@ -111,16 +124,107 @@ new Vue({
       }
     },
     searchCountByYear(){
-      this.chart1.setOption(option1_1);
+      let that = this;
+      axios.get('/manage/statistics/queryGroupByMonth',{
+        type : 1,
+        year : that.value1,
+      }).then(function(res) {
+        if (res.data.status == 200){
+
+        }
+        else{
+          this.$Message.warning('获取学生总数数据失败!');
+        }
+        this.chart1.setOption(option1_1);
+      }).catch(function(res) {
+        this.$Message.warning('获取学生总数数据失败!' + res);
+      });
+
     },
     searchCountByMonth(){
+      let that = this;
+      axios.get('/manage/statistics/queryGroupByDay',{
+        type : 1,
+        startDate : that.value2,
+      }).then(function(res) {
+        if (res.data.status == 200){
+
+        }
+        else{
+          this.$Message.warning('获取学生总数数据失败!');
+        }
+
+      }).catch(function(res) {
+        this.$Message.warning('获取学生总数数据失败!' + res);
+      });
       this.chart1.setOption(option1_2);
     },
     downLoadCountByYear(){
+      let that = this;
+      axios.get('/manage/statistics/queryGroupByMonth',{
+        type : 2,
+        year : that.value3,
+      }).then(function(res) {
+        if (res.data.status == 200){
+
+        }
+        else{
+          this.$Message.warning('获取学生总数数据失败!');
+        }
+
+      }).catch(function(res) {
+        this.$Message.warning('获取学生总数数据失败!' + res);
+      });
       this.chart2.setOption(option2_1);
     },
     downLoadCountByMonth(){
+      let that = this;
+      axios.get('/manage/statistics/queryGroupByDay',{
+        type : 2,
+        year : that.value4,
+      }).then(function(res) {
+        if (res.data.status == 200){
+          res.data.data;
+        }
+        else{
+          this.$Message.warning('获取学生总数数据失败!');
+        }
+
+      }).catch(function(res) {
+        this.$Message.warning('获取学生总数数据失败!' + res);
+      });
       this.chart2.setOption(option2_2);
-    }
+    },
+    loadingCountStatisticsData(){
+      let that = this;
+      axios.get('/manage/statistics/getCountStatisticsData').then(function(res) {
+        if (res.data.status == 200){
+          that.searchCount = res.data.data.searchCount;
+          that.downLoadCount = res.data.data.downLoadCount;
+        }
+        else{
+          this.$Message.warning('获取使用总数数据失败!');
+        }
+
+      }).catch(function(res) {
+        this.$Message.warning('获取使用总数数据失败!' + res);
+      });
+    },
+    loadingGraduateData(){
+      let that = this;
+      axios.get('/manage/statistics/countGraduateData').then(function(res) {
+        if (res.data.status == 200){
+          that.undergraduateCount = res.data.data.undergraduateCount;
+          that.postgraduateCount = res.data.data.postgraduateCount;
+          that.amount = that.undergraduateCount + that.postgraduateCount;
+        }
+        else{
+          this.$Message.warning('获取学生总数数据失败!');
+        }
+
+      }).catch(function(res) {
+        this.$Message.warning('获取学生总数数据失败!' + res);
+      });
+    },
   }
 })

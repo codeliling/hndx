@@ -24,10 +24,9 @@ class StatisticsController extends BaseController {
 
     let type = ctx.helper.parseInt(ctx.query.type);
     let startDate = ctx.query.startDate;
-    let endDate = ctx.query.endDate;
 
     try {
-      const result = await ctx.service.statistics.queryGroupByDay(type, startDate, endDate);
+      const result = await ctx.service.statistics.queryGroupByDay(type, startDate);
       super.success(result);
     } catch (e) {
       ctx.logger.error(e.message);
@@ -51,10 +50,21 @@ class StatisticsController extends BaseController {
     }
   }
 
-  async getCountData() {
+  async getCountStatisticsData() {
     const ctx = this.ctx;
     try {
-      const result = await ctx.service.statistics.countData();
+      const result = await ctx.service.statistics.countStatisticsData();
+      super.success(result);
+    } catch (e) {
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
+  async countGraduateData() {
+    const ctx = this.ctx;
+    try {
+      const result = await ctx.service.statistics.countGraduateData();
       super.success(result);
     } catch (e) {
       ctx.logger.error(e.message);

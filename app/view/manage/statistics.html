@@ -50,25 +50,28 @@
                <card>
                    <div class="contentPanel">
                      <row style="text-align:center;margin-top:10px">
-                        <h3>当前学历库总共有学生 289000 人，其中研究生 91900 人，本专科生 190000 人。</h3>
+                        <h3>当前学历库总共有学生 <strong style="color:red">${amount}</strong> 人，其中研究生 <strong style="color:red">${postgraduateCount}</strong> 人，本专科生 <strong style="color:red">${undergraduateCount}</strong> 人。</h3>
                      <row>
+                       <row style="text-align:center;margin-top:10px">
+                          <h3>当前库查询总数为 <strong style="color:red">${searchCount}</strong> 人/次，下载次数为 <strong style="color:red">${downLoadCount}</strong> 人/次。</h3>
+                       <row>
                       <row style="margin-top:30px">
                         <i-col span="1"><p>按月</p></i-col>
                         <i-col span="4">
-                          <date-picker type="year" confirm placeholder="Select year" @on-ok="searchCountByYear" style="width: 200px"></date-picker>
+                          <date-picker type="year" confirm placeholder="Select year" :value="value1" @on-ok="searchCountByYear" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="1"><p>按日</p></i-col>
                         <i-col span="4">
-                          <date-picker type="month" confirm placeholder="Select month" @on-ok="searchCountByMonth" style="width: 200px"></date-picker>
+                          <date-picker type="month" confirm placeholder="Select month" :value="value2" @on-ok="searchCountByMonth" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="2">&nbsp&nbsp&nbsp&nbsp</i-col>
                         <i-col span="1"><p>按月</p></i-col>
                         <i-col span="4">
-                          <date-picker type="year" confirm placeholder="Select year" @on-ok="downLoadCountByYear" style="width: 200px"></date-picker>
+                          <date-picker type="year" confirm placeholder="Select year" :value="value3" @on-ok="downLoadCountByYear" style="width: 200px"></date-picker>
                         </i-col>
                         <i-col span="1"><p>按日</p></i-col>
                         <i-col span="4">
-                          <date-picker type="month" confirm placeholder="Select month" @on-ok="downLoadCountByMonth" style="width: 200px"></date-picker>
+                          <date-picker type="month" confirm placeholder="Select month" :value="value4" @on-ok="downLoadCountByMonth" style="width: 200px"></date-picker>
                         </i-col>
                       </row>
                        <row style="margin-top:30px;">
@@ -92,5 +95,6 @@
 <script src="/public/js/lib/vue.min.js"></script>
 <script src="/public/js/lib/iview.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/lib/axios.min.js"></script>
 <script src="/public/js/src/statistics.js"></script>
 </html>
