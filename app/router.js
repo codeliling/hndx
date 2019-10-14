@@ -12,7 +12,6 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/result', controller.home.result);
   router.get('/noResult', controller.home.noResult);
-  router.get('/404', controller.home.noFound);
 
   router.get('/manageLogin',controller.home.manageLogin);
   router.get('/relogin',controller.home.relogin);
@@ -29,16 +28,12 @@ module.exports = app => {
   router.get('/website/postgraduate/getDetailByNumber', controller.website.postgraduate.getDetailByNumber);
   router.get('/website/undergraduate/getDetailByNumber', controller.website.undergraduate.getDetailByNumber);
 
+  router.get('/manage/statistics/getCountData', controller.manage.statistics.getCountData);
   //router.get('/website/postgraduate/getCountData', controller.website.postgraduate.getCountData);
   //router.get('/website/undergraduate/getCountData', controller.website.undergraduate.getCountData);
 
-  router.get('/manage/postgraduate/listPostgraduateByCondition', adminAuthCheck, controller.manage.postgraduate.listPostgraduateByCondition);
-  router.get('/manage/undergraduate/listUndergraduateByCondition', adminAuthCheck, controller.manage.undergraduate.listUndergraduateByCondition);
-  router.post('/manage/statistics/createStatistics',controller.manage.statistics.createStatistics);
-  router.get('/manage/statistics/queryGroupByDay', adminAuthCheck, controller.manage.statistics.queryGroupByDay);
-  router.get('/manage/statistics/queryGroupByMonth', adminAuthCheck, controller.manage.statistics.queryGroupByMonth);
-  router.get('/manage/statistics/getCountStatisticsData', adminAuthCheck,  controller.manage.statistics.getCountStatisticsData);
-  router.get('/manage/statistics/countGraduateData', adminAuthCheck, controller.manage.statistics.countGraduateData);
+  router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
+  router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);
 
   router.get('/getCaptcha',controller.website.webutils.getCaptcha);
   router.get('/checkCaptcha',controller.website.webutils.checkCaptcha);
