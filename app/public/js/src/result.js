@@ -135,7 +135,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
         ctx.fillText(zsbh, 260, 500);
       }
-      sealImg.src = '/public/images/seal.png';
+      sealImg.src = '/public/images/seal3@2x.png';
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
@@ -188,7 +188,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.font = "11px Arial";
         ctx.fillText(zsbh, 220, 412);
       }
-      sealImg.src = '/public/images/seal.png';
+      sealImg.src = '/public/images/seal3@2x.png';
     };
 
   } else if (screenWidth <= 1280) {
@@ -231,7 +231,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.font = "10px Arial";
         ctx.fillText(zsbh, 175, 326);
       }
-      sealImg.src = '/public/images/seal.png';
+      sealImg.src = '/public/images/seal3@1x.png';
     };
   }
 }
@@ -279,16 +279,16 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.fillText(zsbh, 320, 470);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal.png';
+        sealImg.src = '/public/images/seal1_@2x.png';
       }
       else if (xxmc == '中共湖南省委党校'){
-        sealImg.src = '/public/images/seal.png';
+        sealImg.src = '/public/images/seal3@2x.png';
       }
       else if (xxmc == '中央党校函授学院'){
-        sealImg.src = '/public/images/seal.png';
+        sealImg.src = '/public/images/seal4@2x.png';
       }
       else if (xxmc == '中共中央党校函授学院'){
-        sealImg.src = '/public/images/seal.png';
+        sealImg.src = '/public/images/seal4@2x.png';
       }
 
     };
@@ -336,7 +336,18 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 270, 385);
       }
-      sealImg.src = '/public/images/seal.png';
+      if(xxmc == '湖南行政学院'){
+        sealImg.src = '/public/images/seal1_@2x.png';
+      }
+      else if (xxmc == '中共湖南省委党校'){
+        sealImg.src = '/public/images/seal3@2x.png';
+      }
+      else if (xxmc == '中央党校函授学院'){
+        sealImg.src = '/public/images/seal4@2x.png';
+      }
+      else if (xxmc == '中共中央党校函授学院'){
+        sealImg.src = '/public/images/seal4@2x.png';
+      }
     };
 
   } else if (screenWidth <= 1280) {
@@ -372,7 +383,18 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 200, 306);
       }
-      sealImg.src = '/public/images/seal.png';
+      if(xxmc == '湖南行政学院'){
+        sealImg.src = '/public/images/seal1_@1x.png';
+      }
+      else if (xxmc == '中共湖南省委党校'){
+        sealImg.src = '/public/images/seal3@1x.png';
+      }
+      else if (xxmc == '中央党校函授学院'){
+        sealImg.src = '/public/images/seal4@1x.png';
+      }
+      else if (xxmc == '中共中央党校函授学院'){
+        sealImg.src = '/public/images/seal4@1x.png';
+      }
     };
 
   }
@@ -424,12 +446,12 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
 
       ctx.fillText(zsbh, 420, 800);
     }
-    sealImg.src = '/public/images/seal.png';
+    sealImg.src = '/public/images/seal3@2x.png';
   };
 }
 
 function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -468,6 +490,17 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
 
       ctx.fillText(zsbh, 490, 750);
     }
-    sealImg.src = '/public/images/seal.png';
+    if(xxmc == '湖南行政学院'){
+      sealImg.src = '/public/images/seal1_@2x.png';
+    }
+    else if (xxmc == '中共湖南省委党校'){
+      sealImg.src = '/public/images/seal3@2x.png';
+    }
+    else if (xxmc == '中央党校函授学院'){
+      sealImg.src = '/public/images/seal4@2x.png';
+    }
+    else if (xxmc == '中共中央党校函授学院'){
+      sealImg.src = '/public/images/seal4@2x.png';
+    }
   };
 }
