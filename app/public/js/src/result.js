@@ -237,7 +237,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 }
 
 function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -278,7 +278,19 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 320, 470);
       }
-      sealImg.src = '/public/images/seal.png';
+      if(xxmc == '湖南行政学院'){
+        sealImg.src = '/public/images/seal.png';
+      }
+      else if (xxmc == '中共湖南省委党校'){
+        sealImg.src = '/public/images/seal.png';
+      }
+      else if (xxmc == '中央党校函授学院'){
+        sealImg.src = '/public/images/seal.png';
+      }
+      else if (xxmc == '中共中央党校函授学院'){
+        sealImg.src = '/public/images/seal.png';
+      }
+
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
@@ -368,7 +380,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 }
 
 function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
