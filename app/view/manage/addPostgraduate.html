@@ -124,10 +124,10 @@
                          <i-col span="8">
 
                            <form-item label="照片">
-                             <upload action="//jsonplaceholder.typicode.com/posts/">
+                             <upload action="/manage/file/uploadImagesFile/1" :on-success="uploadHeadIconSuccess">
                                 <i-button icon="ios-cloud-upload-outline">Upload files</i-button>
                             </upload>
-                            <img src="" style="width:110px;height:140px;"/>
+                            <img  v-bind:src="defaultHeadiconPath" style="width:120px;height:auto;background-size: cover;background-repeat: no-repeat;"/>
                            </form-item>
                          </i-col>
                          <i-col span="3"></i-col>

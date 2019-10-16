@@ -46,7 +46,8 @@ module.exports = app => {
   router.get('/importInfo', pageAuthCheck, controller.home.manageImportInfo);
   router.get('/statistics', pageAuthCheck, controller.home.manageStatistics);
 
-  router.post('/manage/file/uploadFile/:fileType',  adminAuthCheck, controller.manage.file.uploadFile);
+  router.post('/manage/file/uploadExcelFile/:fileType',  adminAuthCheck, controller.manage.file.uploadExcelFile);
+  router.post('/manage/file/uploadImagesFile/:fileType',  adminAuthCheck, controller.manage.file.uploadImagesFile);
 
   router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);
   router.resources('/manage/undergraduate', adminAuthCheck,  controller.manage.undergraduate);

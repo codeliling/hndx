@@ -14,6 +14,7 @@ new Vue({
     visible: false,
     urlId:0,
     currentPage:0,
+    defaultHeadiconPath: '/public/images/user.png',
     postgraduateForm: {
       Xm: '',
       Pic: '',
@@ -118,6 +119,15 @@ new Vue({
         });
       }
     },
+    uploadHeadIconSuccess(response, file, fileList){
+      if (response.status == 200){
+        this.defaultHeadiconPath = response.imagePath;
+        this.postgraduateForm.Pic = response.imagePath;
+      }
+      else{
+        this.$Message.error(response.message);
+      }
+    }
   },
   created(){
     this.urlId = getQueryStringByName("Id");

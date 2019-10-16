@@ -16,6 +16,11 @@ module.exports = {
   postgraduatePath: 'postgraduate/',
   undergraduatePath: 'undergraduate/',
 
+  imagesBaseUrl : '/public/images/',
+  imagesBasePath : path.join(__dirname, '../public/images/'),
+  postgraduateImagesPath : 'postgraduateImages/',
+  undergraduateImagesPath : 'undergraduateImages/',
+
   cryptoPwd:(password)=>{
     const prefix = '1663er%^h#$61';
     var sha1 = crypto.createHash('sha1');

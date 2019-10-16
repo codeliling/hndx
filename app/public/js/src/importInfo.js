@@ -34,9 +34,9 @@ new Vue({
     changeSelect(value) {
       this.selectType = value;
       if (value == '本专科学历信息导入') {
-        this.uploadActionUrl = '/manage/file/uploadFile/2';
+        this.uploadActionUrl = '/manage/file/uploadExcelFile/2';
       } else if (value == '研究生学历信息导入') {
-        this.uploadActionUrl = '/manage/file/uploadFile/1';
+        this.uploadActionUrl = '/manage/file/uploadExcelFile/1';
       }
       console.log(this.selectType);
     },

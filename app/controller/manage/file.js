@@ -10,7 +10,7 @@ const Excel = require('exceljs');
 
 class FileController extends BaseController {
 
-    async uploadFile() {
+    async uploadExcelFile() {
         const ctx = this.ctx;
         let fileType = ctx.params.fileType;
         let fileTagget = '';
@@ -153,6 +153,56 @@ class FileController extends BaseController {
         super.failure(e);
       }
 
+    }
+
+    async uploadImagesFile() {
+        const ctx = this.ctx;
+        let fileType = ctx.params.fileType;
+        let fileTagget = '';
+
+        if(!fs.existsSync(ctx.helper.imagesBasePath)){
+          fs.mkdirSync(ctx.helper.imagesBasePath);
+        }
+
+        if (fileType == 1){
+          fileTagget = path.join(ctx.helper.imagesBasePath, ctx.helper.postgraduateImagesPath);
+        }
+        else if (fileType == 2){
+          fileTagget = path.join(ctx.helper.imagesBasePath, ctx.helper.undergraduateImagesPath);
+        }
+
+        if(!fs.existsSync(fileTagget)){
+          fs.mkdirSync(fileTagget);
+        }
+
+        let result = {
+          status:200
+        };
+
+        const stream = await ctx.getFileStream();
+
+        try {
+
+          const filename = ctx.helper.randomString(8) + path.extname(stream.filename);
+
+          const target = path.join(fileTagget, filename);
+          const writeStream = fs.createWriteStream(target);
+          await awaitWriteStream(stream.pipe(writeStream));
+          if(fileType == 1){
+            result.imagePath = ctx.helper.imagesBaseUrl + ctx.helper.postgraduateImagesPath + filename;
+          }
+          else{
+            result.imagePath = ctx.helper.imagesBaseUrl + ctx.helper.undergraduateImagesPath + filename;
+          }
+        } catch (err) {
+            //如果出现错误，关闭管道
+          ctx.logger.error(err.message);
+          await sendToWormhole(stream);
+          result.status = 500;
+          result.message = err.message;
+        }
+        //文件响应
+        ctx.body = result;
     }
 }
 
