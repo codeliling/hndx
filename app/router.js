@@ -28,9 +28,10 @@ module.exports = app => {
   router.get('/website/postgraduate/getDetailByNumber', controller.website.postgraduate.getDetailByNumber);
   router.get('/website/undergraduate/getDetailByNumber', controller.website.undergraduate.getDetailByNumber);
 
-  router.get('/manage/statistics/getCountData', controller.manage.statistics.getCountData);
-  //router.get('/website/postgraduate/getCountData', controller.website.postgraduate.getCountData);
-  //router.get('/website/undergraduate/getCountData', controller.website.undergraduate.getCountData);
+  router.get('/manage/statistics/getCountStatisticsData', controller.manage.statistics.getCountStatisticsData);
+  router.get('/manage/statistics/countGraduateData', controller.manage.statistics.countGraduateData);
+  router.get('/manage/statistics/queryGroupByDay', controller.manage.statistics.queryGroupByDay);
+  router.get('/manage/statistics/queryGroupByMonth', controller.manage.statistics.queryGroupByMonth);
 
   router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
   router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);
