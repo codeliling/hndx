@@ -32,7 +32,7 @@ function outputImage() {
     downLoad(saveAsPNG());
   } else {
     var canvas = document.getElementById('downLoadCanvas');
-    downloadURI(canvas, '你的学历.png');
+    downloadURI(canvas, '学历.png');
   }
 
   $.post("/manage/statistics/createStatistics",{type:2,xm:downLoadXM,zsbh:downLoadNumber});
@@ -150,6 +150,9 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
       if(screenWidth == 1360 || screenWidth == 1366){
         ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
+      }
+      else if (screenWidth == 1440){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.005) * myImage.height  );
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
@@ -306,13 +309,22 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
       if(screenWidth == 1360 || screenWidth == 1366){
         ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
       }
+      else if (screenWidth == 1440){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale - 0.02) * myImage.height  );
+      }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
 
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 260, 410, sealImg.width / 5, sealImg.height / 5);
+        if(screenWidth == 1440){
+          ctx.drawImage(sealImg, 240, 390, sealImg.width / 6, sealImg.height / 6);
+        }
+        else{
+          ctx.drawImage(sealImg, 260, 410, sealImg.width / 5, sealImg.height / 5);
+        }
+
 
         ctx.font = "10px Arial";
         ctx.fillText(bgbh, 300, 240);
@@ -416,7 +428,7 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
 
     var sealImg = new Image();
     sealImg.onload = function() {
-      ctx.drawImage(sealImg, 500, 800, sealImg.width / 2, sealImg.height / 2);
+      ctx.drawImage(sealImg, 500, 800, sealImg.width / 4, sealImg.height / 4);
 
       ctx.font = "16px Arial";
       ctx.fillText(bgbh, 560, 505);
@@ -465,7 +477,7 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
 
     var sealImg = new Image();
     sealImg.onload = function() {
-      ctx.drawImage(sealImg, 500, 790, sealImg.width / 2, sealImg.height / 2);
+      ctx.drawImage(sealImg, 500, 790, sealImg.width / 4, sealImg.height / 4);
 
       ctx.font = "16px Arial";
       ctx.fillText(bgbh, 570, 465);
