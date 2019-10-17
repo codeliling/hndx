@@ -106,18 +106,18 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
       ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 260, 480, sealImg.width / 3, sealImg.height / 3);
+        ctx.drawImage(sealImg, 260, 490, sealImg.width / 6, sealImg.height / 6);
 
         ctx.font = "10px Arial";
         ctx.fillText(bgbh, 350, 318);
-        ctx.fillText(bgrq_year, 280, 332);
-        ctx.fillText(bgrq_month, 322, 332);
-        ctx.fillText(bgrq_day, 345, 332);
+        ctx.fillText(bgrq_year, 350, 332);
+        ctx.fillText(bgrq_month, 400, 332);
+        ctx.fillText(bgrq_day, 420, 332);
 
         ctx.font = "16px Arial";
         ctx.fillText(xm, 100, 375);
         ctx.font = "12px Arial";
-        ctx.fillText(xb, 140, 375);
+        ctx.fillText(xb, 210, 375);
         ctx.fillText(sfzh, 300, 375);
         ctx.fillText(start_year, 110, 398);
         ctx.fillText(start_month, 170, 398);
@@ -126,7 +126,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.fillText(end_month, 310, 398);
 
         ctx.font = "14px Arial";
-        ctx.fillText(zy, 130, 425);
+        ctx.fillText(zy, 100, 425);
         ctx.fillText(xh, 310, 425);
         ctx.fillText(xz, 425, 425);
 
@@ -257,7 +257,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
       ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 300, 480, sealImg.width / 3, sealImg.height / 3);
+        ctx.drawImage(sealImg, 300, 480, sealImg.width / 6, sealImg.height / 6);
 
         ctx.font = "12px Arial";
         ctx.fillText(bgbh, 350, 292);
@@ -449,7 +449,7 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
       ctx.fillText(end_month, 500, 635);
 
       ctx.font = "20px Arial";
-      ctx.fillText(zy, 260, 680);
+      ctx.fillText(zy, 180, 680);
       ctx.fillText(xh, 510, 680);
       ctx.fillText(xz, 680, 680);
 
