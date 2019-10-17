@@ -55,7 +55,9 @@ class Undergraduate extends Service {
           condition: query.number+'|'+query.username
         }
         await this.ctx.model.Statistics.createStatistics(statisticsObj,transaction);
-        return await this.ctx.model.Undergraduate.searchUndergraduateByCondition(query,transaction);
+        let data = await this.ctx.model.Undergraduate.searchUndergraduateByCondition(query,transaction);
+        await transaction.commit();
+        return data;
     } catch (e) {
       this.ctx.logger.error(e);
       await transaction.rollback();

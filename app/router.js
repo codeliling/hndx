@@ -32,6 +32,7 @@ module.exports = app => {
   router.get('/manage/statistics/countGraduateData', controller.manage.statistics.countGraduateData);
   router.get('/manage/statistics/queryGroupByDay', controller.manage.statistics.queryGroupByDay);
   router.get('/manage/statistics/queryGroupByMonth', controller.manage.statistics.queryGroupByMonth);
+  router.post('/manage/statistics/createStatistics', controller.manage.statistics.createStatistics);
 
   router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
   router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);

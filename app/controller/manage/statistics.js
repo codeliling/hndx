@@ -6,7 +6,7 @@ class StatisticsController extends BaseController {
     const ctx = this.ctx;
     const statistics = {
       type: ctx.request.body.type,
-      condition:ctx.request.body.xm + '|' + ctx.request.body.zsbh,
+      condition:ctx.request.body.zsbh + '|' + ctx.request.body.xm,
     };
 
     try {
