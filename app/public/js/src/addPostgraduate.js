@@ -14,7 +14,6 @@ new Vue({
     visible: false,
     urlId:0,
     currentPage:0,
-    defaultHeadiconPath: '/public/images/user.png',
     postgraduateForm: {
       Xm: '',
       Pic: '',
@@ -129,6 +128,18 @@ new Vue({
       }
     }
   },
+  computed:{
+    headImgae:function(){
+      var defaultHeadiconPath = '/public/images/user.png';
+      if (this.postgraduateForm.Pic != '' && this.postgraduateForm.Pic != null){
+        return this.postgraduateForm.Pic;
+      }
+      else{
+        return defaultHeadiconPath;
+      }
+    }
+
+  },
   created(){
     this.urlId = getQueryStringByName("Id");
     this.currentPage = getQueryStringByName("currentPage");
@@ -140,6 +151,7 @@ new Vue({
           var postgraduateObject = dataObj.data;
           that.postgraduateForm.Xm = postgraduateObject.Xm;
           that.postgraduateForm.Pic = postgraduateObject.Pic;
+
           that.postgraduateForm.Byzh = postgraduateObject.Byzh;
           that.postgraduateForm.Sfzh = postgraduateObject.Sfzh;
           that.postgraduateForm.Xb = postgraduateObject.Xb;

@@ -37,7 +37,18 @@ new Vue({
           },
           {
             title: '照片',
-            key: 'Pic'
+            key: 'Pic',
+            render: (h,params) =>{
+              return h('img',{
+                attrs:{
+                  src: params.row.Pic
+                },
+                style:{
+                  width:'80px',
+                  height:'auto'
+                }
+              })
+            }
           },
           {
             title: '身份证号',
