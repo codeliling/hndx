@@ -87,7 +87,11 @@
                          <i-col span="3">&nbsp</i-col>
                          <i-col span="8">
                            <form-item label="性别">
-                               <i-input v-model="postgraduateForm.Xb"></i-input>
+                             <radio-group v-model="postgraduateForm.Xb">
+                                <radio label="男"></radio>
+                                <radio label="女"></radio>
+                            </radio-group>
+
                            </form-item>
                          </i-col>
                          <i-col span="2">&nbsp</i-col>
