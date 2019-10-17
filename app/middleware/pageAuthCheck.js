@@ -5,7 +5,7 @@ module.exports = () => {
       }
       else{
         ctx.session.returnTo = ctx.url;
-        ctx.redirect('/login');
+        ctx.redirect('/manageLogin');
       }
 
   }
