@@ -321,9 +321,8 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
           ctx.drawImage(sealImg, 240, 390, sealImg.width / 6, sealImg.height / 6);
         }
         else{
-          ctx.drawImage(sealImg, 260, 410, sealImg.width / 5, sealImg.height / 5);
+          ctx.drawImage(sealImg, 260, 400, sealImg.width / 8, sealImg.height / 8);
         }
-
 
         ctx.font = "10px Arial";
         ctx.fillText(bgbh, 300, 240);
@@ -380,7 +379,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.font = "14px Arial";
         ctx.fillText(xm, 90, 240);
-        ctx.fillText(xb, 130, 240);
+        ctx.fillText(xb, 150, 240);
         ctx.fillText("汉", 210, 240);
         ctx.font = "10px Arial";
 
