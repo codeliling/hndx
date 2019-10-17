@@ -227,6 +227,7 @@
           var xm = "";
           var byzh = "";
           var bysj = "";
+          var rxsj = "";
           var xxmc = "";
           var zymc = "";
           var bj = "";
@@ -235,9 +236,8 @@
           var xxxs = "  ";
           var xsf = "";
           var Pic = "";
-          var Sfzh = "4311585662256622";
-          var xb = "男";
-          var Rxsj = "";
+          var Sfzh = "";
+          var xb = "";
           var Xh = "";
 
           if (type == 1) {
@@ -246,6 +246,7 @@
             zymc = data.data.zymc; //专业名称
 
             bysj = data.data.bysj; //毕业时间
+            rxsj = data.data.rxsj; //毕业时间
             xxmc = data.data.xxmc; //学校名称
             bj = data.data.bj; //班级
             bylb = data.data.bylb; //毕业类别
@@ -256,10 +257,10 @@
             $("#byrqValue").text(bysj);
             $("#xxxsValue").text(xxxs);
 
-            $("#xbText").text('毕业类别');
+            $("#xbTitle").text('毕业类别');
             $("#xbValue").text(bylb);
 
-            $("#rxrqText").text('毕业时间');
+            $("#rxrqTitle").text('毕业时间');
             $("#rxrqValue").text(bysj);
 
             $("#xllbValue").text(bylb);
@@ -267,19 +268,22 @@
             byzh = data.data.Byzh; //毕业证号
             Pic = data.data.Pic; //图像
             xm = data.data.Xm; //姓名
-            Sfzh = data.data.Sfzh; //身份证号
+            var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            if(regIdNo.test(data.data.Sfzh)){
+                Sfzh = data.data.Sfzh; //身份证号
+            }
 
-            $("#byrqText").text('身份证号');
+            $("#byrqTitle").text('身份证号');
             $("#byrqValue").text(Sfzh);
 
             xb = data.data.Xb; //性别
-            $("#xbValue").text();
+            $("#xbValue").text(xb);
 
-            Rxsj = data.data.Rxsj; //入学时间
-            $("#rxrqValue").text(Rxsj);
+            rxsj = data.data.Rxsj; //入学时间
+            $("#rxrqValue").text(rxsj);
 
             Xh = data.data.Xh; //学号
-            $("#xllbText").text('学号');
+            $("#xllbTitle").text('学号');
             $("#xllbValue").text(Xh);
 
             zymc = data.data.Zymc; //专业名称
@@ -290,17 +294,34 @@
            $("#zsbhValue").text(byzh);
            $("#zymcValue").text(zymc);
 
-          var bgbh = "201908063562";
-          var bgrq_year = "2019";
-          var bgrq_month = "10";
-          var bgrq_day = "10";
-          var start_year = "2016";
-          var start_month = "9";
-          var end_year = "2019";
-          var end_month = "6";
+          var date = new Date();
+
+          var bgbh = byzh;
+          var bgrq_year = date.getFullYear();
+          var bgrq_month = date.getMonth() + 1;
+          var bgrq_day = date.getDate();
+
+          var start_year = "";
+          var start_month = "";
+          if(rxsj != "" && rxsj != null){
+            var rxsjDate = rxsj.split('-');
+            start_year = rxsjDate[0];
+            start_month = rxsjDate[1];
+          }
+          var end_year = "";
+          var end_month = "";
+          var graduate_year = "";
+          var graduate_month = "";
+          if(bysj != "" && bysj != null){
+            var bysjDate = bysj.split('-');
+            end_year = bysjDate[0];
+            graduate_year = bysjDate[0];
+            end_month = bysjDate[1];
+            graduate_month =  bysjDate[1];
+          }
+
           var xz = "3";
-          var graduate_year = "2019";
-          var graduate_month = "10";
+
           downLoadXM = xm;
 
           if (type == 1) //本科
