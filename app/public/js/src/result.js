@@ -160,7 +160,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 260, 420, sealImg.width / 5, sealImg.height / 5);
+        ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
 
         ctx.font = "10px Arial";
         ctx.fillText(bgbh, 280, 263);
@@ -171,7 +171,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.font = "16px Arial";
         ctx.fillText(xm, 80, 310);
         ctx.font = "10px Arial";
-        ctx.fillText(xb, 100, 310);
+        ctx.fillText(xb, 165, 310);
         ctx.fillText(sfzh, 245, 310);
         ctx.fillText(start_year, 90, 328);
         ctx.fillText(start_month, 140, 328);
@@ -179,11 +179,10 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.fillText(end_year, 210, 328);
         ctx.fillText(end_month, 250, 328);
 
-        ctx.font = "14px Arial";
-        ctx.fillText(zy, 130, 350);
         ctx.font = "12px Arial";
-        ctx.fillText(xh, 260, 350);
-        ctx.fillText(xz, 350, 350);
+        ctx.fillText(zy, 70, 350);
+        ctx.fillText(xh, 255, 350);
+        ctx.fillText(xz, 340, 350);
 
         ctx.fillText(graduate_year, 100, 390);
         ctx.fillText(graduate_month, 150, 390);
@@ -196,7 +195,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
   } else if (screenWidth <= 1280) {
     var myImage = new Image();
-    myImage.src = '/public/images/Postgraduate_Certificate@1x.png';
+    myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
@@ -211,19 +210,19 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.fillText(bgrq_month, 255, 217);
         ctx.fillText(bgrq_day, 275, 217);
 
-        ctx.font = "14px Arial";
+        ctx.font = "13px Arial";
         ctx.fillText(xm, 60, 245);
         ctx.font = "8px Arial";
-        ctx.fillText(xb, 80, 245);
-        ctx.fillText(sfzh, 190, 245);
+        ctx.fillText(xb, 133, 245);
+        ctx.fillText(sfzh, 195, 245);
         ctx.fillText(start_year, 70, 260);
         ctx.fillText(start_month, 110, 260);
 
         ctx.fillText(end_year, 170, 260);
         ctx.fillText(end_month, 200, 260);
 
-        ctx.font = "12px Arial";
-        ctx.fillText(zy, 90, 275);
+        ctx.font = "11px Arial";
+        ctx.fillText(zy, 60, 275);
         ctx.font = "10px Arial";
         ctx.fillText(xh, 210, 277);
         ctx.fillText(xz, 276, 277);
