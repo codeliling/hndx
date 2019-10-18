@@ -19,6 +19,10 @@ module.exports = app => {
       type: STRING,
       allowNull: false,
     },
+    rxsj: {
+      type: STRING,
+      allowNull: false,
+    },
     bysj: {
       type: STRING,
       allowNull: false,

@@ -69,6 +69,7 @@
     }
 
     .downloadDiv {
+      margin-top: 3em;
       text-align: center;
       width: 45em;
     }
@@ -161,7 +162,7 @@
               声明：<br/>
 1、未经学历信息权属人同意，不得将本材料用于违背权属人意愿之用途。学历信息内容标注“＊”号，表示该项内容不详。学历信息如有修改，请以网站在线查询内容为准。
               <br/>
-2、学历证书查询结果仅供查询人使用，不具有再验证功能。如需向第三方提供学历信息，建议使用具有验证功能的学历证书电子注册备案表。
+2、学历证书查询结果仅供查询人使用，不具有再验证功能。如有信息不全，请联系学校进行处理。
             </p>
 
               <div class="downloadDiv">
@@ -246,7 +247,7 @@
             zymc = data.data.zymc; //专业名称
 
             bysj = data.data.bysj; //毕业时间
-            rxsj = data.data.rxsj; //毕业时间
+            rxsj = data.data.rxsj; //入学时间
             xxmc = data.data.xxmc; //学校名称
             bj = data.data.bj; //班级
             bylb = data.data.bylb; //毕业类别
@@ -260,8 +261,8 @@
             $("#xbTitle").text('毕业类别');
             $("#xbValue").text(bylb);
 
-            $("#rxrqTitle").text('毕业时间');
-            $("#rxrqValue").text(bysj);
+            $("#rxrqTitle").text('入学时间');
+            $("#rxrqValue").text(rxsj);
 
             $("#xllbValue").text(bylb);
           } else {
@@ -281,6 +282,7 @@
 
             rxsj = data.data.Rxsj; //入学时间
             $("#rxrqValue").text(rxsj);
+            bysj = data.data.Bysj;
 
             Xh = data.data.Xh; //学号
             $("#xllbTitle").text('学号');

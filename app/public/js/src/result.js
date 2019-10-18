@@ -127,13 +127,13 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
         ctx.font = "14px Arial";
         ctx.fillText(zy, 100, 425);
-        ctx.fillText(xh, 310, 425);
+        ctx.fillText(xh, 315, 425);
         ctx.fillText(xz, 425, 425);
 
         ctx.fillText(graduate_year, 110, 475);
         ctx.fillText(graduate_month, 180, 475);
 
-        ctx.fillText(zsbh, 260, 500);
+        ctx.fillText(zsbh, 265, 500);
       }
       sealImg.src = '/public/images/seal3@2x.png';
     };
@@ -434,8 +434,8 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
       ctx.fillText(bgrq_month, 638, 532);
       ctx.fillText(bgrq_day, 680, 532);
 
-      ctx.font = "20px Arial";
-      ctx.fillText(xm, 200, 598);
+      ctx.font = "24px Arial";
+      ctx.fillText(xm, 180, 598);
       ctx.fillText(xb, 326, 598);
 
       ctx.font = "16px Arial";
@@ -446,7 +446,7 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
       ctx.fillText(end_year, 380, 635);
       ctx.fillText(end_month, 500, 635);
 
-      ctx.font = "20px Arial";
+      ctx.font = "22px Arial";
       ctx.fillText(zy, 180, 680);
       ctx.fillText(xh, 510, 680);
       ctx.fillText(xz, 680, 680);
@@ -483,8 +483,8 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
       ctx.fillText(bgrq_month, 655, 495);
       ctx.fillText(bgrq_day, 695, 495);
 
-      ctx.font = "20px Arial";
-      ctx.fillText(xm, 200, 590);
+      ctx.font = "24px Arial";
+      ctx.fillText(xm, 180, 590);
       ctx.fillText(xb, 326, 590);
       ctx.fillText("汉", 486, 590);
 
@@ -493,7 +493,7 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
       ctx.fillText("2019", 395, 635);
 
 
-      ctx.font = "20px Arial";
+      ctx.font = "22px Arial";
       ctx.fillText(zy, 160, 695);
       ctx.fillText(xh, 510, 680);
 

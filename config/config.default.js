@@ -30,7 +30,7 @@ module.exports = appInfo => {
     port: 3306,
     username: 'root',
     password: 'root',
-    database: 'xueli',
+    database: 'xueli_data',
     logging:true,
     timezone: '+08:00',
     define: {
