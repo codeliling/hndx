@@ -35,6 +35,10 @@ new Vue({
           key: 'byzh'
         },
         {
+          title: '入学时间',
+          key: 'rxsj'
+        },
+        {
           title: '毕业时间',
           key: 'bysj'
         },
