@@ -281,7 +281,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.fillText(zsbh, 320, 470);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1_@2x.png';
+        sealImg.src = '/public/images/seal1@2x.png';
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@2x.png';
@@ -347,7 +347,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.fillText(zsbh, 270, 385);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1_@2x.png';
+        sealImg.src = '/public/images/seal1@2x.png';
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@2x.png';
@@ -394,7 +394,7 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.fillText(zsbh, 200, 306);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1_@1x.png';
+        sealImg.src = '/public/images/seal1@1x.png';
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@1x.png';
@@ -501,7 +501,7 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
       ctx.fillText(zsbh, 490, 750);
     }
     if(xxmc == '湖南行政学院'){
-      sealImg.src = '/public/images/seal1_@2x.png';
+      sealImg.src = '/public/images/seal1@2x.png';
     }
     else if (xxmc == '中共湖南省委党校'){
       sealImg.src = '/public/images/seal3@2x.png';
