@@ -138,6 +138,22 @@ new Vue({
     time4(e){
       this.value4 = e;
     },
+    clearData1(e){
+      option1_1.series[0].data = [];
+      this.chart1.setOption(option1_1);
+    },
+    clearData2(e){
+      option1_2.series[0].data = [];
+      this.chart1.setOption(option1_2);
+    },
+    clearData3(e){
+      option2_1.series[0].data = [];
+      this.chart2.setOption(option2_1);
+    },
+    clearData4(e){
+      option2_2.series[0].data = [];
+      this.chart2.setOption(option2_2);
+    },
     searchCountByYear(){
       let that = this;
       axios.get('/manage/statistics/queryGroupByMonth',{
@@ -162,7 +178,8 @@ new Vue({
                   timeStr = that.value1 + '-0' + month;
                 }
                 else{
-                  timeStr = that.value1 + '-' + i;
+                  let month = i + 1;
+                  timeStr = that.value1 + '-' + month;
                 }
                 if(resultData[j].time == timeStr){
                   chartData[i] = resultData[j].count;
@@ -173,6 +190,7 @@ new Vue({
                 chartData[i] = 0;
               }
             }
+            console.log(chartData);
             option1_1.series[0].data = chartData;
             that.chart1.setOption(option1_1);
           }
@@ -217,11 +235,12 @@ new Vue({
               for (let j = 0; j < resultData.length; j++){
                 let timeStr = '';
                 if(i < 9){
-                  let day = i + 1;
-                  timeStr = that.value2 + '-0' + day;
+                  let month = i + 1;
+                  timeStr = that.value2 + '-0' + month;
                 }
                 else{
-                  timeStr = that.value2 + '-' + i;
+                  let month = i + 1;
+                  timeStr = that.value2 + '-' + month;
                 }
                 if(resultData[j].time == timeStr){
                   chartData[i] = resultData[j].count;
@@ -266,10 +285,11 @@ new Vue({
                 let timeStr = '';
                 if(i < 9){
                   let month = i + 1;
-                  timeStr = that.value1 + '-0' + month;
+                  timeStr = that.value3 + '-0' + month;
                 }
                 else{
-                  timeStr = that.value1 + '-' + i;
+                  let month = i + 1;
+                  timeStr = that.value3 + '-' + month;
                 }
                 if(resultData[j].time == timeStr){
                   chartData[i] = resultData[j].count;
@@ -281,7 +301,7 @@ new Vue({
               }
             }
             option2_1.series[0].data = chartData;
-            that.chart1.setOption(option2_1);
+            that.chart2.setOption(option2_1);
           }
         }
         else{
@@ -295,7 +315,7 @@ new Vue({
     },
     downLoadCountByMonth(){
       let that = this;
-      let dateStr = that.value2.split('-');
+      let dateStr = that.value4.split('-');
       let dayCount = days(dateStr[0], dateStr[1]);
       let xAxisData = [];
       let seriesData = [];
@@ -315,7 +335,7 @@ new Vue({
           res.data.data;
           let resultData = res.data.data;
           if (resultData.length == 0){
-            that.chart1.setOption(option1_1);
+            that.chart2.setOption(option2_2);
           }
           else{
             let chartData = [];
@@ -324,12 +344,14 @@ new Vue({
               for (let j = 0; j < resultData.length; j++){
                 let timeStr = '';
                 if(i < 9){
-                  let day = i + 1;
-                  timeStr = that.value4 + '-0' + day;
+                  let month = i + 1;
+                  timeStr = that.value4 + '-0' + month;
                 }
                 else{
-                  timeStr = that.value4 + '-' + i;
+                  let month = i + 1;
+                  timeStr = that.value4 + '-' + month;
                 }
+                console.log(timeStr);
                 if(resultData[j].time == timeStr){
                   chartData[i] = resultData[j].count;
                   hasData = true;
@@ -339,6 +361,7 @@ new Vue({
                 chartData[i] = 0;
               }
             }
+            console.log(chartData);
             option2_2.series[0].data = chartData;
             that.chart2.setOption(option2_2);
           }
