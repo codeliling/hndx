@@ -71,14 +71,14 @@
                          <i-col span="3">&nbsp</i-col>
                          <i-col span="8">
                            <form-item label="入学日期">
-                               <date-picker type="month" format="yyyy-MM" v-model="postgraduateForm.Rxsj" @on-change="postgraduateForm.Rxsj=$event" placeholder="选择入学日期"></date-picker>
+                               <date-picker type="month" format="yyyy-MM" :value="this.postgraduateForm.Rxsj" @on-change="postgraduateForm.Rxsj=$event" placeholder="选择入学日期"></date-picker>
 
                            </form-item>
                          </i-col>
                          <i-col span="2">&nbsp</i-col>
                          <i-col span="8">
                            <form-item label="毕业时间">
-                             <date-picker type="month" format="yyyy-MM" v-model="postgraduateForm.Bysj" @on-change="postgraduateForm.Bysj=$event" placeholder="选择毕业时间"></date-picker>
+                             <date-picker type="month" format="yyyy-MM" :value="this.postgraduateForm.Bysj" @on-change="postgraduateForm.Bysj=$event" placeholder="选择毕业时间"></date-picker>
                            </form-item>
                          </i-col>
                          <i-col span="3"></i-col>

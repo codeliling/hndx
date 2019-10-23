@@ -89,6 +89,8 @@ new Vue({
         return;
       }
 
+      console.log(this.undergraduateForm.bysj);
+      
       if(this.urlId > 0){ //更新
         var that = this;
         axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)
@@ -142,6 +144,8 @@ new Vue({
           that.undergraduateForm.bj = undergraduateObject.bj;
           that.undergraduateForm.bylb = undergraduateObject.bylb;
           that.undergraduateForm.xxxs = undergraduateObject.xxxs;
+          that.undergraduateForm.rxsj = undergraduateObject.rxsj;
+
         }
         else{
           that.$Message.error('读取数据失败!');

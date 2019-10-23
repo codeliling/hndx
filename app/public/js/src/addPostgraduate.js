@@ -156,6 +156,7 @@ new Vue({
           that.postgraduateForm.Sfzh = postgraduateObject.Sfzh;
           that.postgraduateForm.Xb = postgraduateObject.Xb;
           that.postgraduateForm.Rxsj = postgraduateObject.Rxsj;
+          
           that.postgraduateForm.Bysj = postgraduateObject.Bysj;
           that.postgraduateForm.Xh = postgraduateObject.Xh;
           that.postgraduateForm.Dh = postgraduateObject.Dh;
