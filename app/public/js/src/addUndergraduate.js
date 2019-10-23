@@ -22,7 +22,8 @@ new Vue({
       zymc:'',
       bj:'',
       bylb:'',
-      xxxs:''
+      xxxs:'',
+      rxsj:'',
     }
   },
   methods: {
@@ -58,6 +59,11 @@ new Vue({
         return;
       }
 
+      if (this.undergraduateForm.rxsj == '' || this.undergraduateForm.rxsj == null){
+        this.$Message.warning('请填写入学时间!');
+        return;
+      }
+
       if (this.undergraduateForm.xxmc == '' || this.undergraduateForm.xxmc == null){
         this.$Message.warning('请填写学校名称!');
         return;
@@ -82,6 +88,7 @@ new Vue({
         this.$Message.warning('请填写学习形式!');
         return;
       }
+
       if(this.urlId > 0){ //更新
         var that = this;
         axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)

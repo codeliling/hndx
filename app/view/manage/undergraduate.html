@@ -67,7 +67,7 @@
                        <i-table border :columns="columns" :data="data6"></i-table>
                      </row>
                      <row style="margin-top:15px;text-align:right">
-                       <page :total="pageTotal" @on-change="handlePage" show-elevator show-total/>
+                       <page :total="pageTotal" @on-change="handlePage"  :current="currentPage" show-elevator show-total/>
                      </row>
                    </div>
                </card>

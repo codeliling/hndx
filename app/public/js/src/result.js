@@ -27,6 +27,10 @@ function IEVersion() {
   }
 }
 
+function back(){
+  window.location.href = "/";
+}
+
 function outputImage() {
   if (IEVersion() == -1) {
     downLoad(saveAsPNG());
@@ -267,11 +271,11 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.font = "16px Arial";
         ctx.fillText(xm, 130, 370);
         ctx.fillText(xb, 230, 370);
-        ctx.fillText("汉", 310, 370);
+        ctx.fillText("", 310, 370);
         ctx.font = "12px Arial";
 
         ctx.fillText(sfzh, 100, 395);
-        ctx.fillText("2019", 250, 395);
+        ctx.fillText(end_year, 250, 395);
 
         ctx.font = "14px Arial";
         ctx.fillText(zy, 130, 430);
@@ -333,11 +337,11 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.font = "16px Arial";
         ctx.fillText(xm, 100, 300);
         ctx.fillText(xb, 200, 300);
-        ctx.fillText("汉", 280, 300);
+        ctx.fillText("", 280, 300);
         ctx.font = "12px Arial";
 
         ctx.fillText(sfzh, 60, 330);
-        ctx.fillText("2019", 200, 330);
+        ctx.fillText(end_year, 200, 330);
 
         ctx.font = "14px Arial";
         ctx.fillText(zy, 80, 360);
@@ -380,11 +384,11 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.font = "14px Arial";
         ctx.fillText(xm, 90, 240);
         ctx.fillText(xb, 150, 240);
-        ctx.fillText("汉", 210, 240);
+        ctx.fillText("", 210, 240);
         ctx.font = "10px Arial";
 
         ctx.fillText(sfzh, 50, 260);
-        ctx.fillText("2019", 160, 260);
+        ctx.fillText(end_year, 160, 260);
 
         ctx.font = "12px Arial";
         ctx.fillText(zy, 70, 282);
@@ -486,11 +490,11 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
       ctx.font = "24px Arial";
       ctx.fillText(xm, 180, 590);
       ctx.fillText(xb, 326, 590);
-      ctx.fillText("汉", 486, 590);
+      ctx.fillText("", 486, 590);
 
       ctx.font = "18px Arial";
       ctx.fillText(sfzh, 160, 635);
-      ctx.fillText("2019", 395, 635);
+      ctx.fillText(end_year, 395, 635);
 
 
       ctx.font = "22px Arial";

@@ -93,7 +93,7 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [[ 'Id', 'asc' ]],
+      order: [[ 'Id', 'desc' ]],
       where:{
 
       }
@@ -106,14 +106,14 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [ [ 'Id', 'asc' ]],
+      order: [ [ 'Id', 'desc' ]],
       where:{
 
       }
     };
 
-    if (type == 1){ //按学号
-      condition.where.Xh = {
+    if (type == 1){ //按毕业证号
+      condition.where.Byzh = {
         [app.Sequelize.Op.like]: '%'+searchData+'%',
       };
     }

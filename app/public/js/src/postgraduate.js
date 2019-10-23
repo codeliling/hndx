@@ -153,9 +153,41 @@ new Vue({
       });
     },
 
+    getListDataByCondition(offset){
+      var that = this;
+      var re = new RegExp("^[\u4e00-\u9fa5]+$");
+
+      var type = 0;
+      if (re.test(that.searchData)){
+        type = 2;
+      }
+      else{
+        type = 1;
+      }
+
+      axios.get('/manage/postgraduate/listPostgraduateByCondition', {
+        params: {
+          limit: that.pageSize,
+          offset: offset,
+          searchData:that.searchData,
+          type:type,
+        }
+      }).then(function(res) {
+        that.pageTotal = res.data.data.count;
+        that.data6 = res.data.data.rows;
+      }).catch(function(res) {
+        console.log(res);
+      });
+    },
+
     handlePage(value){
       this.currentPage = value;
-      this.getListData((value - 1) * this.pageSize);
+      if(this.searchData != ''){
+        this.getListDataByCondition((value - 1) * this.pageSize);
+      }
+      else{
+        this.getListData((value - 1) * this.pageSize);
+      }
     },
 
     remove(Id){
@@ -178,35 +210,9 @@ new Vue({
     },
 
     searchClick(){
-      var that = this;
-      var type = 0;
-      if(that.searchData != ''){
-        var re = new RegExp("^[\u4e00-\u9fa5]+$");
-        if (re.test(that.searchData)){
-        	type = 2;
-        }
-        else{
-          type = 1;
-        }
-
-        var offset = 0;
-        if (that.currentPage >= 1){
-          offset = (that.currentPage - 1) * that.pageSize;
-        }
-
-        axios.get('/manage/postgraduate/listPostgraduateByCondition', {
-          params: {
-            limit: that.pageSize,
-            offset: offset,
-            searchData:that.searchData,
-            type:type,
-          }
-        }).then(function(res) {
-          that.pageTotal = res.data.data.count;
-          that.data6 = res.data.data.rows;
-        }).catch(function(res) {
-          console.log(res);
-        });
+      this.currentPage = 1;
+      if(this.searchData != ''){
+        this.getListDataByCondition(0);
       }
       else{
         this.getListData(0);

@@ -93,7 +93,7 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [[ 'Id', 'asc' ]],
+      order: [[ 'Id', 'desc' ]],
       where:{
 
       }
@@ -107,7 +107,7 @@ module.exports = app => {
     let condition = {
       offset,
       limit,
-      order: [ [ 'Id', 'asc' ]],
+      order: [ [ 'Id', 'desc' ]],
       where:{
 
       }

@@ -70,14 +70,14 @@
                 <row>
                   <i-col span="3">&nbsp</i-col>
                   <i-col span="8">
-                    <form-item label="毕业时间">
-                      <date-picker type="month" v-model="undergraduateForm.bysj" placeholder="选择毕业时间"></date-picker>
+                    <form-item label="入学时间">
+                      <date-picker type="month" format="yyyy-MM" v-model="undergraduateForm.rxsj" @on-change="undergraduateForm.rxsj=$event" placeholder="选择入学时间"></date-picker>
                     </form-item>
                   </i-col>
                   <i-col span="2">&nbsp</i-col>
                   <i-col span="8">
-                    <form-item label="学院名称">
-                        <i-input v-model="undergraduateForm.xxmc"></i-input>
+                    <form-item label="毕业时间">
+                      <date-picker type="month" format="yyyy-MM" v-model="undergraduateForm.bysj" @on-change="undergraduateForm.bysj=$event" placeholder="选择毕业时间"></date-picker>
                     </form-item>
                   </i-col>
                   <i-col span="3"></i-col>
@@ -109,6 +109,19 @@
                     <form-item label="学习形式">
                         <i-input v-model="undergraduateForm.xxxs"></i-input>
                     </form-item>
+                  </i-col>
+                  <i-col span="3"></i-col>
+                </row>
+                <row>
+                  <i-col span="3">&nbsp</i-col>
+                  <i-col span="8">
+                    <form-item label="学院名称">
+                        <i-input v-model="undergraduateForm.xxmc"></i-input>
+                    </form-item>
+                  </i-col>
+                  <i-col span="2">&nbsp</i-col>
+                  <i-col span="8">
+
                   </i-col>
                   <i-col span="3"></i-col>
                 </row>

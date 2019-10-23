@@ -62,7 +62,7 @@ new Vue({
         return;
       }
 
-      if (this.postgraduateForm.Rxrq == '' || this.postgraduateForm.Rxrq == null){
+      if (this.postgraduateForm.Rxsj == '' || this.postgraduateForm.Rxsj == null){
         this.$Message.warning('请填写入学日期!');
         return;
       }

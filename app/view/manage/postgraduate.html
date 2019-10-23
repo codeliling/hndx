@@ -57,7 +57,7 @@
                          <i-input v-model="searchData" placeholder="请输入证书编号或者姓名..." style="min-width=100px;max-width: 300px" />
                        </i-col>
                        <i-col span="2">
-                         <i-button type="primary" icon="ios-search">搜索</i-button>
+                         <i-button type="primary" icon="ios-search" @click="searchClick">搜索</i-button>
                        </i-col>
                        <i-col span="17" style="text-align:right">
                          <i-button type="primary" icon="ios-search" @click="addClick">添加</i-button>
@@ -67,7 +67,7 @@
                        <i-table border :columns="columns" :data="data6"></i-table>
                      </row>
                      <row style="margin-top:15px;text-align:right">
-                       <page :total="pageTotal"  @on-change="handlePage"  show-elevator show-total />
+                       <page :total="pageTotal"  @on-change="handlePage" :current="currentPage" show-elevator show-total />
                      </row>
                    </div>
                </card>
