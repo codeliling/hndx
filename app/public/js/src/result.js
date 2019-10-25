@@ -93,7 +93,7 @@ function clearCanvas() {
 }
 
 function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,Pic) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -102,6 +102,14 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
   var screenHeight = window.screen.height;
 
   if (screenWidth > 1600) {
+    if(Pic != '' && Pic != null){
+      var headIcon = new Image();
+      headIcon.src = Pic;
+      headIcon.onload = function(){
+        ctx.drawImage(headIcon, 260, 260, 80, 105);
+      }
+    }
+
     var myImage = new Image();
     myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
@@ -113,36 +121,44 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.drawImage(sealImg, 260, 490, sealImg.width / 6, sealImg.height / 6);
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 350, 318);
-        ctx.fillText(bgrq_year, 350, 332);
-        ctx.fillText(bgrq_month, 400, 332);
-        ctx.fillText(bgrq_day, 420, 332);
+        ctx.fillText(bgbh, 375, 345);
+        ctx.fillText(bgrq_year, 375, 362);
+        ctx.fillText(bgrq_month, 420, 362);
+        ctx.fillText(bgrq_day, 440, 362);
 
         ctx.font = "16px Arial";
-        ctx.fillText(xm, 100, 375);
+        ctx.fillText(xm, 100, 390);
         ctx.font = "12px Arial";
-        ctx.fillText(xb, 210, 375);
-        ctx.fillText(sfzh, 300, 375);
-        ctx.fillText(start_year, 110, 398);
-        ctx.fillText(start_month, 170, 398);
+        ctx.fillText(xb, 210, 390);
+        ctx.fillText(sfzh, 300, 390);
+        ctx.fillText(start_year, 110, 410);
+        ctx.fillText(start_month, 170, 410);
 
-        ctx.fillText(end_year, 260, 398);
-        ctx.fillText(end_month, 310, 398);
+        ctx.fillText(end_year, 260, 410);
+        ctx.fillText(end_month, 310, 410);
 
         ctx.font = "14px Arial";
-        ctx.fillText(zy, 100, 425);
-        ctx.fillText(xh, 315, 425);
-        ctx.fillText(xz, 425, 425);
+        ctx.fillText(zy, 100, 438);
+        ctx.fillText(xh, 317, 438);
+        ctx.fillText(xz, 425, 438);
 
-        ctx.fillText(graduate_year, 110, 475);
-        ctx.fillText(graduate_month, 180, 475);
+        ctx.fillText(graduate_year, 110, 485);
+        ctx.fillText(graduate_month, 180, 485);
 
-        ctx.fillText(zsbh, 265, 500);
+        ctx.fillText(zsbh, 265, 510);
       }
       sealImg.src = '/public/images/seal3@2x.png';
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
+    if(Pic != '' && Pic != null){
+      var headIcon = new Image();
+      headIcon.src = Pic;
+      headIcon.onload = function(){
+        ctx.drawImage(headIcon, 260, 260, 80, 105);
+      }
+    }
+
     var myImage = new Image();
 
     myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
@@ -167,37 +183,44 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 280, 263);
-        ctx.fillText(bgrq_year, 285, 277);
-        ctx.fillText(bgrq_month, 321, 277);
-        ctx.fillText(bgrq_day, 340, 277);
+        ctx.fillText(bgbh, 295, 285);
+        ctx.fillText(bgrq_year, 295, 299);
+        ctx.fillText(bgrq_month, 331, 299);
+        ctx.fillText(bgrq_day, 352, 299);
 
         ctx.font = "16px Arial";
-        ctx.fillText(xm, 80, 310);
+        ctx.fillText(xm, 80, 320);
         ctx.font = "10px Arial";
-        ctx.fillText(xb, 165, 310);
-        ctx.fillText(sfzh, 245, 310);
-        ctx.fillText(start_year, 90, 328);
-        ctx.fillText(start_month, 140, 328);
+        ctx.fillText(xb, 165, 320);
+        ctx.fillText(sfzh, 245, 320);
+        ctx.fillText(start_year, 90, 338);
+        ctx.fillText(start_month, 140, 338);
 
-        ctx.fillText(end_year, 210, 328);
-        ctx.fillText(end_month, 250, 328);
+        ctx.fillText(end_year, 210, 338);
+        ctx.fillText(end_month, 250, 338);
 
         ctx.font = "12px Arial";
-        ctx.fillText(zy, 70, 350);
-        ctx.fillText(xh, 255, 350);
-        ctx.fillText(xz, 340, 350);
+        ctx.fillText(zy, 70, 360);
+        ctx.fillText(xh, 255, 360);
+        ctx.fillText(xz, 340, 360);
 
-        ctx.fillText(graduate_year, 100, 390);
-        ctx.fillText(graduate_month, 150, 390);
+        ctx.fillText(graduate_year, 100, 400);
+        ctx.fillText(graduate_month, 145, 400);
 
         ctx.font = "11px Arial";
-        ctx.fillText(zsbh, 220, 412);
+        ctx.fillText(zsbh, 220, 422);
       }
       sealImg.src = '/public/images/seal3@2x.png';
     };
 
   } else if (screenWidth <= 1280) {
+    if(Pic != '' && Pic != null){
+      var headIcon = new Image();
+      headIcon.src = Pic;
+      headIcon.onload = function(){
+        ctx.drawImage(headIcon, 260, 260, 80, 105);
+      }
+    }
     var myImage = new Image();
     myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
@@ -209,33 +232,33 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 220, 208);
-        ctx.fillText(bgrq_year, 220, 217);
-        ctx.fillText(bgrq_month, 255, 217);
-        ctx.fillText(bgrq_day, 275, 217);
+        ctx.fillText(bgbh, 242, 228);
+        ctx.fillText(bgrq_year, 242, 237);
+        ctx.fillText(bgrq_month, 272, 237);
+        ctx.fillText(bgrq_day, 290, 237);
 
         ctx.font = "13px Arial";
-        ctx.fillText(xm, 60, 245);
+        ctx.fillText(xm, 60, 255);
         ctx.font = "8px Arial";
-        ctx.fillText(xb, 133, 245);
-        ctx.fillText(sfzh, 195, 245);
-        ctx.fillText(start_year, 70, 260);
-        ctx.fillText(start_month, 110, 260);
+        ctx.fillText(xb, 133, 253);
+        ctx.fillText(sfzh, 195, 255);
+        ctx.fillText(start_year, 70, 270);
+        ctx.fillText(start_month, 110, 270);
 
-        ctx.fillText(end_year, 170, 260);
-        ctx.fillText(end_month, 200, 260);
+        ctx.fillText(end_year, 170, 270);
+        ctx.fillText(end_month, 200, 270);
 
         ctx.font = "11px Arial";
-        ctx.fillText(zy, 60, 275);
+        ctx.fillText(zy, 60, 285);
         ctx.font = "10px Arial";
-        ctx.fillText(xh, 210, 277);
-        ctx.fillText(xz, 276, 277);
+        ctx.fillText(xh, 210, 287);
+        ctx.fillText(xz, 278, 287);
 
-        ctx.fillText(graduate_year, 70, 307);
-        ctx.fillText(graduate_month, 115, 309);
+        ctx.fillText(graduate_year, 70, 319);
+        ctx.fillText(graduate_month, 115, 319);
 
         ctx.font = "10px Arial";
-        ctx.fillText(zsbh, 175, 326);
+        ctx.fillText(zsbh, 175, 336);
       }
       sealImg.src = '/public/images/seal3@1x.png';
     };
@@ -243,7 +266,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 }
 
 function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc,xxxs) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -263,29 +286,34 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.drawImage(sealImg, 300, 480, sealImg.width / 6, sealImg.height / 6);
 
         ctx.font = "12px Arial";
-        ctx.fillText(bgbh, 350, 292);
-        ctx.fillText(bgrq_year, 350, 308);
-        ctx.fillText(bgrq_month, 408, 308);
-        ctx.fillText(bgrq_day, 430, 308);
+        ctx.fillText(bgbh, 350, 305);
+        ctx.fillText(bgrq_year, 350, 320);
+        ctx.fillText(bgrq_month, 408, 320);
+        ctx.fillText(bgrq_day, 430, 320);
 
         ctx.font = "16px Arial";
-        ctx.fillText(xm, 130, 370);
-        ctx.fillText(xb, 230, 370);
-        ctx.fillText("", 310, 370);
+        ctx.fillText(xm, 130, 380);
+        ctx.fillText(xb, 230, 380);
+        ctx.fillText("", 310, 380);
         ctx.font = "12px Arial";
 
-        ctx.fillText(sfzh, 100, 395);
-        ctx.fillText(end_year, 250, 395);
+        ctx.fillText(sfzh, 100, 405);
+        ctx.fillText(end_year, 245, 410);
 
         ctx.font = "14px Arial";
-        ctx.fillText(zy, 130, 430);
-        ctx.fillText(xh, 310, 425);
+        ctx.fillText(zy, 130, 445);
+        ctx.fillText(xh, 310, 445);
         //ctx.fillText(xz, 425, 425);
 
-        ctx.fillText(zsbh, 320, 470);
+        ctx.fillText(zsbh, 310, 480);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1@2x.png';
+        if(xxxs == '函授'){
+          sealImg.src = '/public/images/seal2@2x.png';
+        }
+        else{
+          sealImg.src = '/public/images/seal1@2x.png';
+        }
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@2x.png';
@@ -329,29 +357,34 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         }
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 300, 240);
-        ctx.fillText(bgrq_year, 300, 255);
-        ctx.fillText(bgrq_month, 335, 255);
-        ctx.fillText(bgrq_day, 355, 255);
+        ctx.fillText(bgbh, 280, 250);
+        ctx.fillText(bgrq_year, 280, 265);
+        ctx.fillText(bgrq_month, 325, 265);
+        ctx.fillText(bgrq_day, 345, 265);
 
         ctx.font = "16px Arial";
-        ctx.fillText(xm, 100, 300);
-        ctx.fillText(xb, 200, 300);
-        ctx.fillText("", 280, 300);
+        ctx.fillText(xm, 100, 315);
+        ctx.fillText(xb, 200, 315);
+        ctx.fillText("", 280, 315);
         ctx.font = "12px Arial";
 
         ctx.fillText(sfzh, 60, 330);
-        ctx.fillText(end_year, 200, 330);
+        ctx.fillText(end_year, 195, 337);
 
         ctx.font = "14px Arial";
-        ctx.fillText(zy, 80, 360);
+        ctx.fillText(zy, 80, 366);
         ctx.fillText(xh, 210, 375);
         //ctx.fillText(xz, 425, 425);
 
-        ctx.fillText(zsbh, 270, 385);
+        ctx.fillText(zsbh, 260, 395);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1@2x.png';
+        if(xxxs == '函授'){
+          sealImg.src = '/public/images/seal2@2x.png';
+        }
+        else{
+          sealImg.src = '/public/images/seal1@2x.png';
+        }
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@2x.png';
@@ -376,29 +409,35 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 230, 190);
-        ctx.fillText(bgrq_year, 230, 200);
-        ctx.fillText(bgrq_month, 265, 200);
-        ctx.fillText(bgrq_day, 280, 200);
+        ctx.fillText(bgbh, 230, 200);
+        ctx.fillText(bgrq_year, 230, 210);
+        ctx.fillText(bgrq_month, 265, 210);
+        ctx.fillText(bgrq_day, 280, 210);
 
         ctx.font = "14px Arial";
-        ctx.fillText(xm, 90, 240);
-        ctx.fillText(xb, 150, 240);
-        ctx.fillText("", 210, 240);
+        ctx.fillText(xm, 90, 250);
+        ctx.fillText(xb, 150, 250);
+        ctx.fillText("", 210, 250);
         ctx.font = "10px Arial";
 
-        ctx.fillText(sfzh, 50, 260);
-        ctx.fillText(end_year, 160, 260);
+        ctx.fillText(sfzh, 50, 268);
+        ctx.fillText(end_year, 160, 268);
 
         ctx.font = "12px Arial";
-        ctx.fillText(zy, 70, 282);
+        ctx.fillText(zy, 70, 292);
         ctx.fillText(xh, 310, 425);
         //ctx.fillText(xz, 425, 425);
 
-        ctx.fillText(zsbh, 200, 306);
+        ctx.fillText(zsbh, 200, 316);
       }
       if(xxmc == '湖南行政学院'){
-        sealImg.src = '/public/images/seal1@1x.png';
+        if(xxxs == '函授'){
+          sealImg.src = '/public/images/seal2@1x.png';
+        }
+        else{
+          sealImg.src = '/public/images/seal1@1x.png';
+        }
+
       }
       else if (xxmc == '中共湖南省委党校'){
         sealImg.src = '/public/images/seal3@1x.png';
@@ -416,10 +455,19 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 }
 
 function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,Pic) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
+
+  if(Pic != '' && Pic != null){
+    var headIcon = new Image();
+    headIcon.src = Pic;
+    headIcon.onload = function(){
+      ctx.drawImage(headIcon, 360, 460, 100, 135);
+    }
+  }
+
   var myImage = new Image();
 
   myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
@@ -433,39 +481,39 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
       ctx.drawImage(sealImg, 500, 800, sealImg.width / 4, sealImg.height / 4);
 
       ctx.font = "16px Arial";
-      ctx.fillText(bgbh, 560, 505);
-      ctx.fillText(bgrq_year, 560, 532);
-      ctx.fillText(bgrq_month, 638, 532);
-      ctx.fillText(bgrq_day, 680, 532);
+      ctx.fillText(bgbh, 600, 555);
+      ctx.fillText(bgrq_year, 600, 582);
+      ctx.fillText(bgrq_month, 668, 582);
+      ctx.fillText(bgrq_day, 710, 582);
 
       ctx.font = "24px Arial";
-      ctx.fillText(xm, 180, 598);
-      ctx.fillText(xb, 326, 598);
+      ctx.fillText(xm, 180, 623);
+      ctx.fillText(xb, 326, 623);
 
       ctx.font = "16px Arial";
-      ctx.fillText(sfzh, 486, 600);
-      ctx.fillText(start_year, 180, 635);
-      ctx.fillText(start_month, 270, 635);
+      ctx.fillText(sfzh, 486, 622);
+      ctx.fillText(start_year, 180, 660);
+      ctx.fillText(start_month, 270, 660);
 
-      ctx.fillText(end_year, 380, 635);
-      ctx.fillText(end_month, 500, 635);
+      ctx.fillText(end_year, 380, 660);
+      ctx.fillText(end_month, 500, 660);
 
       ctx.font = "22px Arial";
-      ctx.fillText(zy, 180, 680);
-      ctx.fillText(xh, 510, 680);
-      ctx.fillText(xz, 680, 680);
+      ctx.fillText(zy, 180, 700);
+      ctx.fillText(xh, 510, 700);
+      ctx.fillText(xz, 680, 700);
 
-      ctx.fillText(graduate_year, 200, 755);
-      ctx.fillText(graduate_month, 290, 755);
+      ctx.fillText(graduate_year, 200, 780);
+      ctx.fillText(graduate_month, 290, 780);
 
-      ctx.fillText(zsbh, 420, 800);
+      ctx.fillText(zsbh, 425, 825);
     }
     sealImg.src = '/public/images/seal3@2x.png';
   };
 }
 
 function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc) {
+  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc,xxxs) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -482,30 +530,35 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
       ctx.drawImage(sealImg, 500, 790, sealImg.width / 4, sealImg.height / 4);
 
       ctx.font = "16px Arial";
-      ctx.fillText(bgbh, 570, 465);
-      ctx.fillText(bgrq_year, 570, 495);
-      ctx.fillText(bgrq_month, 655, 495);
-      ctx.fillText(bgrq_day, 695, 495);
+      ctx.fillText(bgbh, 570, 485);
+      ctx.fillText(bgrq_year, 570, 514);
+      ctx.fillText(bgrq_month, 655, 514);
+      ctx.fillText(bgrq_day, 695, 514);
 
       ctx.font = "24px Arial";
-      ctx.fillText(xm, 180, 590);
-      ctx.fillText(xb, 326, 590);
-      ctx.fillText("", 486, 590);
+      ctx.fillText(xm, 180, 600);
+      ctx.fillText(xb, 326, 600);
+      ctx.fillText("", 486, 600);
 
       ctx.font = "18px Arial";
-      ctx.fillText(sfzh, 160, 635);
-      ctx.fillText(end_year, 395, 635);
+      ctx.fillText(sfzh, 160, 655);
+      ctx.fillText(end_year, 395, 655);
 
 
       ctx.font = "22px Arial";
-      ctx.fillText(zy, 160, 695);
-      ctx.fillText(xh, 510, 680);
+      ctx.fillText(zy, 160, 713);
+      ctx.fillText(xh, 530, 715);
 
 
-      ctx.fillText(zsbh, 490, 750);
+      ctx.fillText(zsbh, 490, 770);
     }
     if(xxmc == '湖南行政学院'){
-      sealImg.src = '/public/images/seal1@2x.png';
+      if(xxxs == '函授'){
+        sealImg.src = '/public/images/seal2@2x.png';
+      }
+      else{
+        sealImg.src = '/public/images/seal1@2x.png';
+      }
     }
     else if (xxmc == '中共湖南省委党校'){
       sealImg.src = '/public/images/seal3@2x.png';
