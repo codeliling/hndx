@@ -355,7 +355,9 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
       else if (xxmc == '中共中央党校函授学院'){
         sealImg.src = '/public/images/seal4@2x.png';
       }
-
+      else{
+        sealImg.src = '/public/images/seal2@2x.png';
+      }
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
@@ -439,6 +441,9 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
       else if (xxmc == '中共中央党校函授学院'){
         sealImg.src = '/public/images/seal4@2x.png';
       }
+      else{
+        sealImg.src = '/public/images/seal2@2x.png';
+      }
     };
 
   } else if (screenWidth <= 1280) {
@@ -491,6 +496,9 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
       }
       else if (xxmc == '中共中央党校函授学院'){
         sealImg.src = '/public/images/seal4@1x.png';
+      }
+      else{
+        sealImg.src = '/public/images/seal2@2x.png';
       }
     };
 

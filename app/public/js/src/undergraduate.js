@@ -43,6 +43,10 @@ new Vue({
           key: 'bysj'
         },
         {
+          title: '学校名称',
+          key: 'xxmc'
+        },
+        {
           title: '专业名称',
           key: 'zymc'
         },
