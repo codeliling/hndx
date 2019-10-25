@@ -115,7 +115,13 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
         var headIcon = new Image();
         headIcon.src = Pic;
         headIcon.onload = function(){
-          ctx.drawImage(headIcon, 240, 280, 70, 85);
+          if (screenWidth == 2560){
+            ctx.drawImage(headIcon, 230, 280, 70, 85);
+          }
+          else{
+            ctx.drawImage(headIcon, 240, 280, 70, 85);
+          }
+
         }
       }
 

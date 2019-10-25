@@ -53,7 +53,7 @@ class FileController extends BaseController {
           .then(function() {
             var worksheet = workbook.getWorksheet(1);
             if(worksheet.rowCount > 1){
-              countRecord = worksheet.rowCount - 1;
+
               if(fileType == 1){
                 worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
                   if (rowNumber != 1){
@@ -69,9 +69,12 @@ class FileController extends BaseController {
                       Zymc : row.getCell(9).value,
                       Xsf : row.getCell(10).value,
                     };
-                    postgraduateList.push(postgraduate);
+                    if(postgraduate.Xm != '' && postgraduate.Xm != null){
+                      postgraduateList.push(postgraduate);
+                    }
                   }
                 });
+                countRecord = postgraduateList.length;
               }
               else{
                 worksheet.eachRow({ includeEmpty: true },function(row, rowNumber) {
@@ -79,19 +82,24 @@ class FileController extends BaseController {
                     let undergraduate = {
                       xm : row.getCell(1).value,
                       byzh : row.getCell(2).value,
-                      bysj : row.getCell(3).value,
-                      xxmc : row.getCell(4).value,
-                      zymc : row.getCell(5).value,
-                      bj : row.getCell(6).value,
-                      bylb : row.getCell(7).value,
-                      bz : row.getCell(8).value,
-                      xxxs : row.getCell(9).value,
-                      dh : row.getCell(10).value,
-                      xsf : row.getCell(11).value,
+                      rxsj : row.getCell(3).value,
+                      bysj : row.getCell(4).value,
+                      xxmc : row.getCell(5).value,
+                      zymc : row.getCell(6).value,
+                      bj : row.getCell(7).value,
+                      bylb : row.getCell(8).value,
+                      bz : row.getCell(9).value,
+                      xxxs : row.getCell(10).value,
+                      dh : row.getCell(11).value,
+                      xsf : row.getCell(12).value,
                     };
-                    undergraduateList.push(undergraduate);
+                    if(undergraduate.xm != '' && undergraduate.xm != null){
+                      undergraduateList.push(undergraduate);
+                    }
+
                   }
                 });
+                countRecord = undergraduateList.length;
               }
             }
           });
