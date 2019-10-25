@@ -182,33 +182,64 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
 
-        ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 295, 285);
-        ctx.fillText(bgrq_year, 295, 299);
-        ctx.fillText(bgrq_month, 331, 299);
-        ctx.fillText(bgrq_day, 352, 299);
+        if(screenWidth == 1440){
+          ctx.font = "10px Arial";
+         ctx.fillText(bgbh, 315, 300);
+         ctx.fillText(bgrq_year, 315, 315);
+         ctx.fillText(bgrq_month, 355, 315);
+         ctx.fillText(bgrq_day, 377, 315);
 
-        ctx.font = "16px Arial";
-        ctx.fillText(xm, 80, 320);
-        ctx.font = "10px Arial";
-        ctx.fillText(xb, 165, 320);
-        ctx.fillText(sfzh, 245, 320);
-        ctx.fillText(start_year, 90, 338);
-        ctx.fillText(start_month, 140, 338);
+         ctx.font = "16px Arial";
+         ctx.fillText(xm, 80, 335);
+         ctx.font = "10px Arial";
+         ctx.fillText(xb, 175, 335);
+         ctx.fillText(sfzh, 265, 335);
+         ctx.fillText(start_year, 90, 355);
+         ctx.fillText(start_month, 140, 355);
 
-        ctx.fillText(end_year, 210, 338);
-        ctx.fillText(end_month, 250, 338);
+         ctx.fillText(end_year, 210, 358);
+         ctx.fillText(end_month, 260, 358);
 
-        ctx.font = "12px Arial";
-        ctx.fillText(zy, 70, 360);
-        ctx.fillText(xh, 255, 360);
-        ctx.fillText(xz, 340, 360);
+         ctx.font = "12px Arial";
+         ctx.fillText(zy, 70, 380);
+         ctx.fillText(xh, 270, 380);
+         ctx.fillText(xz, 363, 380);
 
-        ctx.fillText(graduate_year, 100, 400);
-        ctx.fillText(graduate_month, 145, 400);
+         ctx.fillText(graduate_year, 100, 420);
+         ctx.fillText(graduate_month, 155, 420);
 
-        ctx.font = "11px Arial";
-        ctx.fillText(zsbh, 220, 422);
+         ctx.font = "11px Arial";
+         ctx.fillText(zsbh, 227, 443);
+        }
+        else{
+          ctx.font = "10px Arial";
+          ctx.fillText(bgbh, 295, 285);
+          ctx.fillText(bgrq_year, 295, 299);
+          ctx.fillText(bgrq_month, 331, 299);
+          ctx.fillText(bgrq_day, 352, 299);
+
+          ctx.font = "16px Arial";
+          ctx.fillText(xm, 80, 320);
+          ctx.font = "10px Arial";
+          ctx.fillText(xb, 165, 320);
+          ctx.fillText(sfzh, 245, 320);
+          ctx.fillText(start_year, 90, 338);
+          ctx.fillText(start_month, 140, 338);
+
+          ctx.fillText(end_year, 210, 338);
+          ctx.fillText(end_month, 250, 338);
+
+          ctx.font = "12px Arial";
+          ctx.fillText(zy, 70, 360);
+          ctx.fillText(xh, 255, 360);
+          ctx.fillText(xz, 340, 360);
+
+          ctx.fillText(graduate_year, 100, 400);
+          ctx.fillText(graduate_month, 145, 400);
+
+          ctx.font = "11px Arial";
+          ctx.fillText(zsbh, 220, 422);
+        }
       }
       sealImg.src = '/public/images/seal3@2x.png';
     };
@@ -357,10 +388,19 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         }
 
         ctx.font = "10px Arial";
-        ctx.fillText(bgbh, 280, 250);
-        ctx.fillText(bgrq_year, 280, 265);
-        ctx.fillText(bgrq_month, 325, 265);
-        ctx.fillText(bgrq_day, 345, 265);
+        if (screenWidth == 1440){
+          ctx.fillText(bgbh, 300, 250);
+          ctx.fillText(bgrq_year, 300, 265);
+          ctx.fillText(bgrq_month, 348, 265);
+          ctx.fillText(bgrq_day, 368, 265);
+        }
+        else{
+          ctx.fillText(bgbh, 280, 250);
+          ctx.fillText(bgrq_year, 280, 265);
+          ctx.fillText(bgrq_month, 325, 265);
+          ctx.fillText(bgrq_day, 345, 265);
+        }
+
 
         ctx.font = "16px Arial";
         ctx.fillText(xm, 100, 315);
@@ -369,8 +409,12 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.font = "12px Arial";
 
         ctx.fillText(sfzh, 60, 330);
-        ctx.fillText(end_year, 195, 337);
-
+        if (screenWidth == 1440){
+          ctx.fillText(end_year, 200, 337);
+        }
+        else{
+          ctx.fillText(end_year, 195, 337);
+        }
         ctx.font = "14px Arial";
         ctx.fillText(zy, 80, 366);
         ctx.fillText(xh, 210, 375);
