@@ -106,7 +106,7 @@ new Vue({
                   },
                   on: {
                     click: () => {
-                      this.remove(params.row.Id)
+                      this.remove(params.row.Id,params.row.Xm)
                     }
                   }
                 }, '删除')
@@ -190,11 +190,11 @@ new Vue({
       }
     },
 
-    remove(Id){
+    remove(Id,xm){
       var that = this;
       this.$Modal.confirm({
         title: '请确认是否删除',
-        content: `删除ID为：${Id} 的数据。`,
+        content: `删除ID为：${Id}，姓名为：${xm} 的数据。`,
         onOk: () => {
           axios.delete('/manage/postgraduate/'+Id).then(function(res) {
             that.$Message.info('删除成功');

@@ -102,20 +102,23 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
   var screenHeight = window.screen.height;
 
   if (screenWidth > 1600) {
-    if(Pic != '' && Pic != null){
-      var headIcon = new Image();
-      headIcon.src = Pic;
-      headIcon.onload = function(){
-        ctx.drawImage(headIcon, 260, 260, 80, 105);
-      }
-    }
 
     var myImage = new Image();
     myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
+
       var scale = canvas.width / myImage.width;
       ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+
+      if(Pic != '' && Pic != null){
+        var headIcon = new Image();
+        headIcon.src = Pic;
+        headIcon.onload = function(){
+          ctx.drawImage(headIcon, 240, 280, 70, 85);
+        }
+      }
+
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 260, 490, sealImg.width / 6, sealImg.height / 6);
@@ -151,13 +154,6 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
-    if(Pic != '' && Pic != null){
-      var headIcon = new Image();
-      headIcon.src = Pic;
-      headIcon.onload = function(){
-        ctx.drawImage(headIcon, 260, 260, 80, 105);
-      }
-    }
 
     var myImage = new Image();
 
@@ -176,6 +172,14 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      }
+
+      if(Pic != '' && Pic != null){
+        var headIcon = new Image();
+        headIcon.src = Pic;
+        headIcon.onload = function(){
+          ctx.drawImage(headIcon, 180, 225, 65, 75);
+        }
       }
 
       var sealImg = new Image();
@@ -245,19 +249,21 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
     };
 
   } else if (screenWidth <= 1280) {
-    if(Pic != '' && Pic != null){
-      var headIcon = new Image();
-      headIcon.src = Pic;
-      headIcon.onload = function(){
-        ctx.drawImage(headIcon, 260, 260, 80, 105);
-      }
-    }
+
     var myImage = new Image();
     myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
+
       var scale = canvas.width / myImage.width;
       ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
+      if(Pic != '' && Pic != null){
+        var headIcon = new Image();
+        headIcon.src = Pic;
+        headIcon.onload = function(){
+          ctx.drawImage(headIcon, 145, 180, 45, 60);
+        }
+      }
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
@@ -511,15 +517,6 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
-
-  if(Pic != '' && Pic != null){
-    var headIcon = new Image();
-    headIcon.src = Pic;
-    headIcon.onload = function(){
-      ctx.drawImage(headIcon, 360, 460, 100, 135);
-    }
-  }
-
   var myImage = new Image();
 
   myImage.src = '/public/images/Postgraduate_Certificate@2x.png';
@@ -527,6 +524,14 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
   myImage.onload = function() {
 
     ctx.drawImage(myImage, 0, 0, myImage.width, myImage.height);
+
+    if(Pic != '' && Pic != null){
+      var headIcon = new Image();
+      headIcon.src = Pic;
+      headIcon.onload = function(){
+        ctx.drawImage(headIcon, 360, 450, 110, 145);
+      }
+    }
 
     var sealImg = new Image();
     sealImg.onload = function() {
