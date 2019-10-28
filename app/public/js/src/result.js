@@ -101,6 +101,10 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
 
+  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth){
+    canvas.width = document.getElementById('rPanel').offsetWidth + 15;
+  }
+
   if (screenWidth > 1600) {
 
     var myImage = new Image();
@@ -109,6 +113,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
+
       ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
 
       if(Pic != '' && Pic != null){
@@ -317,6 +322,10 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
 
+  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth){
+    canvas.width = document.getElementById('rPanel').offsetWidth + 15;
+  }
+  
   if (screenWidth > 1600) {
     var myImage = new Image();
     myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
