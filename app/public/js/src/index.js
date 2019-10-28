@@ -27,13 +27,17 @@ function IEVersion() {
   }
 }
 
+window.onload=function(){
+  var ieVersion = IEVersion();
+  if(ieVersion > 0 && ieVersion <= 9){
+    alert('您的浏览器版本过低，请更换IE10及以上浏览器，或者使用最新版谷歌浏览器');
+  }
+}
+
 $(document).ready(function() {
   var undergraduateType = 1;
   var postgraduateType = 0;
-  var ieVersion = IEVersion();
-  if(ieVersion > 0 && ieVersion <= 9){
-    tips('您的浏览器版本过低，请更换IE10及以上浏览器，或者使用最新版谷歌浏览器');
-  }
+
 
   $("#vertifyCode").click(function() {
     $(this).attr('src', '/getCaptcha?rnd=' + Math.random());

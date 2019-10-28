@@ -27,7 +27,7 @@ function IEVersion() {
   }
 }
 
-function back(){
+function back() {
   window.location.href = "/";
 }
 
@@ -39,7 +39,11 @@ function outputImage() {
     downloadURI(canvas, '学历.png');
   }
 
-  $.post("/manage/statistics/createStatistics",{type:2,xm:downLoadXM,zsbh:downLoadNumber});
+  $.post("/manage/statistics/createStatistics", {
+    type: 2,
+    xm: downLoadXM,
+    zsbh: downLoadNumber
+  });
 }
 
 function saveAsPNG() {
@@ -58,32 +62,22 @@ function downLoad(url) {
 
 
 function downloadURI(canvas, name) {
-  if (navigator.msSaveBlob) { // IE10+
-    let blob = canvas.msToBlob();
-    return navigator.msSaveBlob(blob, name);
+  if (window.navigator.msSaveOrOpenBlob) {
+    var imgData = canvas.msToBlob();
+    var blobObj = new Blob([imgData]);
+    window.navigator.msSaveOrOpenBlob(blobObj, name);
   } else {
-    let uri = canvas.toDataURL("image/png");
-    let link = document.createElement("a");
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    if (link.click) {
-      link.click();
-    } else {
-      let event = document.createEvent('MouseEvents');
-      event.initMouseEvent('click', true, true, window);
-      link.dispatchEvent(event);
-    }
-    document.body.removeChild(link);
-  }
-}
+    var imgData = this.canvas.toDataURL();
+    imgData = imgData.replace("image/png", 'image/octet-stream');
+    var a = document.createElement('a')
+    var event = new MouseEvent('click')
 
-function getQueryStringByName(name) {
-  var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
-  if (result == null || result.length < 1) {
-    return "";
+    a.download = name;
+    // 将生成的URL设置为a.href属性
+    a.href = imgData;
+    // 触发a的单击事件
+    a.dispatchEvent(event)
   }
-  return result[1];
 }
 
 function clearCanvas() {
@@ -92,8 +86,8 @@ function clearCanvas() {
   cxt.clearRect(0, 0, c.width, c.height);
 }
 
-function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,Pic) {
+function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, start_year, start_month, end_year, end_month,
+  zy, xh, xz, graduate_year, graduate_month, zsbh, Pic) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -101,7 +95,7 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
 
-  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth){
+  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
   }
 
@@ -116,14 +110,13 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
       ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
 
-      if(Pic != '' && Pic != null){
+      if (Pic != '' && Pic != null) {
         var headIcon = new Image();
         headIcon.src = Pic;
-        headIcon.onload = function(){
-          if (screenWidth == 2560){
+        headIcon.onload = function() {
+          if (screenWidth == 2560) {
             ctx.drawImage(headIcon, 230, 280, 70, 85);
-          }
-          else{
+          } else {
             ctx.drawImage(headIcon, 240, 280, 70, 85);
           }
 
@@ -175,20 +168,18 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
       var scale = canvas.width / myImage.width;
 
-      if(screenWidth == 1360 || screenWidth == 1366){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
-      }
-      else if (screenWidth == 1440){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.005) * myImage.height  );
-      }
-      else{
+      if (screenWidth == 1360 || screenWidth == 1366) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.015) * myImage.height);
+      } else if (screenWidth == 1440) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.005) * myImage.height);
+      } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
 
-      if(Pic != '' && Pic != null){
+      if (Pic != '' && Pic != null) {
         var headIcon = new Image();
         headIcon.src = Pic;
-        headIcon.onload = function(){
+        headIcon.onload = function() {
           ctx.drawImage(headIcon, 180, 225, 65, 75);
         }
       }
@@ -197,36 +188,35 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
 
-        if(screenWidth == 1440){
+        if (screenWidth == 1440) {
           ctx.font = "10px Arial";
-         ctx.fillText(bgbh, 315, 300);
-         ctx.fillText(bgrq_year, 315, 315);
-         ctx.fillText(bgrq_month, 355, 315);
-         ctx.fillText(bgrq_day, 377, 315);
+          ctx.fillText(bgbh, 315, 300);
+          ctx.fillText(bgrq_year, 315, 315);
+          ctx.fillText(bgrq_month, 355, 315);
+          ctx.fillText(bgrq_day, 377, 315);
 
-         ctx.font = "16px Arial";
-         ctx.fillText(xm, 80, 335);
-         ctx.font = "10px Arial";
-         ctx.fillText(xb, 175, 335);
-         ctx.fillText(sfzh, 265, 335);
-         ctx.fillText(start_year, 90, 355);
-         ctx.fillText(start_month, 140, 355);
+          ctx.font = "16px Arial";
+          ctx.fillText(xm, 80, 335);
+          ctx.font = "10px Arial";
+          ctx.fillText(xb, 175, 335);
+          ctx.fillText(sfzh, 265, 335);
+          ctx.fillText(start_year, 90, 355);
+          ctx.fillText(start_month, 140, 355);
 
-         ctx.fillText(end_year, 210, 358);
-         ctx.fillText(end_month, 260, 358);
+          ctx.fillText(end_year, 210, 358);
+          ctx.fillText(end_month, 260, 358);
 
-         ctx.font = "12px Arial";
-         ctx.fillText(zy, 70, 380);
-         ctx.fillText(xh, 270, 380);
-         ctx.fillText(xz, 363, 380);
+          ctx.font = "12px Arial";
+          ctx.fillText(zy, 70, 380);
+          ctx.fillText(xh, 270, 380);
+          ctx.fillText(xz, 363, 380);
 
-         ctx.fillText(graduate_year, 100, 420);
-         ctx.fillText(graduate_month, 155, 420);
+          ctx.fillText(graduate_year, 100, 420);
+          ctx.fillText(graduate_month, 155, 420);
 
-         ctx.font = "11px Arial";
-         ctx.fillText(zsbh, 227, 443);
-        }
-        else{
+          ctx.font = "11px Arial";
+          ctx.fillText(zsbh, 227, 443);
+        } else {
           ctx.font = "10px Arial";
           ctx.fillText(bgbh, 295, 285);
           ctx.fillText(bgrq_year, 295, 299);
@@ -268,10 +258,10 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
 
       var scale = canvas.width / myImage.width;
       ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
-      if(Pic != '' && Pic != null){
+      if (Pic != '' && Pic != null) {
         var headIcon = new Image();
         headIcon.src = Pic;
-        headIcon.onload = function(){
+        headIcon.onload = function() {
           ctx.drawImage(headIcon, 145, 180, 45, 60);
         }
       }
@@ -313,8 +303,8 @@ function loadPostCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_y
   }
 }
 
-function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc,xxxs) {
+function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, start_year, start_month, end_year, end_month,
+  zy, xh, xz, graduate_year, graduate_month, zsbh, xxmc, xxxs) {
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -322,10 +312,10 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
 
-  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth){
+  if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
   }
-  
+
   if (screenWidth > 1600) {
     var myImage = new Image();
     myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
@@ -359,24 +349,19 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 310, 480);
       }
-      if(xxmc == '湖南行政学院'){
-        if(xxxs == '函授'){
+      if (xxmc == '湖南行政学院') {
+        if (xxxs == '函授') {
           sealImg.src = '/public/images/seal2@2x.png';
-        }
-        else{
+        } else {
           sealImg.src = '/public/images/seal1@2x.png';
         }
-      }
-      else if (xxmc == '中共湖南省委党校'){
+      } else if (xxmc == '中共湖南省委党校') {
         sealImg.src = '/public/images/seal3@2x.png';
-      }
-      else if (xxmc == '中央党校函授学院'){
+      } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
-      }
-      else if (xxmc == '中共中央党校函授学院'){
+      } else if (xxmc == '中共中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
-      }
-      else{
+      } else {
         sealImg.src = '/public/images/seal2@2x.png';
       }
     };
@@ -391,33 +376,29 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
       var scale = canvas.width / myImage.width;
 
-      if(screenWidth == 1360 || screenWidth == 1366){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale + 0.015) * myImage.height  );
-      }
-      else if (screenWidth == 1440){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width , (scale - 0.02) * myImage.height  );
-      }
-      else{
+      if (screenWidth == 1360 || screenWidth == 1366) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.015) * myImage.height);
+      } else if (screenWidth == 1440) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale - 0.02) * myImage.height);
+      } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
 
       var sealImg = new Image();
       sealImg.onload = function() {
-        if(screenWidth == 1440){
+        if (screenWidth == 1440) {
           ctx.drawImage(sealImg, 240, 390, sealImg.width / 6, sealImg.height / 6);
-        }
-        else{
+        } else {
           ctx.drawImage(sealImg, 260, 400, sealImg.width / 8, sealImg.height / 8);
         }
 
         ctx.font = "10px Arial";
-        if (screenWidth == 1440){
+        if (screenWidth == 1440) {
           ctx.fillText(bgbh, 300, 250);
           ctx.fillText(bgrq_year, 300, 265);
           ctx.fillText(bgrq_month, 348, 265);
           ctx.fillText(bgrq_day, 368, 265);
-        }
-        else{
+        } else {
           ctx.fillText(bgbh, 280, 250);
           ctx.fillText(bgrq_year, 280, 265);
           ctx.fillText(bgrq_month, 325, 265);
@@ -432,10 +413,9 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
         ctx.font = "12px Arial";
 
         ctx.fillText(sfzh, 60, 330);
-        if (screenWidth == 1440){
+        if (screenWidth == 1440) {
           ctx.fillText(end_year, 200, 337);
-        }
-        else{
+        } else {
           ctx.fillText(end_year, 195, 337);
         }
         ctx.font = "14px Arial";
@@ -445,24 +425,19 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 260, 395);
       }
-      if(xxmc == '湖南行政学院'){
-        if(xxxs == '函授'){
+      if (xxmc == '湖南行政学院') {
+        if (xxxs == '函授') {
           sealImg.src = '/public/images/seal2@2x.png';
-        }
-        else{
+        } else {
           sealImg.src = '/public/images/seal1@2x.png';
         }
-      }
-      else if (xxmc == '中共湖南省委党校'){
+      } else if (xxmc == '中共湖南省委党校') {
         sealImg.src = '/public/images/seal3@2x.png';
-      }
-      else if (xxmc == '中央党校函授学院'){
+      } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
-      }
-      else if (xxmc == '中共中央党校函授学院'){
+      } else if (xxmc == '中共中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
-      }
-      else{
+      } else {
         sealImg.src = '/public/images/seal2@2x.png';
       }
     };
@@ -500,25 +475,20 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
         ctx.fillText(zsbh, 200, 316);
       }
-      if(xxmc == '湖南行政学院'){
-        if(xxxs == '函授'){
+      if (xxmc == '湖南行政学院') {
+        if (xxxs == '函授') {
           sealImg.src = '/public/images/seal2@1x.png';
-        }
-        else{
+        } else {
           sealImg.src = '/public/images/seal1@1x.png';
         }
 
-      }
-      else if (xxmc == '中共湖南省委党校'){
+      } else if (xxmc == '中共湖南省委党校') {
         sealImg.src = '/public/images/seal3@1x.png';
-      }
-      else if (xxmc == '中央党校函授学院'){
+      } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@1x.png';
-      }
-      else if (xxmc == '中共中央党校函授学院'){
+      } else if (xxmc == '中共中央党校函授学院') {
         sealImg.src = '/public/images/seal4@1x.png';
-      }
-      else{
+      } else {
         sealImg.src = '/public/images/seal2@2x.png';
       }
     };
@@ -527,8 +497,8 @@ function loadUnderCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_
 
 }
 
-function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,Pic) {
+function loadPostgraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, start_year, start_month, end_year, end_month,
+  zy, xh, xz, graduate_year, graduate_month, zsbh, Pic) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -540,10 +510,10 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
 
     ctx.drawImage(myImage, 0, 0, myImage.width, myImage.height);
 
-    if(Pic != '' && Pic != null){
+    if (Pic != '' && Pic != null) {
       var headIcon = new Image();
       headIcon.src = Pic;
-      headIcon.onload = function(){
+      headIcon.onload = function() {
         ctx.drawImage(headIcon, 360, 450, 110, 145);
       }
     }
@@ -584,8 +554,8 @@ function loadPostgraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,s
   };
 }
 
-function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,sfzh,start_year,start_month,end_year,end_month,
-  zy,xh,xz,graduate_year,graduate_month,zsbh,xxmc,xxxs) {
+function loadUndergraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, start_year, start_month, end_year, end_month,
+  zy, xh, xz, graduate_year, graduate_month, zsbh, xxmc, xxxs) {
   var canvas = document.getElementById('downLoadCanvas');
 
   var ctx = canvas.getContext('2d');
@@ -624,22 +594,199 @@ function loadUndergraduateBigCertifate(xm,bgbh,bgrq_year,bgrq_month,bgrq_day,xb,
 
       ctx.fillText(zsbh, 490, 770);
     }
-    if(xxmc == '湖南行政学院'){
-      if(xxxs == '函授'){
+    if (xxmc == '湖南行政学院') {
+      if (xxxs == '函授') {
         sealImg.src = '/public/images/seal2@2x.png';
-      }
-      else{
+      } else {
         sealImg.src = '/public/images/seal1@2x.png';
       }
-    }
-    else if (xxmc == '中共湖南省委党校'){
+    } else if (xxmc == '中共湖南省委党校') {
       sealImg.src = '/public/images/seal3@2x.png';
-    }
-    else if (xxmc == '中央党校函授学院'){
+    } else if (xxmc == '中央党校函授学院') {
       sealImg.src = '/public/images/seal4@2x.png';
-    }
-    else if (xxmc == '中共中央党校函授学院'){
+    } else if (xxmc == '中共中央党校函授学院') {
       sealImg.src = '/public/images/seal4@2x.png';
     }
   };
 }
+
+var downLoadXM = '';
+var downLoadNumber = "";
+
+function searchFailure() {
+  $.toast({
+    heading: 'Error',
+    text: '查询失败，返回重试!',
+    showHideTransition: 'fade',
+    position: 'mid-center',
+    icon: 'error'
+  })
+  setTimeout(function() {
+    window.location.href = '/';
+  }, 2000);
+}
+
+function getQueryStringByName(name) {
+  var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+  if (result == null || result.length < 1) {
+    return "";
+  }
+  return result[1];
+}
+
+(function() {
+  var type = getQueryStringByName('type');
+  var number = getQueryStringByName('number');
+  downLoadNumber = number;
+  // 点击按钮触发get请求
+  var requestUrl = "";
+
+  if (type == 1) {
+    requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
+  } else {
+    requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
+  }
+
+  $.get(requestUrl, function(data, textStatus) {
+    if (textStatus) {
+      if (data.status == 200 && data.data != null) {
+        var xm = "";
+        var byzh = "";
+        var bysj = "";
+        var rxsj = "";
+        var xxmc = "";
+        var zymc = "";
+        var bj = "";
+        var bylb = "";
+        var bz = "";
+        var xxxs = "";
+        var xsf = "";
+        var Pic = "";
+        var Sfzh = "";
+        var xb = "";
+        var Xh = "";
+
+        if (type == 1) {
+          xm = data.data.xm; //姓名
+          byzh = data.data.byzh; //毕业证号
+          zymc = data.data.zymc; //专业名称
+
+          bysj = data.data.bysj; //毕业时间
+          rxsj = data.data.rxsj; //入学时间
+          xxmc = data.data.xxmc; //学校名称
+          bj = data.data.bj; //班级
+          bylb = data.data.bylb; //毕业类别
+          bz = data.data.bz; //备注
+          xxxs = data.data.xxxs; //学习形式
+          xsf = data.data.xsf;
+
+          $("#byrqValue").text(bysj);
+          $("#xxxsValue").text(xxxs);
+
+          $("#xbTitle").text('毕业类别');
+          $("#xbValue").text(bylb);
+
+          $("#rxrqTitle").text('入学时间');
+          $("#rxrqValue").text(rxsj);
+
+          $("#xllbValue").text(bylb);
+        } else {
+          byzh = data.data.Byzh; //毕业证号
+          Pic = data.data.Pic; //图像
+          xm = data.data.Xm; //姓名
+          var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+          if (regIdNo.test(data.data.Sfzh)) {
+            Sfzh = data.data.Sfzh; //身份证号
+          }
+
+          $("#byrqTitle").text('身份证号');
+          $("#byrqValue").text(Sfzh);
+
+          xb = data.data.Xb; //性别
+          $("#xbValue").text(xb);
+
+          rxsj = data.data.Rxsj; //入学时间
+          $("#rxrqValue").text(rxsj);
+          bysj = data.data.Bysj;
+
+          Xh = data.data.Xh; //学号
+          $("#xllbTitle").text('学号');
+          $("#xllbValue").text(Xh);
+
+          zymc = data.data.Zymc; //专业名称
+          xsf = data.data.Xsf;
+        }
+
+        $("#xmValue").text(xm);
+        $("#zsbhValue").text(byzh);
+        $("#zymcValue").text(zymc);
+
+        var date = new Date();
+
+        var bgbh = byzh;
+        var bgrq_year = date.getFullYear();
+        var bgrq_month = date.getMonth() + 1;
+        var bgrq_day = date.getDate();
+
+        var start_year = "";
+        var start_month = "";
+        if (rxsj != "" && rxsj != null) {
+          var rxsjDate = rxsj.split('-');
+          start_year = rxsjDate[0];
+          start_month = rxsjDate[1];
+        }
+        var end_year = "";
+        var end_month = "";
+        var graduate_year = "";
+        var graduate_month = "";
+        if (bysj != "" && bysj != null) {
+          var bysjDate = bysj.split('-');
+          end_year = bysjDate[0];
+          graduate_year = bysjDate[0];
+          end_month = bysjDate[1];
+          graduate_month = bysjDate[1];
+        }
+
+        var xz = "3";
+
+        downLoadXM = xm;
+
+        if (type == 1) //本科
+        {
+          loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
+            start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, xxmc, xxxs);
+
+          loadUndergraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
+            start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, xxmc, xxxs);
+
+        } else {
+
+          loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
+            start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, Pic);
+
+          loadPostgraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
+            start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, Pic);
+        }
+
+      } else {
+        $.toast({
+          heading: 'Error',
+          text: '获取数据失败，请稍后重试!',
+          showHideTransition: 'fade',
+          position: 'mid-center',
+          icon: 'error'
+        })
+      }
+    } else {
+      $.toast({
+        heading: 'Error',
+        text: '获取数据失败，请稍后重试!',
+        showHideTransition: 'fade',
+        position: 'mid-center',
+        icon: 'error'
+      })
+    }
+  })
+
+
+})();

@@ -206,11 +206,11 @@
           </div>
           <div class="bottom">
             <div class="bottomLeft">
-              <a href="/">网站首页</a>&nbsp&nbsp|&nbsp&nbsp<a href="/manageLogin" target="_blank">网站后台</a>
+              <a href="/">网站首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/manageLogin" target="_blank">网站后台</a>
             </div>
             <div class="bottomRight">
               <p>
-                中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp&nbsp 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
+                中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp;&nbsp; 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
               </p>
             </div>
           </div>
@@ -219,182 +219,8 @@
       <canvas id="downLoadCanvas" width="858px" height="1214px" style="border:0px;position:absolute;top:2000px;left:0px;display:none"></canvas>
 
 </body>
-<script src="/public/js/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/public/js/lib/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script src="/public/js/src/result.js"></script>
-<script>
-  var downLoadXM = '';
-  var downLoadNumber = "";
-
-  function searchFailure() {
-    $.toast({
-      heading: 'Error',
-      text: '查询失败，返回重试!',
-      showHideTransition: 'fade',
-      position: 'mid-center',
-      icon: 'error'
-    })
-    setTimeout(function() {
-      window.location.href = '/';
-    }, 2000);
-  }
-
-  (function() {
-    var type = getQueryStringByName('type');
-    var number = getQueryStringByName('number');
-    downLoadNumber = number;
-    // 点击按钮触发get请求
-    var requestUrl = "";
-
-    if (type == 1) {
-      requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
-    } else {
-      requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
-    }
-
-    $.get(requestUrl, function(data, textStatus) {
-      if (textStatus) {
-        if (data.status == 200 && data.data != null) {
-          var xm = "";
-          var byzh = "";
-          var bysj = "";
-          var rxsj = "";
-          var xxmc = "";
-          var zymc = "";
-          var bj = "";
-          var bylb = "";
-          var bz = "";
-          var xxxs = "";
-          var xsf = "";
-          var Pic = "";
-          var Sfzh = "";
-          var xb = "";
-          var Xh = "";
-
-          if (type == 1) {
-            xm = data.data.xm; //姓名
-            byzh = data.data.byzh; //毕业证号
-            zymc = data.data.zymc; //专业名称
-
-            bysj = data.data.bysj; //毕业时间
-            rxsj = data.data.rxsj; //入学时间
-            xxmc = data.data.xxmc; //学校名称
-            bj = data.data.bj; //班级
-            bylb = data.data.bylb; //毕业类别
-            bz = data.data.bz; //备注
-            xxxs = data.data.xxxs; //学习形式
-            xsf = data.data.xsf;
-
-            $("#byrqValue").text(bysj);
-            $("#xxxsValue").text(xxxs);
-
-            $("#xbTitle").text('毕业类别');
-            $("#xbValue").text(bylb);
-
-            $("#rxrqTitle").text('入学时间');
-            $("#rxrqValue").text(rxsj);
-
-            $("#xllbValue").text(bylb);
-          } else {
-            byzh = data.data.Byzh; //毕业证号
-            Pic = data.data.Pic; //图像
-            xm = data.data.Xm; //姓名
-            var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-            if(regIdNo.test(data.data.Sfzh)){
-                Sfzh = data.data.Sfzh; //身份证号
-            }
-
-            $("#byrqTitle").text('身份证号');
-            $("#byrqValue").text(Sfzh);
-
-            xb = data.data.Xb; //性别
-            $("#xbValue").text(xb);
-
-            rxsj = data.data.Rxsj; //入学时间
-            $("#rxrqValue").text(rxsj);
-            bysj = data.data.Bysj;
-
-            Xh = data.data.Xh; //学号
-            $("#xllbTitle").text('学号');
-            $("#xllbValue").text(Xh);
-
-            zymc = data.data.Zymc; //专业名称
-            xsf = data.data.Xsf;
-          }
-
-           $("#xmValue").text(xm);
-           $("#zsbhValue").text(byzh);
-           $("#zymcValue").text(zymc);
-
-          var date = new Date();
-
-          var bgbh = byzh;
-          var bgrq_year = date.getFullYear();
-          var bgrq_month = date.getMonth() + 1;
-          var bgrq_day = date.getDate();
-
-          var start_year = "";
-          var start_month = "";
-          if(rxsj != "" && rxsj != null){
-            var rxsjDate = rxsj.split('-');
-            start_year = rxsjDate[0];
-            start_month = rxsjDate[1];
-          }
-          var end_year = "";
-          var end_month = "";
-          var graduate_year = "";
-          var graduate_month = "";
-          if(bysj != "" && bysj != null){
-            var bysjDate = bysj.split('-');
-            end_year = bysjDate[0];
-            graduate_year = bysjDate[0];
-            end_month = bysjDate[1];
-            graduate_month =  bysjDate[1];
-          }
-
-          var xz = "3";
-
-          downLoadXM = xm;
-
-          if (type == 1) //本科
-          {
-            loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
-              start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh,xxmc,xxxs);
-
-            loadUndergraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
-              start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh,xxmc,xxxs);
-
-          } else {
-
-            loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
-              start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, Pic);
-
-            loadPostgraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, Sfzh, start_year,
-              start_month, end_year, end_month, zymc, Xh, xz, graduate_year, graduate_month, byzh, Pic);
-          }
-
-        } else {
-          $.toast({
-            heading: 'Error',
-            text: '获取数据失败，请稍后重试!',
-            showHideTransition: 'fade',
-            position: 'mid-center',
-            icon: 'error'
-          })
-        }
-      } else {
-        $.toast({
-          heading: 'Error',
-          text: '获取数据失败，请稍后重试!',
-          showHideTransition: 'fade',
-          position: 'mid-center',
-          icon: 'error'
-        })
-      }
-    })
-
-
-  })();
-</script>
 
 </html>
