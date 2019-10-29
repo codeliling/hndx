@@ -169,9 +169,11 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
       var scale = canvas.width / myImage.width;
 
       if (screenWidth == 1360 || screenWidth == 1366) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.015) * myImage.height);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
       } else if (screenWidth == 1440) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.005) * myImage.height);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+      }else if (screenWidth == 1600) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width /1.07, scale * myImage.height / 1.03);
       } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
@@ -180,7 +182,13 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
         var headIcon = new Image();
         headIcon.src = Pic;
         headIcon.onload = function() {
-          ctx.drawImage(headIcon, 180, 225, 65, 75);
+          if (screenWidth == 1440){
+            ctx.drawImage(headIcon, 180, 235, 65, 75);
+          }
+          else{
+            ctx.drawImage(headIcon, 180, 225, 65, 75);
+          }
+
         }
       }
 
@@ -257,7 +265,7 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.19, scale * myImage.height / 1.19);
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
         headIcon.src = Pic;
