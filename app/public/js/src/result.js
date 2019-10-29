@@ -94,6 +94,7 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
   var ctx = canvas.getContext('2d');
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
+  var UserAgent = navigator.userAgent.toLowerCase();
 
   if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
@@ -110,10 +111,18 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
       var ieVersion = IEVersion();
       if (ieVersion == 9 || ieVersion == 10) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
+      }else if(ieVersion == 11){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+      }
+      else if(/metasr/.test(UserAgent)){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+      }else if(/360se/.test(UserAgent)){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
+
 
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
@@ -177,6 +186,13 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
         ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
       } else if (screenWidth == 1440) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+      }else if (screenWidth == 1400) {
+        if(IEVersion() != -1){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.07, scale * myImage.height/1.04);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+        }
       }else if (screenWidth == 1600) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width /1.07, scale * myImage.height / 1.03);
       } else {
@@ -324,6 +340,7 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
   var ctx = canvas.getContext('2d');
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
+  var UserAgent = navigator.userAgent.toLowerCase();
 
   if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
@@ -335,7 +352,20 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      var ieVersion = IEVersion();
+      if (ieVersion == 9 || ieVersion == 10) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
+      }else if(ieVersion == 11){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+      }else if(/metasr/.test(UserAgent)){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+      }else if(/360se/.test(UserAgent)){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      }
+
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 300, 480, sealImg.width / 6, sealImg.height / 6);
@@ -392,9 +422,22 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
       if (screenWidth == 1360 || screenWidth == 1366) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
       }else if(screenWidth == 1600){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height / 1.04);
+        var ieVersion = IEVersion();
+        if(ieVersion != -1){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height / 1.04);
+        }else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height / 1.04);
+        }
+
       } else if (screenWidth == 1440) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height / 1.07);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.07);
+      }else if (screenWidth == 1400) {
+        if(IEVersion() != -1){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height/1.03);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
+        }
       } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
@@ -463,7 +506,14 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.17, scale * myImage.height / 1.18);
+      var ieVersion = IEVersion();
+      if(ieVersion != -1){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.2, scale * myImage.height / 1.2);
+      }else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.17, scale * myImage.height / 1.18);
+      }
+
+
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
