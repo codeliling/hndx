@@ -385,9 +385,11 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
       var scale = canvas.width / myImage.width;
 
       if (screenWidth == 1360 || screenWidth == 1366) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale + 0.015) * myImage.height);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
+      }else if(screenWidth == 1600){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height / 1.04);
       } else if (screenWidth == 1440) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, (scale - 0.02) * myImage.height);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height / 1.07);
       } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
@@ -456,7 +458,7 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.15, scale * myImage.height / 1.15);
+      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.17, scale * myImage.height / 1.18);
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
