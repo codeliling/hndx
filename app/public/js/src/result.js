@@ -107,8 +107,13 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      var ieVersion = IEVersion();
+      if (ieVersion == 9 || ieVersion == 10) {
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+      }
 
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
