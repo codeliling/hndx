@@ -125,11 +125,11 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
         }
       }
       else if(screenWidth == 2560){
-        if(/Firefox/.test(UserAgent) || /Chrome/.test(UserAgent)){
+        if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
         }
-        else if(/Safari/.test(UserAgent)){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width/0.92, scale * myImage.height / 0.92);
+        else if(/safari/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 0.99);
         }
         else{
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
@@ -202,7 +202,16 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
       if (screenWidth == 1360 || screenWidth == 1366) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
       } else if (screenWidth == 1440) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+        if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+        }
+        else if(/safari/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 0.99);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+        }
+
       }else if (screenWidth == 1400) {
         if(IEVersion() != -1){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.07, scale * myImage.height/1.04);
@@ -385,10 +394,10 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
         }
       }
       else if(screenWidth == 2560){
-        if(/Firefox/.test(UserAgent) || /Chrome/.test(UserAgent)){
+        if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
         }
-        else if(/Safari/.test(UserAgent)){
+        else if(/safari/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/0.92, scale * myImage.height / 0.92);
         }
         else{
@@ -463,7 +472,16 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
         }
 
       } else if (screenWidth == 1440) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.07);
+        if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.07);
+        }
+        else if(/safari/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 1.03);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.07);
+        }
+
       }else if (screenWidth == 1400) {
         if(IEVersion() != -1){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height/1.03);
