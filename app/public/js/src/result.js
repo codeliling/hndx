@@ -88,6 +88,7 @@ function clearCanvas() {
 
 function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, start_year, start_month, end_year, end_month,
   zy, xh, xz, graduate_year, graduate_month, zsbh, Pic) {
+  var browser = whyun.browser || {};
   var canvas = document.getElementById('myCanvas');
   canvas.width = document.getElementById('rPanel').offsetWidth;
   canvas.height = document.getElementById('rPanel').offsetHeight;
@@ -117,7 +118,7 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
         }
         else if(/metasr/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
-        }else if(/360se/.test(UserAgent)){
+        }else if(/360se/.test(UserAgent) || /360ee/.test(JSON.stringify(browser.browser))){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
         }
         else{
@@ -367,6 +368,7 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
   var screenWidth = window.screen.width;
   var screenHeight = window.screen.height;
   var UserAgent = navigator.userAgent.toLowerCase();
+  var browser = whyun.browser || {};
 
   if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
@@ -386,7 +388,7 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
         }else if(/metasr/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
-        }else if(/360se/.test(UserAgent)){
+        }else if(/360se/.test(UserAgent) || /360ee/.test(JSON.stringify(browser.browser))){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
         }
         else{
