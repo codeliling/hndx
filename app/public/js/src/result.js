@@ -109,15 +109,32 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
 
       var scale = canvas.width / myImage.width;
       var ieVersion = IEVersion();
-      if (ieVersion == 9 || ieVersion == 10) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
-      }else if(ieVersion == 11){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+      if(screenWidth == 1920){
+        if (ieVersion == 9 || ieVersion == 10) {
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
+        }else if(ieVersion == 11){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+        }
+        else if(/metasr/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+        }else if(/360se/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+        }
       }
-      else if(/metasr/.test(UserAgent)){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
-      }else if(/360se/.test(UserAgent)){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+      else if(screenWidth == 2560){
+        if(/Firefox/.test(UserAgent) || /Chrome/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
+        }
+        else if(/Safari/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/0.92, scale * myImage.height / 0.92);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
+        }
+
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
@@ -352,15 +369,31 @@ function loadUnderCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh,
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
-      var ieVersion = IEVersion();
-      if (ieVersion == 9 || ieVersion == 10) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
-      }else if(ieVersion == 11){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
-      }else if(/metasr/.test(UserAgent)){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
-      }else if(/360se/.test(UserAgent)){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+      if(screenWidth == 1920){
+        var ieVersion = IEVersion();
+        if (ieVersion == 9 || ieVersion == 10) {
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
+        }else if(ieVersion == 11){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+        }else if(/metasr/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+        }else if(/360se/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
+        }
+      }
+      else if(screenWidth == 2560){
+        if(/Firefox/.test(UserAgent) || /Chrome/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
+        }
+        else if(/Safari/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/0.92, scale * myImage.height / 0.92);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
+        }
       }
       else{
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
