@@ -144,7 +144,12 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
 
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
-        headIcon.src = Pic;
+        if(Pic.indexOf('pic') > 0){
+          headIcon.src = '/public/images/postgraduateImages/' + Pic;
+        }
+        else{
+          headIcon.src = Pic;
+        }
         headIcon.onload = function() {
           if (screenWidth == 2560) {
             ctx.drawImage(headIcon, 230, 280, 70, 85);
@@ -228,7 +233,12 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
 
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
-        headIcon.src = Pic;
+        if(Pic.indexOf('pic') > 0){
+          headIcon.src = '/public/images/postgraduateImages/' + Pic;
+        }
+        else{
+          headIcon.src = Pic;
+        }
         headIcon.onload = function() {
           if (screenWidth == 1440){
             ctx.drawImage(headIcon, 180, 235, 65, 75);
@@ -316,7 +326,12 @@ function loadPostCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day, xb, sfzh, 
       ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.19, scale * myImage.height / 1.19);
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
-        headIcon.src = Pic;
+        if(Pic.indexOf('pic') > 0){
+          headIcon.src = '/public/images/postgraduateImages/' + Pic;
+        }
+        else{
+          headIcon.src = Pic;
+        }
         headIcon.onload = function() {
           ctx.drawImage(headIcon, 145, 180, 45, 60);
         }
@@ -630,7 +645,12 @@ function loadPostgraduateBigCertifate(xm, bgbh, bgrq_year, bgrq_month, bgrq_day,
 
     if (Pic != '' && Pic != null) {
       var headIcon = new Image();
-      headIcon.src = Pic;
+      if(Pic.indexOf('pic') > 0){
+        headIcon.src = '/public/images/postgraduateImages/' + Pic;
+      }
+      else{
+        headIcon.src = Pic;
+      }
       headIcon.onload = function() {
         ctx.drawImage(headIcon, 360, 450, 110, 145);
       }
