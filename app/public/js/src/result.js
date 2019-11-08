@@ -164,29 +164,43 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 300, 490, sealImg.width / 7, sealImg.height / 7);
 
-        ctx.font = "12px bold SimSun";
-        ctx.fillText(bgbh, 375, 325);
-        ctx.fillText(bgrq, 375, 342);
+        if(screenWidth == 2560){
+          ctx.font = "12px bold SimSun";
+          ctx.fillText(bgbh, 375, 325);
+          ctx.fillText(bgrq, 375, 342);
+          ctx.fillText(xm, 100, 392);
+          ctx.fillText(xb, 210, 392);
+          ctx.fillText(sfzh, 305, 392);
+          ctx.fillText(start_year, 85, 415);
+          ctx.fillText(start_month, 140, 415);
+          ctx.fillText(end_year, 190, 415);
+          ctx.fillText(end_month, 245, 415);
+          ctx.fillText(zy, 290, 415);
+          ctx.fillText(xh, 120, 441);
+          ctx.fillText(xz, 225, 440);
+          ctx.fillText(graduate_year, 320, 466);
+          ctx.fillText(graduate_month, 370, 466);
+          ctx.fillText(zsbh, 265, 518);
+        }
+        else{
+          ctx.font = "12px bold SimSun";
+          ctx.fillText(bgbh, 377, 325);
+          ctx.fillText(bgrq, 377, 342);
+          ctx.fillText(xm, 100, 392);
+          ctx.fillText(xb, 210, 392);
+          ctx.fillText(sfzh, 308, 392);
+          ctx.fillText(start_year, 85, 416);
+          ctx.fillText(start_month, 140, 416);
+          ctx.fillText(end_year, 190, 416);
+          ctx.fillText(end_month, 245, 416);
+          ctx.fillText(zy, 290, 416);
+          ctx.fillText(xh, 120, 441);
+          ctx.fillText(xz, 225, 440);
+          ctx.fillText(graduate_year, 323, 467);
+          ctx.fillText(graduate_month, 375, 467);
+          ctx.fillText(zsbh, 270, 519);
+        }
 
-        ctx.font = "12px bold SimSun";
-        ctx.fillText(xm, 100, 392);
-
-        ctx.fillText(xb, 210, 392);
-        ctx.fillText(sfzh, 305, 392);
-        ctx.fillText(start_year, 85, 415);
-        ctx.fillText(start_month, 140, 415);
-
-        ctx.fillText(end_year, 190, 415);
-        ctx.fillText(end_month, 245, 415);
-
-        ctx.fillText(zy, 290, 415);
-        ctx.fillText(xh, 120, 441);
-        //ctx.fillText(xz, 425, 438);
-
-        ctx.fillText(graduate_year, 320, 466);
-        ctx.fillText(graduate_month, 370, 466);
-
-        ctx.fillText(zsbh, 265, 518);
       }
       sealImg.src = '/public/images/seal3@2x.png';
     };
@@ -268,7 +282,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
           ctx.fillText(zy, 233, 361);
           ctx.fillText(xh, 100, 385);
-          //ctx.fillText(xz, 363, 380);
+          ctx.fillText(xz, 179, 380);
 
           ctx.fillText(graduate_year, 265, 405);
           ctx.fillText(graduate_month, 310, 406);
@@ -292,7 +306,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
           ctx.fillText(zy, 220, 340);
           ctx.fillText(xh, 90, 360);
-          //ctx.fillText(xz, 340, 360);
+          ctx.fillText(xz, 179, 360);
 
           ctx.fillText(graduate_year, 260, 382);
           ctx.fillText(graduate_month, 295, 382);
@@ -344,7 +358,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
         ctx.fillText(zy, 180, 272);
         ctx.fillText(xh,75, 290);
-        //ctx.fillText(xz, 278, 287);
+        ctx.fillText(xz, 148, 290);
 
         ctx.fillText(graduate_year, 206, 306);
         ctx.fillText(graduate_month, 245, 306);
@@ -374,7 +388,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
   if (screenWidth > 1600) {
     var myImage = new Image();
     if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-      myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+      myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
     }
     else{
       myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
@@ -414,20 +428,35 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
 
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 300, 450, sealImg.width / 7, sealImg.height / 7);
+        ctx.drawImage(sealImg, 300, 456, sealImg.width / 7, sealImg.height / 7);
+        if(screenWidth == 2560){
+          ctx.font = "12px bold SimSun";
+          ctx.fillText(bgbh, 350,284);
+          ctx.fillText(bgrq, 350,300);
 
-        ctx.font = "12px bold SimSun";
-        ctx.fillText(bgbh, 350,286);
-        ctx.fillText(bgrq, 350,302);
+          ctx.font = "16px bold SimSun";
+          ctx.fillText(xm, 110, 355);
 
-        ctx.font = "16px bold SimSun";
-        ctx.fillText(xm, 110, 357);
+          ctx.fillText(end_year, 205,355);
 
-        ctx.fillText(end_year, 206,356);
+          ctx.fillText(zy, 88,386);
 
-        ctx.fillText(zy, 88,390);
+          ctx.fillText(zsbh, 310, 418);
+        }
+        else{
+          ctx.font = "12px bold SimSun";
+          ctx.fillText(bgbh, 350,290);
+          ctx.fillText(bgrq, 350,305);
 
-        ctx.fillText(zsbh, 310, 420);
+          ctx.font = "16px bold SimSun";
+          ctx.fillText(xm, 110, 360);
+
+          ctx.fillText(end_year, 208,360);
+
+          ctx.fillText(zy, 88,391);
+
+          ctx.fillText(zsbh, 310, 423);
+        }
       }
       if (xxmc == '湖南行政学院') {
         if (xxxs == '函授') {
@@ -449,7 +478,12 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
     var myImage = new Image();
 
-    myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    }
     myImage.style.cssText = "transform:scale(0.5)";
 
     myImage.onload = function() {
@@ -538,7 +572,12 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
 
   } else if (screenWidth <= 1280) {
     var myImage = new Image();
-    myImage.src = '/public/images/Undergraduate_Certificate@1x.png';
+    if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center@1x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate@1x.png';
+    }
     myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
@@ -637,7 +676,7 @@ function loadPostgraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, star
 
       ctx.fillText(zy, 460, 668);
       ctx.fillText(xh, 190, 708);
-      //ctx.fillText(xz, 680, 700);
+      ctx.fillText(xz, 680, 700);
 
       ctx.fillText(graduate_year, 500, 750);
       ctx.fillText(graduate_month, 595, 750);
@@ -671,9 +710,9 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
     sealImg.onload = function() {
       ctx.drawImage(sealImg, 500, 720, sealImg.width / 5, sealImg.height / 5);
 
-      ctx.font = "16px bold SimSun";
-      ctx.fillText(bgbh, 570, 456);
-      ctx.fillText(bgrq, 570, 485);
+      ctx.font = "17px bold SimSun";
+      ctx.fillText(bgbh, 570, 457);
+      ctx.fillText(bgrq, 570, 486);
 
       ctx.font = "26px SimSun";
       ctx.fillText(xm, 180,575);
