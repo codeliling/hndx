@@ -676,7 +676,7 @@ function loadPostgraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, star
 
       ctx.fillText(zy, 460, 668);
       ctx.fillText(xh, 190, 708);
-      ctx.fillText(xz, 680, 700);
+      ctx.fillText(xz, 362, 708);
 
       ctx.fillText(graduate_year, 500, 750);
       ctx.fillText(graduate_month, 595, 750);
@@ -695,7 +695,7 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
   var myImage = new Image();
 
   if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-    myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
   }
   else{
     myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
@@ -717,7 +717,7 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
       ctx.font = "26px SimSun";
       ctx.fillText(xm, 180,575);
 
-      ctx.fillText(end_year, 335, 571);
+      ctx.fillText(end_year, 334, 574);
 
       ctx.fillText(zy, 140, 625);
       ctx.fillText(xh, 530, 715);
