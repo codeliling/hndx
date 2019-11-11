@@ -100,6 +100,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
   if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
   }
+  var ieVersion = IEVersion();
 
   if (screenWidth > 1600) {
 
@@ -109,7 +110,6 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-      var ieVersion = IEVersion();
       if(screenWidth == 1920){
         if (ieVersion == 9 || ieVersion == 10) {
           ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
@@ -130,7 +130,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
         }
         else if(/safari/.test(UserAgent)){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 0.99);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.03);
         }
         else{
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
@@ -216,28 +216,39 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
       var scale = canvas.width / myImage.width;
 
-      if (screenWidth == 1360 || screenWidth == 1366) {
+      if (screenWidth == 1360) {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
-      } else if (screenWidth == 1440) {
+      }else if(screenWidth == 1366){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.02);
+      }else if (screenWidth == 1440) {
         if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/0.99);
         }
         else if(/safari/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 0.99);
         }
         else{
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.01);
         }
 
       }else if (screenWidth == 1400) {
-        if(IEVersion() != -1){
+        if(ieVersion == 11){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.07, scale * myImage.height/1.02);
+        }
+        else if(ieVersion != 11 && ieVersion != -1){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.07, scale * myImage.height/1.04);
+        }
+        else if(ieVersion == 'edge'){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.07, scale * myImage.height/1.05);
+        }
+        else if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
         }
         else{
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.05, scale * myImage.height/1.02);
         }
       }else if (screenWidth == 1600) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width /1.07, scale * myImage.height / 1.03);
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width /1.07, scale * myImage.height / 1.04);
       } else {
         ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height);
       }
@@ -263,14 +274,19 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
       var sealImg = new Image();
       sealImg.onload = function() {
-        ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
+        if(screenWidth == 1440){
+          ctx.drawImage(sealImg, 250, 420, sealImg.width / 8, sealImg.height / 8);
+        }
+        else{
+          ctx.drawImage(sealImg, 240, 420, sealImg.width / 8, sealImg.height / 8);
+        }
 
         if (screenWidth == 1440) {
           ctx.font = "10px SimSun";
           ctx.fillText(bgbh, 315, 280);
           ctx.fillText(bgrq, 315, 295);
 
-          ctx.font = "12px SimSun";
+          ctx.font = "11px SimSun";
           ctx.fillText(xm, 80, 340);
           ctx.fillText(xb, 175, 340);
           ctx.fillText(sfzh, 255, 340);
@@ -281,15 +297,14 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
           ctx.fillText(end_month, 203, 360);
 
           ctx.fillText(zy, 233, 361);
-          ctx.fillText(xh, 100, 385);
-          ctx.fillText(xz, 179, 380);
 
-          ctx.fillText(graduate_year, 265, 405);
-          ctx.fillText(graduate_month, 310, 406);
-
-          ctx.font = "11px SimSun";
+          ctx.fillText(xh, 100, 382);
+          ctx.fillText(xz, 188, 383);
+          ctx.fillText(graduate_year, 269, 404);
+          ctx.fillText(graduate_month, 308, 404);
           ctx.fillText(zsbh, 227, 448);
-        } else {
+        }
+        else {
           ctx.font = "10px SimSun";
           ctx.fillText(bgbh, 295, 265);
           ctx.fillText(bgrq, 295, 279);
@@ -305,11 +320,23 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
           ctx.fillText(end_month, 195, 340);
 
           ctx.fillText(zy, 220, 340);
-          ctx.fillText(xh, 90, 360);
+          if(screenWidth == 1366){
+            ctx.fillText(xh, 96, 360);
+          }
+          else{
+            ctx.fillText(xh, 90, 360);
+          }
+
           ctx.fillText(xz, 179, 360);
 
-          ctx.fillText(graduate_year, 260, 382);
-          ctx.fillText(graduate_month, 295, 382);
+          if(ieVersion == 11 && screenWidth == 1400){
+            ctx.fillText(graduate_year, 250, 380);
+            ctx.fillText(graduate_month, 290, 380);
+          }
+          else{
+            ctx.fillText(graduate_year, 260, 382);
+            ctx.fillText(graduate_month, 295, 382);
+          }
 
           ctx.fillText(zsbh, 220, 425);
         }
@@ -324,7 +351,20 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
     myImage.onload = function() {
 
       var scale = canvas.width / myImage.width;
-      ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.19, scale * myImage.height / 1.19);
+
+      if(ieVersion == 'edge'){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.2, scale * myImage.height / 1.14);
+      }
+      else if(/360se/.test(UserAgent) || /360ee/.test(JSON.stringify(browser.browser))){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.2, scale * myImage.height / 1.19);
+      }
+      else if(/qq/.test(UserAgent) || /qq/.test(JSON.stringify(browser.browser))){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.2, scale * myImage.height / 1.19);
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.19, scale * myImage.height / 1.16);
+      }
+
       if (Pic != '' && Pic != null) {
         var headIcon = new Image();
         if(Pic.indexOf('pic') > 0){
@@ -341,11 +381,10 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 200, 320, sealImg.width / 5, sealImg.height / 5);
 
-        ctx.font = "9px SimSun";
+        ctx.font = "8px SimSun";
         ctx.fillText(bgbh, 247, 214);
         ctx.fillText(bgrq, 247, 224);
 
-        ctx.font = "10px SimSun";
         ctx.fillText(xm, 60, 256);
 
         ctx.fillText(xb, 133, 256);
@@ -358,10 +397,10 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
 
         ctx.fillText(zy, 180, 272);
         ctx.fillText(xh,75, 290);
-        ctx.fillText(xz, 148, 290);
+        ctx.fillText(xz, 145, 290);
 
         ctx.fillText(graduate_year, 206, 306);
-        ctx.fillText(graduate_month, 245, 306);
+        ctx.fillText(graduate_month, 240, 306);
 
         ctx.fillText(zsbh, 175, 340);
       }
@@ -380,24 +419,41 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
   var screenHeight = window.screen.height;
   var UserAgent = navigator.userAgent.toLowerCase();
   var browser = whyun.browser || {};
-
+  var ieVersion = IEVersion();
   if (screenWidth != document.body.offsetWidth && screenWidth > document.body.offsetWidth) {
     canvas.width = document.getElementById('rPanel').offsetWidth + 15;
   }
 
-  if (screenWidth > 1600) {
-    var myImage = new Image();
-    if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+  var myImage = new Image();
+  if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+    if(zy.length > 4 && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center11@2x.png';
+    }
+    else{
       myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
+    }
+  }
+  else{
+    if(zy.length > 4  && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate11@2x.png';
     }
     else{
       myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
     }
-    myImage.style.cssText = "transform:scale(0.5)";
+
+  }
+
+  if (screenWidth > 1600) {
+
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
       if(screenWidth == 1920){
-        var ieVersion = IEVersion();
         if (ieVersion == 9 || ieVersion == 10) {
           ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
         }else if(ieVersion == 11){
@@ -416,7 +472,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
         }
         else if(/safari/.test(UserAgent)){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width/0.92, scale * myImage.height / 0.92);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.05);
         }
         else{
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.04, scale * myImage.height / 1.04);
@@ -436,25 +492,18 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
 
           ctx.font = "16px bold SimSun";
           ctx.fillText(xm, 110, 355);
-
           ctx.fillText(end_year, 205,355);
-
           ctx.fillText(zy, 88,386);
-
           ctx.fillText(zsbh, 310, 418);
         }
         else{
           ctx.font = "12px bold SimSun";
           ctx.fillText(bgbh, 350,290);
           ctx.fillText(bgrq, 350,305);
-
           ctx.font = "16px bold SimSun";
           ctx.fillText(xm, 110, 360);
-
           ctx.fillText(end_year, 208,360);
-
           ctx.fillText(zy, 88,391);
-
           ctx.fillText(zsbh, 310, 423);
         }
       }
@@ -476,24 +525,32 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
     };
 
   } else if (screenWidth > 1280 && screenWidth <= 1600) {
-    var myImage = new Image();
-
-    if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-      myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
-    }
-    else{
-      myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
-    }
-    myImage.style.cssText = "transform:scale(0.5)";
 
     myImage.onload = function() {
-
       var scale = canvas.width / myImage.width;
 
-      if (screenWidth == 1360 || screenWidth == 1366) {
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
+      if (screenWidth == 1360) {
+        if(ieVersion == -1){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
+        }
+        else if(ieVersion == 9 || ieVersion == 10 || ieVersion == 11){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height / 1.01);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
+        }
+      }
+      else if(screenWidth == 1366){
+        if(ieVersion == -1){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height / 1.01);
+        }
+        else if(ieVersion == 9 || ieVersion == 10 || ieVersion == 11){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height / 1.01);
+        }
+        else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height);
+        }
       }else if(screenWidth == 1600){
-        var ieVersion = IEVersion();
         if(ieVersion != -1){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height / 1.04);
         }else{
@@ -502,7 +559,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
 
       } else if (screenWidth == 1440) {
         if(/firefox/.test(UserAgent) || /chrome/.test(UserAgent)){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.07);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.03, scale * myImage.height/1.04);
         }
         else if(/safari/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.01, scale * myImage.height / 1.03);
@@ -512,8 +569,11 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
         }
 
       }else if (screenWidth == 1400) {
-        if(IEVersion() != -1){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height/1.03);
+        if(ieVersion == 11 || ieVersion == 'edge'){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height/1.01);
+        }
+        else if(ieVersion == 9 || ieVersion == 10){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.06, scale * myImage.height/1.04);
         }
         else{
           ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.04, scale * myImage.height/1.01);
@@ -525,7 +585,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
       var sealImg = new Image();
       sealImg.onload = function() {
         if (screenWidth == 1440) {
-          ctx.drawImage(sealImg, 240, 360, sealImg.width / 6, sealImg.height / 6);
+          ctx.drawImage(sealImg, 240, 375, sealImg.width / 8, sealImg.height / 8);
         } else {
           ctx.drawImage(sealImg, 250, 370, sealImg.width / 8, sealImg.height / 8);
         }
@@ -539,10 +599,8 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
           ctx.fillText(bgrq, 280, 251);
         }
 
-
         ctx.font = "14px SimSun";
         ctx.fillText(xm, 80, 295);
-
         if (screenWidth == 1440) {
           ctx.fillText(zy, 73, 322);
           ctx.fillText(end_year, 177, 296);
@@ -571,38 +629,41 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
     };
 
   } else if (screenWidth <= 1280) {
-    var myImage = new Image();
-    if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-      myImage.src = '/public/images/Undergraduate_Certificate_Center@1x.png';
-    }
-    else{
-      myImage.src = '/public/images/Undergraduate_Certificate@1x.png';
-    }
-    myImage.style.cssText = "transform:scale(0.5)";
     myImage.onload = function() {
       var scale = canvas.width / myImage.width;
       var ieVersion = IEVersion();
-      if(ieVersion != -1){
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.2, scale * myImage.height / 1.2);
-      }else{
-        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.17, scale * myImage.height / 1.18);
-      }
 
+      if(ieVersion != -1){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.2, scale * myImage.height / 1.18);
+      }else if(ieVersion == 'edge'){
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.2, scale * myImage.height / 1.14);
+      }
+      else if(/qq/.test(UserAgent) || /qq/.test(JSON.stringify(browser.browser))){
+        if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.16, scale * myImage.height / 1.18);
+        }else{
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.16, scale * myImage.height / 1.15);
+        }
+
+      }
+      else{
+        ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.16, scale * myImage.height / 1.15);
+      }
 
       var sealImg = new Image();
       sealImg.onload = function() {
         ctx.drawImage(sealImg, 200, 290, sealImg.width / 5, sealImg.height / 5);
 
-        ctx.font = "10px SimSun";
+        ctx.font = "9px SimSun";
         ctx.fillText(bgbh, 230, 190);
         ctx.fillText(bgrq, 230, 200);
 
-        ctx.font = "11px SimSun";
+        ctx.font = "9px SimSun";
         ctx.fillText(xm, 70, 237);
 
         ctx.fillText(end_year, 140, 237);
 
-        ctx.fillText(zy, 60, 257);
+        ctx.fillText(zy, 60, 260);
         ctx.fillText(xh, 310, 425);
 
         ctx.fillText(zsbh, 200, 279);
@@ -695,12 +756,27 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
   var myImage = new Image();
 
   if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-    myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
+    if(zy.length > 4 && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_Center11@2x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
+    }
   }
   else{
-    myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    if(zy.length > 4  && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate11@2x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate@2x.png';
+    }
   }
-
 
   myImage.onload = function() {
 
@@ -708,7 +784,12 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
 
     var sealImg = new Image();
     sealImg.onload = function() {
-      ctx.drawImage(sealImg, 500, 720, sealImg.width / 5, sealImg.height / 5);
+      if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
+        ctx.drawImage(sealImg, 500, 735, sealImg.width / 5, sealImg.height / 5);
+      }
+      else{
+        ctx.drawImage(sealImg, 500, 720, sealImg.width / 5, sealImg.height / 5);
+      }
 
       ctx.font = "17px bold SimSun";
       ctx.fillText(bgbh, 570, 457);
@@ -719,10 +800,10 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
 
       ctx.fillText(end_year, 334, 574);
 
-      ctx.fillText(zy, 140, 625);
+      ctx.fillText(zy, 140, 627);
       ctx.fillText(xh, 530, 715);
 
-      ctx.fillText(zsbh, 490, 675);
+      ctx.fillText(zsbh, 480, 677);
     }
     if (xxmc == '湖南行政学院') {
       if (xxxs == '函授') {
