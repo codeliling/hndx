@@ -504,7 +504,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
           ctx.fillText(xm, 110, 360);
           ctx.fillText(end_year, 208,360);
           ctx.fillText(zy, 88,391);
-          ctx.fillText(zsbh, 310, 423);
+          ctx.fillText(zsbh, 295, 422);
         }
       }
       if (xxmc == '湖南行政学院') {
@@ -803,7 +803,7 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
       ctx.fillText(zy, 140, 627);
       ctx.fillText(xh, 530, 715);
 
-      ctx.fillText(zsbh, 480, 677);
+      ctx.fillText(zsbh, 473, 677);
     }
     if (xxmc == '湖南行政学院') {
       if (xxxs == '函授') {
@@ -962,6 +962,7 @@ function getQueryStringByName(name) {
 
         downLoadXM = xm;
 
+        //zymc = zymc.replace(/\s+/g,"");
         if (type == 1) //本科
         {
           loadUnderCertifate(xm, bgbh, bgrq, xb, Sfzh, start_year,
