@@ -1,16 +1,17 @@
 .selectPanel {
   position: absolute;
-  top: calc(50% - 20em);
+  top: calc(50% - 18em);
   left: calc(50% - 30em);
   width: 60em;
   height: 26em;
   text-align: center;
 }
+
 .pageBg{
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg1_1440.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
   width: 100%;
   height: auto;
 }
@@ -18,9 +19,13 @@
 .formStyle {
   display: table-cell;
   vertical-align: middle;
-  text-align: left;
+  text-align: center;
   width: 30em;
   height: 16em;
+  background-color: white;
+  padding: 10px;
+  border: 5px;
+  box-shadow:0px 0px  10px 5px #aaa;
 }
 
 .formStyle label {
@@ -51,6 +56,8 @@
   border-radius: 8px;
   outline:none;
   min-height: 2em;
+  margin-top: 10px;
+  text-indent: 10px;
 }
 
 
@@ -62,6 +69,7 @@
   border:1px solid #9b9b9b;
   border-radius: 8px;
   outline:none;
+  text-indent: 10px;
 }
 
 .searchBtn{
@@ -73,6 +81,7 @@
   outline:none;
   margin-top: 10px;
   margin-left: 10px;
+  margin-bottom: 20px;
   font-weight: bold;
   color:white;
 }
@@ -80,9 +89,8 @@
 .graduateTypeBtnNormalStyle{
  border: 2px;
  border-radius: 8px;
- width: 10em;
+ width: 9.5em;
  height:2.5em;
- margin-right: 15px;
  outline:none;
  border-color: #9b9b9b;
  color: #9b9b9b;
@@ -93,7 +101,7 @@
 .graduateTypeBtnSelectStyle{
   border: 2px;
   border-radius: 8px;
-  width: 10em;
+  width: 9.5em;
   height:2.5em;
   outline:none;
    margin-right: 15px;

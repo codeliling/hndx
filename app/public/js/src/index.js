@@ -38,6 +38,9 @@ $(document).ready(function() {
   var undergraduateType = 1;
   var postgraduateType = 0;
 
+  $("#number").placeholder();
+  $("#username").placeholder();
+  $("#verificationCode").placeholder();
 
   $("#vertifyCode").click(function() {
     $(this).attr('src', '/getCaptcha?rnd=' + Math.random());

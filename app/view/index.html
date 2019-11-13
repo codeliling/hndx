@@ -15,43 +15,42 @@
 <body>
   <div class="top-center-bottom">
     <div class="top">
-      <img class="logo" src="/public/images/logo@2x.png"/>
+      <img class="logo" src="/public/images/logo@2x.png" />
     </div>
     <div class="center">
       <div class="contentPanel pageBg">
         <div class="selectPanel">
           <div style="display: table;margin-top:0.8em">
             <div class="formStyle">
-              <p style="font-size:1.8em;font-weight:bold;margin-bottom:10px;">
-                学历证书查询
-              </p>
-              <label>查询类型</label>
-              <div>
-              <input class="graduateTypeBtnSelectStyle" type="button" value="本专科查询" id="undergraduateType" />
-              <input class="graduateTypeBtnNormalStyle" type="button" value="在职研究生查询" id="postgraduateType" /></div>
-              <label>证书编号</label>
-              <div><input class="inputStyle" type="text" id="number" /></div>
-              <label>姓名</label>
-              <div><input class="inputStyle" type="text" id="username" /></div>
-              <label>图片验证码</label>
-              <div><input class="vertifyInputStyle" type="text" id="verificationCode" />
+                <p style="font-size:1.8em;font-weight:bold;margin-bottom:10px;margin-top:10px;">
+                  学历证书查询
+                </p>
+                <div>
+                  <input class="graduateTypeBtnSelectStyle" type="button" value="本专科查询" id="undergraduateType" />
+                  <input class="graduateTypeBtnNormalStyle" type="button" value="在职研究生查询" id="postgraduateType" /></div>
 
-              <img id="vertifyCode" src="/getCaptcha" style="cursor:pointer" width="100" height="34" />
+                <div><input class="inputStyle" type="text" id="number" placeholder="证书编号" /></div>
+
+                <div><input class="inputStyle" type="text" id="username" placeholder="姓名" /></div>
+
+                <div><input class="vertifyInputStyle" type="text" id="verificationCode" placeholder="图片验证码"/>
+
+                  <img id="vertifyCode" src="/getCaptcha" style="cursor:pointer" width="100" height="34" />
+                </div>
+                <div>
+                  <input type="button" class="searchBtn" id="searchBtn" value="查询" />
+                </div>
             </div>
-              <div>
-                <input type="button" class="searchBtn" id="searchBtn" value="查询" />
-              </div>
-            </div>
-            <div style="text-align:left">
+
+            <div style="text-align:left;margin-left:30px;">
               <p style="color:#616161;margin-top:30px;">
-                <br/>
-                注意：<br/><br/>
-                1、查询学历证书需经权属人同意。<br/><br/>
-                2、学历证书查询结果不得用于违背权属人意愿之用途。<br/><br/>
-                3、学历证书由湖南行政学院自行印制，证书编号通常为7~9位。<br/>
-                   不知道证书编号的，可咨询发证学校。<br/><br/>
-                5、服务咨询热线：0731-82780144
-                   <br/><br/>
+                <br/> 注意：
+                <br/><br/> 1、查询学历证书需经权属人同意。
+                <br/><br/> 2、学历证书查询结果不得用于违背权属人意愿之用途。
+                <br/><br/> 3、学历证书由湖南行政学院自行印制，证书编号通常为7~9位。
+                <br/> 不知道证书编号的，可咨询发证学校。
+                <br/><br/> 5、服务咨询热线：0731-82780144
+                <br/><br/>
               </p>
             </div>
           </div>
@@ -73,6 +72,8 @@
 
 </body>
 <script type="text/javascript" src="/public/js/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/public/js/lib/jquery.placeholder.min.js"></script>
 <script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
 <script type="text/javascript" src="/public/js/src/index.js"></script>
+
 </html>
