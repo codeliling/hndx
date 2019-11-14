@@ -8,6 +8,15 @@ class Statistics extends Service {
     return await this.ctx.model.Statistics.createStatistics(statistics);
   }
 
+  async listData({ offset = 0, limit = 10}) {
+    let resultObj = await this.ctx.model.Statistics.listData({
+      offset,
+      limit,
+    });
+
+    return resultObj;
+  }
+
   async queryGroupByDay(type, startDate){
     let endDate = this.ctx.helper.getCurrentMonthLast(startDate);
     startDate = startDate + '-01';

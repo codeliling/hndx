@@ -110,9 +110,11 @@ new Vue({
         window.location.href = '/managePostgraduate';
       } else if (name == 2) {
         window.location.href = '/importInfo';
-      } else if (name == 3) {
+      } else if (name == '3-1') {
         window.location.href = '/statistics';
-      } else if (name == 4) {
+      } else if (name == '3-2') {
+        window.location.href = '/searchStatistics';
+      }  else if (name == 4) {
         window.location.href = '/manageLogout';
       }
 

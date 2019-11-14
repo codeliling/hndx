@@ -5,10 +5,11 @@ class WebutilsController extends BaseController{
 
   async getCaptcha(){
     let codeConfig = {
-        size: 5,// 验证码长度
+        size: 4,// 验证码长度
         ignoreChars: '0oO1ilLI', // 验证码字符中排除 0o1i
-        noise: 2, // 干扰线条的数量
-        height: 14
+        noise: 0, // 干扰线条的数量
+        height: 14,
+        color: false,
     }
     var captcha = Captcha.create(codeConfig);
     this.ctx.session.captcha = captcha.text.toLowerCase(); //存session用于验证接口获取文字码

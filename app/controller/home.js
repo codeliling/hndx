@@ -77,6 +77,11 @@ class HomeController extends Controller {
     await ctx.render('manage/statistics.html');
   }
 
+  async manageSearchStatistics(){
+    const ctx = this.ctx;
+    await ctx.render('manage/searchStatistics.html');
+  }
+
   async noFound() {
     const { ctx } = this;
     await ctx.render('404.html');

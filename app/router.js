@@ -33,6 +33,7 @@ module.exports = app => {
   router.get('/manage/statistics/queryGroupByDay', adminAuthCheck, controller.manage.statistics.queryGroupByDay);
   router.get('/manage/statistics/queryGroupByMonth', adminAuthCheck, controller.manage.statistics.queryGroupByMonth);
   router.post('/manage/statistics/createStatistics', controller.manage.statistics.createStatistics);
+  router.get('/manage/statistics/queryByPage', adminAuthCheck, controller.manage.statistics.queryByPage);
 
   router.get('/manage/postgraduate/listPostgraduateByCondition', controller.manage.postgraduate.listPostgraduateByCondition);
   router.get('/manage/undergraduate/listUndergraduateByCondition', controller.manage.undergraduate.listUndergraduateByCondition);
@@ -46,6 +47,7 @@ module.exports = app => {
   router.get('/manageAddUndergraduate', pageAuthCheck, controller.home.manageAddUndergraduate);
   router.get('/importInfo', pageAuthCheck, controller.home.manageImportInfo);
   router.get('/statistics', pageAuthCheck, controller.home.manageStatistics);
+  router.get('/searchStatistics', pageAuthCheck, controller.home.manageSearchStatistics);
 
   router.post('/manage/file/uploadExcelFile/:fileType',  adminAuthCheck, controller.manage.file.uploadExcelFile);
   router.post('/manage/file/uploadImagesFile/:fileType',  adminAuthCheck, controller.manage.file.uploadImagesFile);

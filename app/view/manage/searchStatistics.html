@@ -37,6 +37,7 @@
                          </template>
                          <menu-item name="3-1">网站使用统计</menu-item>
                          <menu-item name="3-2">查询数据查看</menu-item>
+                       </template>
                        </submenu>
                        <menu-item name="4">
                            <icon type="md-close"></icon>
@@ -49,38 +50,16 @@
            <i-content :style="{padding: '0 50px'}">
                <breadcrumb :style="{margin: '20px 0'}">
                    <breadcrumb-item>首页</breadcrumb-item>
-                   <breadcrumb-item>学历信息导入</breadcrumb-item>
+                   <breadcrumb-item>查询数据查看</breadcrumb-item>
                </breadcrumb>
                <card>
                    <div class="contentPanel">
-                     <row style="text-align:center;margin-top:10px">
-                        <h3>选择导入学历信息类别后，上传文件进行导入</h3>
-                     <row>
-                     <br>
-                     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;"/>
-
-                     <row style="text-align:center;margin-top:20px">
-                          <a href="/public/excels/template/undergraduate.xlsx" style="margin-right:5px;">本专科导入模板下载</a>
-                          <a href="/public/excels/template/postgraduate.xlsx" style="margin-left:5px;">研究生导入模板下载</a>
-                     <row>
-                     <row style="margin-top:60px;">
-                       <i-col span="9" style="text-align:right;margin-right:30px;">
-                         <i-select v-model="graduateTypeModel" placeholder="请选择上传类型" @on-change="changeSelect" style="width:200px">
-                           <i-option v-for="item in graduateTypeList" :value="item.value" :key="item.value">{{ item.label }}</i-option>
-                         </i-select>
-                       </i-col>
-                       <i-col span="6">
-                         <upload multiple type="drag" :action="uploadActionUrl" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" :on-success="uploadSuccess" :on-error="uploadError" :before-upload="beforeUpload">
-                           <div style="padding: 20px 0">
-                             <icon type="ios-cloud-upload" size="52" style="color: #3399ff"></icon>
-                             <p>点击或者拖拽文件到此上传...</p>
-                           </div>
-                         </upload>
-                       </i-col>
+                     <row style="margin-top:10px;">
+                       <i-table border :columns="columns" :data="searchData"></i-table>
                      </row>
-                     <row style="text-align:center;margin-top:30px">
-                      <p>当前选择为 <strong style="color:red">${selectType}</strong>，总共导入记录为<strong style="color:red"> ${recordCount} </strong>条!</p>
-                     <row>
+                     <row style="margin-top:15px;text-align:right">
+                       <page :total="pageTotal" @on-change="handlePage"  :current="currentPage" show-elevator show-total/>
+                     </row>
                    </div>
                </card>
            </i-content>
@@ -92,5 +71,6 @@
 </body>
 <script src="/public/js/lib/vue.min.js"></script>
 <script src="/public/js/lib/iview.min.js"></script>
-<script src="/public/js/src/importInfo.js"></script>
+<script src="/public/js/lib/axios.min.js"></script>
+<script src="/public/js/src/searchStatistics.js"></script>
 </html>

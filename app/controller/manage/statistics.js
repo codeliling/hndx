@@ -13,7 +13,23 @@ class StatisticsController extends BaseController {
       const result = await ctx.service.statistics.createStatistics(statistics);
       super.success(result);
     } catch (e) {
-      console.log()
+      ctx.logger.error(e.message);
+      super.failure(e.message);
+    }
+  }
+
+  async queryByPage(){
+    const ctx = this.ctx;
+    const query = {
+      limit: ctx.helper.parseInt(ctx.query.limit),
+      offset: ctx.helper.parseInt(ctx.query.offset),
+    };
+
+    try{
+      const result = await ctx.service.statistics.listData(query);
+      super.success(result);
+    }
+    catch(e){
       ctx.logger.error(e.message);
       super.failure(e.message);
     }

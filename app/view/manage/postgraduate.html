@@ -27,15 +27,18 @@
                         <menu-item name="1-1">本专科信息管理</menu-item>
                         <menu-item name="1-2">研究生信息管理</menu-item>
                     </submenu>
-
                        <menu-item name="2">
                            <icon type="ios-keypad"></icon>
                            学历信息导入
                        </menu-item>
-                       <menu-item name="3">
+                       <submenu name="3">
+                         <template slot="title">
                            <icon type="ios-analytics"></icon>
-                           网站使用统计
-                       </menu-item>
+                             数据统计
+                         </template>
+                         <menu-item name="3-1">网站使用统计</menu-item>
+                         <menu-item name="3-2">查询数据查看</menu-item>
+                       </submenu>
                        <menu-item name="4">
                            <icon type="md-close"></icon>
                            退出

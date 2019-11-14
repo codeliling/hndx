@@ -49,6 +49,19 @@ module.exports = app => {
     });
   }
 
+  Statistics.listData = async function ({offset = 0, limit = 10}){
+    let condition = {
+      offset,
+      limit,
+      order: [[ 'Id', 'desc' ]],
+      where:{
+
+      }
+    };
+
+    return await this.findAndCountAll(condition);
+  }
+
   Statistics.queryGroupByDay = async function(ctx,type, startDate, endDate){
     let sql = `SELECT
               DATE_FORMAT( createAt, '%Y-%m-%d' ) as time,

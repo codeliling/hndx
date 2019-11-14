@@ -514,7 +514,11 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
           sealImg.src = '/public/images/seal1@2x.png';
         }
       } else if (xxmc == '中共湖南省委党校') {
-        sealImg.src = '/public/images/seal3@2x.png';
+        if(xxxs == '函授'){
+            sealImg.src = '/public/images/seal5@2x.png';
+        }else{
+          sealImg.src = '/public/images/seal3@2x.png';
+        }
       } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
       } else if (xxmc == '中共中央党校函授学院') {
@@ -618,7 +622,12 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
           sealImg.src = '/public/images/seal1@2x.png';
         }
       } else if (xxmc == '中共湖南省委党校') {
-        sealImg.src = '/public/images/seal3@2x.png';
+        if(xxxs == '函授'){
+            sealImg.src = '/public/images/seal5@2x.png';
+        }else{
+          sealImg.src = '/public/images/seal3@2x.png';
+        }
+
       } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@2x.png';
       } else if (xxmc == '中共中央党校函授学院') {
@@ -676,7 +685,11 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
         }
 
       } else if (xxmc == '中共湖南省委党校') {
-        sealImg.src = '/public/images/seal3@1x.png';
+        if(xxxs == '函授'){
+            sealImg.src = '/public/images/seal5@1x.png';
+        }else{
+          sealImg.src = '/public/images/seal3@1x.png';
+        }
       } else if (xxmc == '中央党校函授学院') {
         sealImg.src = '/public/images/seal4@1x.png';
       } else if (xxmc == '中共中央党校函授学院') {
