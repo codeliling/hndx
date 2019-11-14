@@ -114,7 +114,7 @@ function loadPostCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, en
         if (ieVersion == 9 || ieVersion == 10) {
           ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
         }else if(ieVersion == 11){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height );
         }
         else if(/metasr/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
@@ -457,7 +457,7 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
         if (ieVersion == 9 || ieVersion == 10) {
           ctx.drawImage(myImage, 0, 0, scale * myImage.width, scale * myImage.height / 1.02);
         }else if(ieVersion == 11){
-          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height / 1.025);
+          ctx.drawImage(myImage, 0, 0, scale * myImage.width / 1.02, scale * myImage.height);
         }else if(/metasr/.test(UserAgent)){
           ctx.drawImage(myImage, 0, 0, scale * myImage.width/1.02, scale * myImage.height / 1.02);
         }else if(/360se/.test(UserAgent) || /360ee/.test(JSON.stringify(browser.browser))){
