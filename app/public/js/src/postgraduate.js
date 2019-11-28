@@ -39,9 +39,17 @@ new Vue({
             title: '照片',
             key: 'Pic',
             render: (h,params) =>{
+              let imageUrl = params.row.Pic;
+              let headUrl = '';
+              if(imageUrl.indexOf('pic') == -1){
+                 headUrl = '/public/images/postgraduateImages/' + imageUrl;
+              }
+              else{
+                headUrl = imageUrl;
+              }
               return h('img',{
                 attrs:{
-                  src: params.row.Pic
+                  src:headUrl
                 },
                 style:{
                   width:'80px',
@@ -95,7 +103,7 @@ new Vue({
                   },
                   on: {
                     click: () => {
-                      window.location.href = '/manageAddPostgraduate?Id=' + params.row.Id  +'&currentPage=' + this.currentPage;
+                      window.location.href = '/public/manageAddPostgraduate?Id=' + params.row.Id  +'&currentPage=' + this.currentPage;
                     }
                   }
                 }, '修改'),
@@ -122,26 +130,26 @@ new Vue({
   methods: {
     menuClick(name) {
       if(name == '1-1'){
-        window.location.href = '/manageUndergraduate';
+        window.location.href = '/public/manageUndergraduate';
       }
       else if(name == '1-2'){
-        window.location.href = '/managePostgraduate';
+        window.location.href = '/public/managePostgraduate';
       }
       else if(name == 2){
-        window.location.href = '/importInfo';
+        window.location.href = '/public/importInfo';
       }
       else if (name == '3-1') {
-        window.location.href = '/statistics';
+        window.location.href = '/public/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/searchStatistics';
+        window.location.href = '/public/searchStatistics';
       } else if (name == 4) {
-        window.location.href = '/manageLogout';
+        window.location.href = '/public/manageLogout';
       }
     },
 
     getListData(offset) {
       var that = this;
-      axios.get('/manage/postgraduate', {
+      axios.get('/public/manage/postgraduate', {
         params: {
           limit: that.pageSize,
           offset: offset,
@@ -167,7 +175,7 @@ new Vue({
         type = 1;
       }
 
-      axios.get('/manage/postgraduate/listPostgraduateByCondition', {
+      axios.get('/public/manage/postgraduate/listPostgraduateByCondition', {
         params: {
           limit: that.pageSize,
           offset: offset,
@@ -198,7 +206,7 @@ new Vue({
         title: '请确认是否删除',
         content: `删除ID为：${Id}，姓名为：${xm} 的数据。`,
         onOk: () => {
-          axios.delete('/manage/postgraduate/'+Id).then(function(res) {
+          axios.delete('/public/manage/postgraduate/'+Id).then(function(res) {
             that.$Message.info('删除成功');
             that.getListData((that.currentPage - 1) * that.pageSize);
           }).catch(function(res) {
@@ -221,7 +229,7 @@ new Vue({
       }
     },
     addClick(){
-      window.location.href = '/manageAddPostgraduate?Id=0';
+      window.location.href = '/public/manageAddPostgraduate?Id=0';
     }
   },
   mounted() {

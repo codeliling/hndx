@@ -115,17 +115,17 @@ new Vue({
   methods: {
     menuClick(name) {
       if (name == '1-1') {
-        window.location.href = '/manageUndergraduate';
+        window.location.href = '/public/manageUndergraduate';
       } else if (name == '1-2') {
-        window.location.href = '/managePostgraduate';
+        window.location.href = '/public/managePostgraduate';
       } else if (name == 2) {
-        window.location.href = '/importInfo';
+        window.location.href = '/public/importInfo';
       } else if (name == '3-1') {
-        window.location.href = '/statistics';
+        window.location.href = '/public/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/searchStatistics';
+        window.location.href = '/public/searchStatistics';
       } else if (name == 4) {
-        window.location.href = '/manageLogout';
+        window.location.href = '/public/manageLogout';
       }
     },
     time1(e){
@@ -158,7 +158,7 @@ new Vue({
     },
     searchCountByYear(){
       let that = this;
-      axios.get('/manage/statistics/queryGroupByMonth',{
+      axios.get('/public/manage/statistics/queryGroupByMonth',{
           params: {
             type : 1,
             year : that.value1,
@@ -219,7 +219,7 @@ new Vue({
       option1_2.xAxis.data = xAxisData;
       option1_2.series[0].data = seriesData;
 
-      axios.get('/manage/statistics/queryGroupByDay',{
+      axios.get('/public/manage/statistics/queryGroupByDay',{
           params: {
             type : 1,
             startDate : that.value2,
@@ -268,7 +268,7 @@ new Vue({
     },
     downLoadCountByYear(){
       let that = this;
-      axios.get('/manage/statistics/queryGroupByMonth',{
+      axios.get('/public/manage/statistics/queryGroupByMonth',{
           params: {
             type : 2,
             year : that.value3,
@@ -327,7 +327,7 @@ new Vue({
       }
       option2_2.xAxis.data = xAxisData;
       option2_2.series[0].data = seriesData;
-      axios.get('/manage/statistics/queryGroupByDay',{
+      axios.get('/public/manage/statistics/queryGroupByDay',{
           params: {
             type : 2,
             startDate : that.value4,
@@ -380,7 +380,7 @@ new Vue({
     },
     loadingCountStatisticsData(){
       let that = this;
-      axios.get('/manage/statistics/getCountStatisticsData').then(function(res) {
+      axios.get('/public/manage/statistics/getCountStatisticsData').then(function(res) {
         if (res.data.status == 200){
           that.searchCount = res.data.data.searchCount;
           that.downLoadCount = res.data.data.downLoadCount;
@@ -395,7 +395,7 @@ new Vue({
     },
     loadingGraduateData(){
       let that = this;
-      axios.get('/manage/statistics/countGraduateData').then(function(res) {
+      axios.get('/public/manage/statistics/countGraduateData').then(function(res) {
         if (res.data.status == 200){
           that.undergraduateCount = res.data.data.undergraduateCount;
           that.postgraduateCount = res.data.data.postgraduateCount;

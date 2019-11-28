@@ -26,10 +26,10 @@ class HomeController extends Controller {
   async manageIndex(){
     const ctx = this.ctx;
     if(ctx.isAuthenticated()){
-      ctx.redirect('/manageUndergraduate');
+      ctx.redirect('/public/manageUndergraduate');
     }
     else{
-      ctx.redirect('/manageLogin');
+      ctx.redirect('/public/manageLogin');
     }
   }
 

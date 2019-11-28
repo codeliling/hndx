@@ -99,7 +99,7 @@
       }
 
       var ieVersion = IEVersion();
-      
+
       if(ieVersion != -1 && ieVersion != 'edge'){
         $.toast({
             heading: 'Warning',
@@ -129,6 +129,10 @@
                   this.$Message.info('请填写密码!');
                   return;
                 }
+
+                // if(window.location.host == 'hsxy.hnswdx.gov.cn'){
+                //   document.getElementById("loginForm").setAttribute("action","/login");
+                // }
 
                 document.getElementById("loginForm").submit();
 

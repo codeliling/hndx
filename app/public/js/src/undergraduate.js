@@ -79,7 +79,7 @@ new Vue({
                 },
                 on: {
                   click: () => {
-                    window.location.href = '/manageAddUndergraduate?Id=' + params.row.Id +'&currentPage=' + this.currentPage;
+                    window.location.href = '/public/manageAddUndergraduate?Id=' + params.row.Id +'&currentPage=' + this.currentPage;
                   }
                 }
               }, '修改'),
@@ -105,23 +105,23 @@ new Vue({
   methods: {
     menuClick(name) {
       if (name == '1-1') {
-        window.location.href = '/manageUndergraduate';
+        window.location.href = '/public/manageUndergraduate';
       } else if (name == '1-2') {
-        window.location.href = '/managePostgraduate';
+        window.location.href = '/public/managePostgraduate';
       } else if (name == 2) {
-        window.location.href = '/importInfo';
+        window.location.href = '/public/importInfo';
       } else if (name == '3-1') {
-        window.location.href = '/statistics';
+        window.location.href = '/public/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/searchStatistics';
+        window.location.href = '/public/searchStatistics';
       }  else if (name == 4) {
-        window.location.href = '/manageLogout';
+        window.location.href = '/public/manageLogout';
       }
 
     },
     getListData(offset) {
       var that = this;
-      axios.get('/manage/undergraduate', {
+      axios.get('/public/manage/undergraduate', {
         params: {
           limit: that.pageSize,
           offset: offset,
@@ -145,7 +145,7 @@ new Vue({
         type = 1;
       }
 
-      axios.get('/manage/undergraduate/listUndergraduateByCondition', {
+      axios.get('/public/manage/undergraduate/listUndergraduateByCondition', {
         params: {
           limit: that.pageSize,
           offset: offset,
@@ -175,7 +175,7 @@ new Vue({
         title: '请确认是否删除',
         content: `删除ID为：${Id}，姓名为：${xm} 的数据。`,
         onOk: () => {
-          axios.delete('/manage/undergraduate/'+Id).then(function(res) {
+          axios.delete('/public/manage/undergraduate/'+Id).then(function(res) {
             that.$Message.info('删除成功');
             that.getListData((that.currentPage - 1) * that.pageSize);
           }).catch(function(res) {
@@ -199,7 +199,7 @@ new Vue({
     },
 
     addClick(){
-      window.location.href = '/manageAddUndergraduate?Id=0';
+      window.location.href = '/public/manageAddUndergraduate?Id=0';
     }
   },
   mounted() {

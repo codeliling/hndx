@@ -29,19 +29,19 @@ new Vue({
   methods: {
     menuClick(name){
       if(name == '1-1'){
-        window.location.href = '/manageUndergraduate';
+        window.location.href = '/public/manageUndergraduate';
       }
       else if(name == '1-2'){
-        window.location.href = '/managePostgraduate';
+        window.location.href = '/public/managePostgraduate';
       }
       else if(name == 2){
-        window.location.href = '/importInfo';
+        window.location.href = '/public/importInfo';
       }else if (name == '3-1') {
-        window.location.href = '/statistics';
+        window.location.href = '/public/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/searchStatistics';
+        window.location.href = '/public/searchStatistics';
       } else if (name == 4) {
-        window.location.href = '/manageLogout';
+        window.location.href = '/public/manageLogout';
       }
     },
     handleSubmit(){
@@ -94,12 +94,12 @@ new Vue({
 
       if(this.urlId > 0){ //更新
         var that = this;
-        axios.put('/manage/undergraduate/'+this.urlId, that.undergraduateForm)
+        axios.put('/public/manage/undergraduate/'+this.urlId, that.undergraduateForm)
         .then(function (response) {
           if(response.data.status == 200){
             that.$Message.info('操作成功!');
             setTimeout( function(){
-              window.location.href = "/manageUndergraduate?currentPage="+that.currentPage;
+              window.location.href = "/public/manageUndergraduate?currentPage="+that.currentPage;
             }, 1000 );
           }
           else{
@@ -112,11 +112,11 @@ new Vue({
       }
       else{ //添加
         var that = this;
-        axios.post('/manage/undergraduate', that.undergraduateForm)
+        axios.post('/public/manage/undergraduate', that.undergraduateForm)
         .then(function (response) {
           if(response.data.status == 200){
             that.$Message.info('操作成功!');
-            window.location.href = "/manageUndergraduate";
+            window.location.href = "/public/manageUndergraduate";
           }
           else{
             that.$Message.warning('操作失败!' + response.data.data);
@@ -133,7 +133,7 @@ new Vue({
     this.currentPage = getQueryStringByName("currentPage");
     if (this.urlId > 0){
       var that = this;
-      axios.get('/manage/undergraduate/'+this.urlId).then(function(res) {
+      axios.get('/public/manage/undergraduate/'+this.urlId).then(function(res) {
         var dataObj = res.data;
         if (dataObj.success == true){
           var undergraduateObject = dataObj.data;

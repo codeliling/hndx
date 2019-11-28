@@ -97,10 +97,10 @@ $(document).ready(function() {
     var requestUrl = "";
 
     if (undergraduateType == 1){
-      requestUrl = "/website/undergraduate/searchUndergraduateByCondition";
+      requestUrl = "/public/website/undergraduate/searchUndergraduateByCondition";
     }
     else{
-      requestUrl = "/website/postgraduate/searchPostgraduateByCondition";
+      requestUrl = "/public/website/postgraduate/searchPostgraduateByCondition";
     }
 
     var username = $("#username").val();
@@ -134,14 +134,14 @@ $(document).ready(function() {
           if (data.data.length > 0){
 
             if(undergraduateType == 1){
-              window.location.href = '/result?' + 'type=1&number='+$("#number").val();
+              window.location.href = '/public/result?' + 'type=1&number='+$("#number").val();
             }
             else{
-              window.location.href = '/result?' + 'type=2&number='+$("#number").val();
+              window.location.href = '/public/result?' + 'type=2&number='+$("#number").val();
             }
           }
           else{
-            window.location.href = '/noResult';
+            window.location.href = '/public/noResult';
           }
         }
         else{
