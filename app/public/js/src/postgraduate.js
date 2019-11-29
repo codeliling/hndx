@@ -20,6 +20,7 @@ new Vue({
         {
             title: '姓名',
             key: 'Xm',
+            align: 'center',
             render: (h, params) => {
               return h('div', [
                 h('Icon', {
@@ -38,21 +39,21 @@ new Vue({
           {
             title: '照片',
             key: 'Pic',
+            align: 'center',
+            width: 100,
             render: (h,params) =>{
               let imageUrl = params.row.Pic;
-              let headUrl = '';
-              if(imageUrl.indexOf('pic') == -1){
+              let headUrl = '/public/images/user.png';
+              if(imageUrl !='' && imageUrl.indexOf('pic') == -1){
                  headUrl = '/public/images/postgraduateImages/' + imageUrl;
               }
-              else{
-                headUrl = imageUrl;
-              }
+
               return h('img',{
                 attrs:{
                   src:headUrl
                 },
                 style:{
-                  width:'80px',
+                  width:'60px',
                   height:'auto'
                 }
               })
@@ -60,30 +61,37 @@ new Vue({
           },
           {
             title: '身份证号',
+            align: 'center',
             key: 'Sfzh'
           },
           {
             title: '性别',
+            align: 'center',
             key: 'Xb'
           },
           {
             title: '入学时间',
+            align: 'center',
             key: 'Rxsj'
           },
           {
             title: '毕业时间',
+            align: 'center',
             key: 'Bysj'
           },
           {
             title: '学号',
+            align: 'center',
             key: 'Xh'
           },
           {
             title: '代号',
+            align: 'center',
             key: 'Dh'
           },
           {
             title: '专业名称',
+            align: 'center',
             key: 'Zymc'
           },
           {

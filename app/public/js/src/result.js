@@ -426,6 +426,17 @@ function loadUnderCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, start_month, e
       myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
     }
   }
+  else if(xxmc == '湖南行政学院'){
+    if(zy.length > 4 && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy11@2x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy@2x.png';
+    }
+  }
   else{
     if(zy.length > 4  && zy.length < 8){
       myImage.src = '/public/images/Undergraduate_Certificate7@2x.png';
@@ -764,6 +775,17 @@ function loadUndergraduateBigCertifate(xm, bgbh, bgrq, xb, sfzh, start_year, sta
     }
     else{
       myImage.src = '/public/images/Undergraduate_Certificate_Center@2x.png';
+    }
+  }
+  else if(xxmc == '湖南行政学院'){
+    if(zy.length > 4 && zy.length < 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy7@2x.png';
+    }
+    else if (zy.length >= 8){
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy11@2x.png';
+    }
+    else{
+      myImage.src = '/public/images/Undergraduate_Certificate_hnxzxy@2x.png';
     }
   }
   else{

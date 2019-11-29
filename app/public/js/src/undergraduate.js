@@ -18,6 +18,7 @@ new Vue({
       searchData: '',
       columns: [{
           title: '姓名',
+          align: 'center',
           key: 'xm',
           render: (h, params) => {
             return h('div', [
@@ -32,34 +33,42 @@ new Vue({
         },
         {
           title: '毕业证号',
+          align: 'center',
           key: 'byzh'
         },
         {
           title: '入学时间',
+          align: 'center',
           key: 'rxsj'
         },
         {
           title: '毕业时间',
+          align: 'center',
           key: 'bysj'
         },
         {
           title: '学校名称',
+          align: 'center',
           key: 'xxmc'
         },
         {
           title: '专业名称',
+          align: 'center',
           key: 'zymc'
         },
         {
           title: '班级',
+          align: 'center',
           key: 'bj'
         },
         {
           title: '毕业类别',
+          align: 'center',
           key: 'bylb'
         },
         {
           title: '学习形式',
+          align: 'center',
           key: 'xxxs'
         },
         {
