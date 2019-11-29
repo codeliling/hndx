@@ -24,23 +24,24 @@ new Vue({
       Bysj: '',
       Xh: '',
       Dh: '',
-      Zymc: ''
+      Zymc: '',
+      timestamp:'',
     }
   },
   methods: {
     menuClick(name) {
       if (name == '1-1') {
-        window.location.href = '/public/manageUndergraduate';
+        window.location.href = '/manageUndergraduate';
       } else if (name == '1-2') {
-        window.location.href = '/public/managePostgraduate';
+        window.location.href = '/managePostgraduate';
       } else if (name == 2) {
-        window.location.href = '/public/importInfo';
+        window.location.href = '/importInfo';
       } else if (name == '3-1') {
-        window.location.href = '/public/statistics';
+        window.location.href = '/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/public/searchStatistics';
+        window.location.href = '/searchStatistics';
       } else if (name == 4) {
-        window.location.href = '/public/manageLogout';
+        window.location.href = '/manageLogout';
       }
     },
     handleSubmit(){
@@ -86,12 +87,12 @@ new Vue({
 
       if(this.urlId > 0){ //更新
         var that = this;
-        axios.put('/public/manage/postgraduate/'+this.urlId, that.postgraduateForm)
+        axios.post('/manage/updatePostgraduate/'+this.urlId, that.postgraduateForm)
         .then(function (response) {
           if(response.data.status == 200){
             that.$Message.info('操作成功!');
             setTimeout( function(){
-              window.location.href = "/public/managePostgraduate?currentPage="+that.currentPage;
+              window.location.href = "/managePostgraduate?currentPage="+that.currentPage;
             }, 1000 );
 
           }
@@ -100,16 +101,16 @@ new Vue({
           }
         })
         .catch(function (error) {
-          that.$Message.error('操作失败!' + response.data.data);
+          that.$Message.error('操作失败!' + error);
         });
       }
       else{ //添加
         var that = this;
-        axios.post('/public/manage/postgraduate', that.postgraduateForm)
+        axios.post('/manage/postgraduate', that.postgraduateForm)
         .then(function (response) {
           if(response.data.status == 200){
             that.$Message.info('操作成功!');
-            window.location.href = "/public/managePostgraduate";
+            window.location.href = "/managePostgraduate";
           }
           else{
             that.$Message.warning('操作失败!' + response.data.data);
@@ -147,7 +148,7 @@ new Vue({
     this.currentPage = getQueryStringByName("currentPage");
     if (this.urlId > 0){
       var that = this;
-      axios.get('/public/manage/postgraduate/'+this.urlId).then(function(res) {
+      axios.get('/manage/postgraduate/'+this.urlId).then(function(res) {
         var dataObj = res.data;
         if (dataObj.success == true){
           var postgraduateObject = dataObj.data;

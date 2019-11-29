@@ -20,25 +20,25 @@ new Vue({
   methods: {
     menuClick(name) {
       if (name == '1-1') {
-        window.location.href = '/public/manageUndergraduate';
+        window.location.href = '/manageUndergraduate';
       } else if (name == '1-2') {
-        window.location.href = '/public/managePostgraduate';
+        window.location.href = '/managePostgraduate';
       } else if (name == 2) {
-        window.location.href = '/public/importInfo';
+        window.location.href = '/importInfo';
       } else if (name == '3-1') {
-        window.location.href = '/public/statistics';
+        window.location.href = '/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/public/searchStatistics';
+        window.location.href = '/searchStatistics';
       }  else if (name == 4) {
-        window.location.href = '/public/manageLogout';
+        window.location.href = '/manageLogout';
       }
     },
     changeSelect(value) {
       this.selectType = value;
       if (value == '本专科学历信息导入') {
-        this.uploadActionUrl = '/public/manage/file/uploadExcelFile/2';
+        this.uploadActionUrl = '/manage/file/uploadExcelFile/2';
       } else if (value == '研究生学历信息导入') {
-        this.uploadActionUrl = '/public/manage/file/uploadExcelFile/1';
+        this.uploadActionUrl = '/manage/file/uploadExcelFile/1';
       }
       console.log(this.selectType);
     },

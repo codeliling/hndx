@@ -39,7 +39,7 @@ function outputImage() {
     downloadURI(canvas, '学历.png');
   }
 
-  $.post("/public/manage/statistics/createStatistics", {
+  $.post("/manage/statistics/createStatistics", {
     type: 2,
     xm: downLoadXM,
     zsbh: downLoadNumber
@@ -833,7 +833,7 @@ function searchFailure() {
     icon: 'error'
   })
   setTimeout(function() {
-    window.location.href = '/public';
+    window.location.href = '/';
   }, 2000);
 }
 
@@ -851,11 +851,11 @@ function getQueryStringByName(name) {
   downLoadNumber = number;
   // 点击按钮触发get请求
   var requestUrl = "";
-
+  let timestamp = (new Date()).getTime();
   if (type == 1) {
-    requestUrl = "/public/website/undergraduate/getDetailByNumber?number=" + number;
+    requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
   } else {
-    requestUrl = "/public/website/postgraduate/getDetailByNumber?number=" + number;
+    requestUrl = "/website/postgraduate/getDetailByNumber?number=" + number;
   }
 
   $.get(requestUrl, function(data, textStatus) {

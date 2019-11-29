@@ -53,17 +53,17 @@ new Vue({
   methods: {
     menuClick(name) {
       if (name == '1-1') {
-        window.location.href = '/public/manageUndergraduate';
+        window.location.href = '/manageUndergraduate';
       } else if (name == '1-2') {
-        window.location.href = '/public/managePostgraduate';
+        window.location.href = '/managePostgraduate';
       } else if (name == 2) {
-        window.location.href = '/public/importInfo';
+        window.location.href = '/importInfo';
       } else if (name == '3-1') {
-        window.location.href = '/public/statistics';
+        window.location.href = '/statistics';
       } else if (name == '3-2') {
-        window.location.href = '/public/searchStatistics';
+        window.location.href = '/searchStatistics';
       } else if (name == 4) {
-        window.location.href = '/public/manageLogout';
+        window.location.href = '/manageLogout';
       }
     },
     handlePage(value) {
@@ -73,7 +73,7 @@ new Vue({
 
     loadingData(offsetSize){
       let that = this;
-      axios.get('/public/manage/statistics/queryByPage',{
+      axios.get('/manage/statistics/queryByPage',{
           params: {
             limit : that.pageSize,
             offset : offsetSize,
