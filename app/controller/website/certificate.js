@@ -198,9 +198,14 @@ class CertificateController extends BaseController{
 
       if (Pic != '' && Pic != null) {
         if(Pic.indexOf('pic') == -1){
-          await Canvas.loadImage(path.join(__dirname,'../../public/images/postgraduateImages/' + Pic)).then((image) => {
-            convasCtx.drawImage(image, 360, 450, 110, 145);
-          })
+          let headPath = path.join(__dirname,'../../public/images/postgraduateImages/' + Pic);
+
+          if (fs.existsSync(headPath)) {
+            await Canvas.loadImage(headPath).then((image) => {
+              convasCtx.drawImage(image, 360, 450, 110, 145);
+            })
+          }
+
         }
       }
 
