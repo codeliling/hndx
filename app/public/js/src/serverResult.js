@@ -121,7 +121,20 @@ function getQueryStringByName(name) {
 
         certifacateImageUrl = '/website/certificate/createCertificate?type='+type+'&number='+number;
 
-        $("#certifacteImg").attr('src',certifacateImageUrl);
+        var load = new Loading();
+      	load.init({
+      		target: "#rPanel"
+      	});
+	      load.start();
+
+        var certifacteImg = new Image();
+        certifacteImg.src = certifacateImageUrl;
+        certifacteImg.className = "certificateImage";
+        certifacteImg.onload = function(){
+          document.getElementById('rPanel').appendChild(certifacteImg);
+          load.stop();
+        }
+
         var xm = "";
         var byzh = "";
         var bysj = "";
