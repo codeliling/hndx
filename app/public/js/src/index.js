@@ -134,10 +134,10 @@ $(document).ready(function() {
           if (data.data.length > 0){
 
             if(undergraduateType == 1){
-              window.location.href = '/result?' + 'type=1&number='+$("#number").val();
+              window.location.href = '/serverResult?' + 'type=1&number='+$("#number").val();
             }
             else{
-              window.location.href = '/result?' + 'type=2&number='+$("#number").val();
+              window.location.href = '/serverResult?' + 'type=2&number='+$("#number").val();
             }
           }
           else{

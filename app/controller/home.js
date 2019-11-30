@@ -13,6 +13,11 @@ class HomeController extends Controller {
     await ctx.render('result.html');
   }
 
+  async serverResult() {
+    const { ctx } = this;
+    await ctx.render('serverResult.html');
+  }
+
   async noResult() {
     const { ctx } = this;
     await ctx.render('noResult.html');

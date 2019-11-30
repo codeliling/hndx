@@ -873,7 +873,6 @@ function getQueryStringByName(name) {
   downLoadNumber = number;
   // 点击按钮触发get请求
   var requestUrl = "";
-  let timestamp = (new Date()).getTime();
   if (type == 1) {
     requestUrl = "/website/undergraduate/getDetailByNumber?number=" + number;
   } else {

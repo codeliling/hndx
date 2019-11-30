@@ -11,6 +11,7 @@ module.exports = app => {
 
   router.get('/', controller.home.index);
   router.get('/result', controller.home.result);
+  router.get('/serverResult', controller.home.serverResult);
   router.get('/noResult', controller.home.noResult);
 
   router.get('/manageLogin',controller.home.manageLogin);
@@ -57,6 +58,8 @@ module.exports = app => {
   router.get('/manage/deletePostgraduate/:id', adminAuthCheck, controller.manage.postgraduate.deletePostgraduate);
   router.post('/manage/updateUndergraduate/:id', adminAuthCheck, controller.manage.undergraduate.updateUndergraduate);
   router.get('/manage/deleteUndergraduate/:id', adminAuthCheck, controller.manage.undergraduate.deleteUndergraduate);
+
+  router.get('/website/certificate/createCertificate',controller.website.certificate.createCertificate);
 
   router.resources('/manage/postgraduate', adminAuthCheck, controller.manage.postgraduate);
   router.resources('/manage/undergraduate', adminAuthCheck,  controller.manage.undergraduate);

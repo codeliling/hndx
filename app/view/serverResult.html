@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>湖南行政学院学历查询认证系统</title>
+  <link rel="stylesheet" href="/public/css/frame.css" />
+  <link type="text/css" rel="stylesheet" href="/public/css/jquery.toast.css">
+  <style type="text/css">
+    .leftPanel {
+      display: inline-block;
+      float: left;
+      width: 56%;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .rightPanel {
+      display: inline-block;
+      width: 40%;
+      height: 500px;
+      margin-left: 10px;
+      margin-top: 1em;
+    }
+
+    .tips {
+      margin-top: 290px;
+      color: #838383;
+      line-height: 20px;
+      width: 45em;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .labelTitle {
+      display: block;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-top: 10px;
+    }
+
+    .labelResult {
+      display: block;
+      font-weight: bold;
+      width: 20em;
+      height: 2.5em;
+      line-height: 2.5em;
+      border: 1px solid #f4f4f4;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      color: #838383;
+    }
+
+    .downloadBtn {
+      width: 21em;
+      height: 3em;
+      background-color: #b92121;
+      border: 2px solid #b92121;
+      border-radius: 8px;
+      outline: none;
+      margin-top: 10px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .backBtn{
+      width: 21em;
+      height: 3em;
+      background-color: #00695c;
+      border: 2px solid #00695c;
+      border-radius: 8px;
+      outline: none;
+      margin-top: 10px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .downloadDiv {
+      margin-top: 3em;
+      text-align: center;
+      width: 45em;
+    }
+
+    @media screen and (min-width: 1000px) and (max-width: 1280px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 90%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 500px;
+      }
+
+      .labelResult {
+        width: 17em;
+      }
+
+      .tips {
+        width: 38em;
+      }
+
+      .downloadDiv {
+        width: 38em;
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1600px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 660px;
+      }
+    }
+
+    @media screen and (min-width: 1600px) and (max-width: 1920px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 70%;
+        height: auto;
+      }
+
+      .rightPanel {
+        height: 760px;
+      }
+    }
+
+    @media screen and (min-width: 1921px) and (max-width: 2560px) {
+      .contentPanel {
+        margin: 0 auto;
+        width: 54%;
+        height: auto;
+      }
+
+      .leftPanel{
+        margin-top: 100px;
+      }
+
+      .rightPanel {
+        height: 960px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-center-bottom">
+    <div class="top">
+      <img class="logo" src="/public/images/logo@2x.png"/>
+    </div>
+      <div class="center">
+        <div class="contentPanel">
+          <div class="leftPanel">
+
+            <h1 style="margin-top:15px;">电子证书查询结果</h1>
+            <div>
+              <div style="display:inline-block;float:left;">
+                <label class="labelTitle" id="xmTitle">姓名</label>
+                <lable class="labelResult" id="xmValue"></lable>
+                <label class="labelTitle" id="zsbhTitle">证书编号</label>
+                <lable class="labelResult" id="zsbhValue"></lable>
+                <label class="labelTitle" id="byrqTitle">毕(结)业日期</label>
+                <lable class="labelResult" id="byrqValue"></lable>
+                <label class="labelTitle" id="xxxsTitle">学习形式</label>
+                <lable class="labelResult" id="xxxsValue"></lable>
+              </div>
+              <div style="display:inline-block;margin-left:40px;float:left;">
+                <label class="labelTitle" id="xbTitle">性别</label>
+                <lable class="labelResult" id="xbValue"></lable>
+                <label class="labelTitle" id="rxrqTitle">入学日期</label>
+                <lable class="labelResult" id="rxrqValue"></lable>
+                <label class="labelTitle" id="xllbTitle">学历类别</label>
+                <lable class="labelResult" id="xllbValue"></lable>
+                <label class="labelTitle" id="zymcTitle">专业名称</label>
+                <lable class="labelResult" id="zymcValue"></lable>
+              </div>
+            </div>
+
+            <br/>
+            <p class="tips">
+              声明：<br/>
+1、未经学历信息权属人同意，不得将本材料用于违背权属人意愿之用途。学历信息内容标注“＊”号，表示该项内容不详。学历信息如有修改，请以网站在线查询内容为准。
+              <br/>
+2、学历证书查询结果仅供查询人使用，不具有再验证功能。如有信息不全，请联系学校进行处理。
+            </p>
+
+              <div class="downloadDiv">
+                <input type="button" class="downloadBtn" onclick="outputImage()" value="下载保存电子学历证书" />
+
+                <input type="button" class="backBtn" onclick="back()" value="返回" />
+            </div>
+              </div>
+              <div id="rPanel" class="rightPanel">
+                <img id="certifacteImg" style="width:100%;height:auto;margin-top:-30px"/>
+              </div>
+
+          </div>
+          <div class="bottom">
+            <div class="bottomLeft">
+              <a href="/">网站首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/manageLogin" target="_blank">网站后台</a>
+            </div>
+            <div class="bottomRight">
+              <p>
+                中共湖南省委党校 湖南行政学院 ©版权所有 &nbsp;&nbsp; 地址：湖南省长沙市岳麓区白云路386号 邮编：410006
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+<script type="text/javascript" src="/public/js/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/public/js/lib/jquery.toast.min.js"></script>
+<script type="text/javascript" src="/public/js/lib/browser.js"></script>
+<script src="/public/js/src/serverResult.js"></script>
+
+</html>
