@@ -174,7 +174,7 @@ function getQueryStringByName(name) {
           $("#rxrqTitle").text('入学时间');
           $("#rxrqValue").text(rxsj);
 
-          $("#xllbValue").text(bylb);
+          $("#xllbValue").text(bj);
         } else {
           byzh = data.data.Byzh; //毕业证号
           Pic = data.data.Pic; //图像

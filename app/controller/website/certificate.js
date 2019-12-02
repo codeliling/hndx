@@ -157,18 +157,45 @@ class CertificateController extends BaseController{
         }
       })
 
-      if (xxmc == '湖南行政学院' && zymc.length <=4){
+      if (xxmc == '湖南行政学院'){
         convasCtx.font = "17px bold SimSun";
-        convasCtx.fillText(byzh, 570, 452);
-        convasCtx.fillText(bgrq, 570, 481);
+        convasCtx.fillText(byzh, 570, 460);
+        convasCtx.fillText(bgrq, 570, 490);
 
         convasCtx.font = "26px SimSun";
-        convasCtx.fillText(xm, 180,570);
+        convasCtx.fillText(xm, 180,580);
+        convasCtx.fillText(end_year, 334, 580);
+        convasCtx.fillText(zymc, 140, 635);
+        convasCtx.fillText(byzh, 473, 685);
+        if(zymc.length > 4  && zymc.length < 8){
+          convasCtx.fillText(bj, 402, 635);
+        }
+        else if (zymc.length >= 8){
+          convasCtx.fillText(bj, 507, 635);
+        }
+        else{
+          convasCtx.fillText(bj, 318, 635);
+        }
+      }
+      else if(xxmc == '中共湖南省委党校'){
+        convasCtx.font = "17px bold SimSun";
+        convasCtx.fillText(byzh, 570, 457);
+        convasCtx.fillText(bgrq, 570, 486);
 
-        convasCtx.fillText(end_year, 334, 570);
+        convasCtx.font = "26px SimSun";
+        convasCtx.fillText(xm, 180,575);
+        convasCtx.fillText(end_year, 336, 574);
+        convasCtx.fillText(zymc, 140, 625);
 
-        convasCtx.fillText(zymc, 140, 622);
-
+        if(zymc.length > 4  && zymc.length < 8){
+          convasCtx.fillText(bj, 404, 625);
+        }
+        else if (zymc.length >= 8){
+          convasCtx.fillText(bj, 507, 625);
+        }
+        else{
+          convasCtx.fillText(bj, 318, 625);
+        }
         convasCtx.fillText(byzh, 473, 677);
       }
       else{
@@ -178,13 +205,21 @@ class CertificateController extends BaseController{
 
         convasCtx.font = "26px SimSun";
         convasCtx.fillText(xm, 180,575);
-
         convasCtx.fillText(end_year, 334, 574);
+        convasCtx.fillText(zymc, 140, 625);
 
-        convasCtx.fillText(zymc, 140, 627);
-
+        if(zymc.length > 4  && zymc.length < 8){
+          convasCtx.fillText(bj, 404, 625);
+        }
+        else if (zymc.length >= 8){
+          convasCtx.fillText(bj, 507, 625);
+        }
+        else{
+          convasCtx.fillText(bj, 318, 625);
+        }
         convasCtx.fillText(byzh, 473, 677);
       }
+
 
     }
     else{
