@@ -202,6 +202,7 @@ class FileController extends BaseController {
           else{
             result.imagePath = ctx.helper.imagesBaseUrl + ctx.helper.undergraduateImagesPath + filename;
           }
+          result.filename = filename;
         } catch (err) {
             //如果出现错误，关闭管道
           ctx.logger.error(err.message);

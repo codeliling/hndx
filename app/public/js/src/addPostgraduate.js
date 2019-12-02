@@ -123,8 +123,8 @@ new Vue({
     },
     uploadHeadIconSuccess(response, file, fileList){
       if (response.status == 200){
-        this.defaultHeadiconPath = response.imagePath;
-        this.postgraduateForm.Pic = response.imagePath;
+        //this.defaultHeadiconPath = response.imagePath;
+        this.postgraduateForm.Pic = response.filename;
       }
       else{
         this.$Message.error(response.message);
@@ -134,8 +134,8 @@ new Vue({
   computed:{
     headImgae:function(){
       var defaultHeadiconPath = '/public/images/user.png';
-      if (this.postgraduateForm.Pic != '' && this.postgraduateForm.Pic != null){
-        return this.postgraduateForm.Pic;
+      if (this.postgraduateForm.Pic != '' && this.postgraduateForm.Pic != null && this.postgraduateForm.Pic.indexOf('pic') == -1){
+        return '/public/images/postgraduateImages/' + this.postgraduateForm.Pic;
       }
       else{
         return defaultHeadiconPath;
