@@ -6,7 +6,7 @@ function back() {
 var downLoadXM = '';
 var downLoadNumber = "";
 
-let certifacateImageUrl = '';
+var certifacateImageUrl = '';
 
 function IEVersion() {
   var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
@@ -49,7 +49,7 @@ function downLoad(url,name) {
 function outputImage() {
 
   if(certifacateImageUrl != null){
-    let ie = IEVersion();
+    var ie = IEVersion();
     if ( ie == -1 || ie == 'edge') {
       downLoad(certifacateImageUrl,downLoadXM+'.png');
     } else {

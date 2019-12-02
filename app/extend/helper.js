@@ -56,8 +56,10 @@ module.exports = {
      var nextMonthFirstDay = new Date(endDate.getFullYear(),nextMonth,1);
      var oneDay = 1000 * 60 * 60 * 24;
      var dateString = new Date(nextMonthFirstDay-oneDay);
-     var endDate = dateString.toLocaleDateString(); //toLocaleDateString() 返回 如：2018/8/31
-     return endDate.replace(new RegExp('/','g'),"-");
+     var year = dateString.getFullYear();
+     var month = dateString.getMonth() + 1;
+     var day = dateString.getDate();
+     return year +'-' + month + '-' + day;
    },
 
 };

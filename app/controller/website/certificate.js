@@ -4,10 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const Canvas = require('canvas')
 
-
 class CertificateController extends BaseController{
 
   async createCertificate(){
+
     const ctx = this.ctx;
     const number = ctx.query.number;
     const type = ctx.query.type;
@@ -141,7 +141,13 @@ class CertificateController extends BaseController{
           sealPath = '/public/images/seal1@2x.png';
         }
       } else if (xxmc == '中共湖南省委党校') {
-        sealPath = '/public/images/seal3@2x.png';
+        if(xxxs == '函授'){
+          sealPath = '/public/images/seal5@2x.png';
+        }
+        else{
+          sealPath = '/public/images/seal3@2x.png';
+        }
+
       } else if (xxmc == '中央党校函授学院') {
         sealPath = '/public/images/seal4@2x.png';
       } else if (xxmc == '中共中央党校函授学院') {
