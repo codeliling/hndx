@@ -3,6 +3,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -56,6 +57,10 @@ module.exports = appInfo => {
       ignoreJSON:true
     },
     domainWhiteList:[]
+  };
+
+  config.siteFile = {
+    '/favicon.ico': fs.readFileSync(path.join(__dirname, '../public/images/favicon.png')),
   };
 
   config.view = {
