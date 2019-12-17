@@ -60,7 +60,7 @@ module.exports = appInfo => {
   };
 
   config.siteFile = {
-    '/favicon.ico': fs.readFileSync(path.join(__dirname, '../public/images/favicon.png')),
+    '/favicon.ico': fs.readFileSync(path.join(__dirname, '../app/public/images/favicon.png')),
   };
 
   config.view = {

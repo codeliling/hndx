@@ -156,10 +156,10 @@ class CertificateController extends BaseController{
 
       await Canvas.loadImage(path.join(__dirname,'../..' + sealPath)).then((image) => {
         if(xxmc == '中央党校函授学院' || xxmc == '中共中央党校函授学院'){
-          convasCtx.drawImage(image, 500, 735, 200, 200);
+          convasCtx.drawImage(image, 500, 695, 200, 200);
         }
         else{
-          convasCtx.drawImage(image, 500, 720, 200, 200);
+          convasCtx.drawImage(image, 500, 690, 200, 200);
         }
       })
 
@@ -248,7 +248,7 @@ class CertificateController extends BaseController{
       })
 
       await Canvas.loadImage(path.join(__dirname,'../../public/images/seal3@2x.png')).then((image) => {
-        convasCtx.drawImage(image, 500, 800, 200, 200);
+        convasCtx.drawImage(image, 520, 760, 200, 200);
       })
 
       if (Pic != '' && Pic != null) {

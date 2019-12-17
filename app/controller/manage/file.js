@@ -63,12 +63,52 @@ class FileController extends BaseController {
                       Xm : row.getCell(3).value,
                       Sfzh : row.getCell(4).value,
                       Xb : row.getCell(5).value,
-                      Rxsj : row.getCell(6).value,
-                      Xh : row.getCell(7).value,
-                      Dh : row.getCell(8).value,
-                      Zymc : row.getCell(9).value,
-                      Xsf : row.getCell(10).value,
+                      Xh : row.getCell(6).value,
+                      Dh : row.getCell(7).value,
+                      Xsf : row.getCell(8).value,
+                      Bysj : row.getCell(9).value,
                     };
+
+                    if(postgraduate.Xh != null && postgraduate.Xh != ''){
+                      let year = postgraduate.Xh.slice(0,2);
+                      postgraduate.Rxsj = '20'+year+'-'+'09';
+                    }
+
+                    if(postgraduate.Dh != null && postgraduate.Dh != ''){
+                      let zydm = postgraduate.Dh.slice(8,10);
+
+                      if(zydm == '02'){
+                        postgraduate.Zymc = '经济管理';
+                      }
+                      else if (zydm == '06'){
+                        postgraduate.Zymc = '公共管理';
+                      }
+                      else if (zydm == '04'){
+                        postgraduate.Zymc = '法学理论';
+                      }
+                      else if (zydm == '01'){
+                        postgraduate.Zymc = '政治与行政管理';
+                      }
+                      else if (zydm == '08'){
+                        postgraduate.Zymc = '行政法学';
+                      }
+                      else if (zydm == '0w'){
+                        postgraduate.Zymc = '文化建设与管理';
+                      }
+                    }
+
+                    if(postgraduate.Xb == '' || postgraduate.Xb == null){
+                      if(postgraduate.Sfzh != null && postgraduate.Sfzh != '' && postgraduate.Sfzh.length == 18){
+                        let num = postgraduate.Sfzh.charAt(17);
+                        if(num % 2 == 0){
+                          postgraduate.Xb = '女';
+                        }
+                        else{
+                          postgraduate.Xb = '男';
+                        }
+                      }
+                    }
+
                     if(postgraduate.Xm != '' && postgraduate.Xm != null){
                       postgraduateList.push(postgraduate);
                     }
