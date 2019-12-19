@@ -99,7 +99,7 @@ class FileController extends BaseController {
 
                     if(postgraduate.Xb == '' || postgraduate.Xb == null){
                       if(postgraduate.Sfzh != null && postgraduate.Sfzh != '' && postgraduate.Sfzh.length == 18){
-                        let num = postgraduate.Sfzh.charAt(17);
+                        let num = postgraduate.Sfzh.charAt(16);
                         if(num % 2 == 0){
                           postgraduate.Xb = '女';
                         }
