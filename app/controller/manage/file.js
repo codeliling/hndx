@@ -69,6 +69,10 @@ class FileController extends BaseController {
                       Bysj : row.getCell(9).value,
                     };
 
+                    if(postgraduate.Xm != null && postgraduate.Xm != ''){
+                      postgraduate.Xm = postgraduate.Xm.replace(/\s*/g,"");
+                    }
+
                     if(postgraduate.Xh != null && postgraduate.Xh != ''){
                       let year = postgraduate.Xh.slice(0,2);
                       postgraduate.Rxsj = '20'+year+'-'+'09';
