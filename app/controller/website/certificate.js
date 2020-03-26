@@ -166,8 +166,8 @@ class CertificateController extends BaseController{
       if (xxmc == '湖南行政学院'){
         if(zymc.length > 4){
           convasCtx.font = "17px bold SimSun";
-          convasCtx.fillText(byzh, 570, 465);
-          convasCtx.fillText(bgrq, 570, 495);
+          convasCtx.fillText(bgrq, 570, 465);
+          convasCtx.fillText(byzh, 570, 495);
 
           convasCtx.font = "26px SimSun";
           convasCtx.fillText(xm, 180,583);
@@ -177,8 +177,8 @@ class CertificateController extends BaseController{
         }
         else{
           convasCtx.font = "17px bold SimSun";
-          convasCtx.fillText(byzh, 570, 463);
-          convasCtx.fillText(bgrq, 570, 493);
+          convasCtx.fillText(bgrq, 570, 463);
+          convasCtx.fillText(byzh, 570, 493);
 
           convasCtx.font = "26px SimSun";
           convasCtx.fillText(xm, 180,580);
@@ -199,8 +199,8 @@ class CertificateController extends BaseController{
       }
       else if(xxmc == '中共湖南省委党校'){
         convasCtx.font = "17px bold SimSun";
-        convasCtx.fillText(byzh, 570, 457);
-        convasCtx.fillText(bgrq, 570, 486);
+        convasCtx.fillText(bgrq, 570, 457);
+        convasCtx.fillText(byzh, 570, 486);
 
         convasCtx.font = "26px SimSun";
         convasCtx.fillText(xm, 180,575);
@@ -220,8 +220,8 @@ class CertificateController extends BaseController{
       }
       else{
         convasCtx.font = "17px bold SimSun";
-        convasCtx.fillText(byzh, 570, 457);
-        convasCtx.fillText(bgrq, 570, 486);
+        convasCtx.fillText(bgrq, 570, 457);
+        convasCtx.fillText(byzh, 570, 486);
 
         convasCtx.font = "26px SimSun";
         convasCtx.fillText(xm, 180,573);
