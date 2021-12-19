@@ -52,6 +52,8 @@ class FileController extends BaseController {
           await workbook.xlsx.readFile(target)
           .then(function() {
             var worksheet = workbook.getWorksheet(1);
+            console.log(worksheet);
+            console.log(worksheet.rowCount);
             if(worksheet.rowCount > 1){
 
               if(fileType == 1){
@@ -74,7 +76,7 @@ class FileController extends BaseController {
                     }
 
                     if(postgraduate.Xh != null && postgraduate.Xh != ''){
-                      let year = postgraduate.Xh.slice(0,2);
+                      let year = (postgraduate.Xh).toString().slice(0,2);
                       postgraduate.Rxsj = '20'+year+'-'+'09';
                     }
 
